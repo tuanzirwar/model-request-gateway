@@ -1,0 +1,6 @@
+{"concurrency": 1, "repeat": 1, "requests": 166, "successful": 166, "elapsed_seconds": 5.0135, "successful_qps": 33.11, "p95_ms": 34.11, "status_counts": {"200": 166}}
+{"concurrency": 1, "repeat": 2, "requests": 170, "successful": 170, "elapsed_seconds": 5.027, "successful_qps": 33.82, "p95_ms": 33.96, "status_counts": {"200": 170}}
+{"concurrency": 4, "repeat": 1, "requests": 478, "successful": 478, "elapsed_seconds": 5.0119, "successful_qps": 95.37, "p95_ms": 55.21, "status_counts": {"200": 478}}
+{"concurrency": 4, "repeat": 2, "requests": 482, "successful": 482, "elapsed_seconds": 5.0315, "successful_qps": 95.8, "p95_ms": 51.17, "status_counts": {"200": 482}}
+{"concurrency": 8, "repeat": 1, "requests": 163, "successful": 163, "elapsed_seconds": 5.109, "successful_qps": 31.9, "p95_ms": 378.32, "status_counts": {"200": 163}}
+{"concurrency": 8, "repeat": 2, "requests": 128, "successful": 128, "elapsed_seconds": 5.0815, "successful_qps": 25.19, "p95_ms": 444.21, "status_counts": {"200": 128}}

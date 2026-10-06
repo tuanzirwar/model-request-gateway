@@ -1,0 +1,8 @@
+ruff-check: 通过
+ruff-format: 通过
+unit-tests: 通过
+migration-run: 通过
+e2e-run: 通过
+browser-run: 通过
+real-tui-run: 通过
+build: 通过

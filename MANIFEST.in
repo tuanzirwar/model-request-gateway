@@ -1,0 +1,9 @@
+include alembic.ini gateway.example.yaml compose.yaml checklist.md
+include Dockerfile .dockerignore compose.full.yaml .env.example
+recursive-include deploy *.yaml
+recursive-include migrations *.py
+recursive-include scripts *.py *.ps1 *.sh
+recursive-include tests *.py
+recursive-include docs *.md
+recursive-include src/model_gateway/static *.html *.css *.js
+recursive-include .github *.yaml

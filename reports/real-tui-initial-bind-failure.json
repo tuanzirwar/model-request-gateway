@@ -1,0 +1,7 @@
+{
+  "passed": false,
+  "path": "real ConversationRuntime -> OpenAIProvider -> gateway -> real local model",
+  "data": "synthetic dialogue",
+  "semantic_quality_score": null,
+  "turns": []
+}

@@ -1,0 +1,168 @@
+* Getting build dependencies for sdist...
+running egg_info
+writing src\model_request_gateway.egg-info\PKG-INFO
+writing dependency_links to src\model_request_gateway.egg-info\dependency_links.txt
+writing requirements to src\model_request_gateway.egg-info\requires.txt
+writing top-level names to src\model_request_gateway.egg-info\top_level.txt
+reading manifest file 'src\model_request_gateway.egg-info\SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+writing manifest file 'src\model_request_gateway.egg-info\SOURCES.txt'
+* Building sdist...
+running sdist
+running egg_info
+writing src\model_request_gateway.egg-info\PKG-INFO
+writing dependency_links to src\model_request_gateway.egg-info\dependency_links.txt
+writing requirements to src\model_request_gateway.egg-info\requires.txt
+writing top-level names to src\model_request_gateway.egg-info\top_level.txt
+reading manifest file 'src\model_request_gateway.egg-info\SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+writing manifest file 'src\model_request_gateway.egg-info\SOURCES.txt'
+running check
+creating model_request_gateway-0.2.0
+creating model_request_gateway-0.2.0\.github\workflows
+creating model_request_gateway-0.2.0\deploy
+creating model_request_gateway-0.2.0\docs
+creating model_request_gateway-0.2.0\migrations
+creating model_request_gateway-0.2.0\migrations\versions
+creating model_request_gateway-0.2.0\scripts
+creating model_request_gateway-0.2.0\src\model_gateway
+creating model_request_gateway-0.2.0\src\model_gateway\static
+creating model_request_gateway-0.2.0\src\model_request_gateway.egg-info
+creating model_request_gateway-0.2.0\tests
+copying files to model_request_gateway-0.2.0...
+copying .dockerignore -> model_request_gateway-0.2.0
+copying .env.example -> model_request_gateway-0.2.0
+copying Dockerfile -> model_request_gateway-0.2.0
+copying MANIFEST.in -> model_request_gateway-0.2.0
+copying README.md -> model_request_gateway-0.2.0
+copying alembic.ini -> model_request_gateway-0.2.0
+copying checklist.md -> model_request_gateway-0.2.0
+copying compose.full.yaml -> model_request_gateway-0.2.0
+copying compose.yaml -> model_request_gateway-0.2.0
+copying gateway.example.yaml -> model_request_gateway-0.2.0
+copying pyproject.toml -> model_request_gateway-0.2.0
+copying .github\workflows\ci.yaml -> model_request_gateway-0.2.0\.github\workflows
+copying deploy\gateway.docker.yaml -> model_request_gateway-0.2.0\deploy
+copying docs\design.md -> model_request_gateway-0.2.0\docs
+copying docs\interview.md -> model_request_gateway-0.2.0\docs
+copying docs\resume.md -> model_request_gateway-0.2.0\docs
+copying docs\runbook.md -> model_request_gateway-0.2.0\docs
+copying docs\verification.md -> model_request_gateway-0.2.0\docs
+copying migrations\env.py -> model_request_gateway-0.2.0\migrations
+copying migrations\versions\0001_initial.py -> model_request_gateway-0.2.0\migrations\versions
+copying migrations\versions\0002_timestamp_precision.py -> model_request_gateway-0.2.0\migrations\versions
+copying scripts\admin.py -> model_request_gateway-0.2.0\scripts
+copying scripts\benchmark.py -> model_request_gateway-0.2.0\scripts
+copying scripts\package_delivery.py -> model_request_gateway-0.2.0\scripts
+copying scripts\prepare_demo.py -> model_request_gateway-0.2.0\scripts
+copying scripts\provision_local.py -> model_request_gateway-0.2.0\scripts
+copying scripts\start_demo.ps1 -> model_request_gateway-0.2.0\scripts
+copying scripts\start_redis_wsl.sh -> model_request_gateway-0.2.0\scripts
+copying scripts\stop_demo.ps1 -> model_request_gateway-0.2.0\scripts
+copying scripts\upstream_fixture.py -> model_request_gateway-0.2.0\scripts
+copying scripts\verify_all.py -> model_request_gateway-0.2.0\scripts
+copying scripts\verify_browser.py -> model_request_gateway-0.2.0\scripts
+copying scripts\verify_e2e.py -> model_request_gateway-0.2.0\scripts
+copying scripts\verify_migrations.py -> model_request_gateway-0.2.0\scripts
+copying scripts\verify_real_tui.py -> model_request_gateway-0.2.0\scripts
+copying src\model_gateway\__init__.py -> model_request_gateway-0.2.0\src\model_gateway
+copying src\model_gateway\app.py -> model_request_gateway-0.2.0\src\model_gateway
+copying src\model_gateway\config.py -> model_request_gateway-0.2.0\src\model_gateway
+copying src\model_gateway\db.py -> model_request_gateway-0.2.0\src\model_gateway
+copying src\model_gateway\observability.py -> model_request_gateway-0.2.0\src\model_gateway
+copying src\model_gateway\quota.py -> model_request_gateway-0.2.0\src\model_gateway
+copying src\model_gateway\sse.py -> model_request_gateway-0.2.0\src\model_gateway
+copying src\model_gateway\validation.py -> model_request_gateway-0.2.0\src\model_gateway
+copying src\model_gateway\static\console.css -> model_request_gateway-0.2.0\src\model_gateway\static
+copying src\model_gateway\static\console.js -> model_request_gateway-0.2.0\src\model_gateway\static
+copying src\model_gateway\static\index.html -> model_request_gateway-0.2.0\src\model_gateway\static
+copying src\model_request_gateway.egg-info\PKG-INFO -> model_request_gateway-0.2.0\src\model_request_gateway.egg-info
+copying src\model_request_gateway.egg-info\SOURCES.txt -> model_request_gateway-0.2.0\src\model_request_gateway.egg-info
+copying src\model_request_gateway.egg-info\dependency_links.txt -> model_request_gateway-0.2.0\src\model_request_gateway.egg-info
+copying src\model_request_gateway.egg-info\requires.txt -> model_request_gateway-0.2.0\src\model_request_gateway.egg-info
+copying src\model_request_gateway.egg-info\top_level.txt -> model_request_gateway-0.2.0\src\model_request_gateway.egg-info
+copying tests\test_api.py -> model_request_gateway-0.2.0\tests
+copying tests\test_config.py -> model_request_gateway-0.2.0\tests
+copying tests\test_core.py -> model_request_gateway-0.2.0\tests
+copying tests\test_db_capacity.py -> model_request_gateway-0.2.0\tests
+copying tests\test_mysql_integration.py -> model_request_gateway-0.2.0\tests
+copying tests\test_quota_integration.py -> model_request_gateway-0.2.0\tests
+copying tests\test_response.py -> model_request_gateway-0.2.0\tests
+copying tests\test_validation.py -> model_request_gateway-0.2.0\tests
+Writing model_request_gateway-0.2.0\setup.cfg
+Creating tar archive
+removing 'model_request_gateway-0.2.0' (and everything under it)
+* Building wheel from sdist
+* Getting build dependencies for wheel...
+running egg_info
+writing src\model_request_gateway.egg-info\PKG-INFO
+writing dependency_links to src\model_request_gateway.egg-info\dependency_links.txt
+writing requirements to src\model_request_gateway.egg-info\requires.txt
+writing top-level names to src\model_request_gateway.egg-info\top_level.txt
+reading manifest file 'src\model_request_gateway.egg-info\SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+writing manifest file 'src\model_request_gateway.egg-info\SOURCES.txt'
+* Building wheel...
+running bdist_wheel
+running build
+running build_py
+creating build\lib\model_gateway
+copying src\model_gateway\app.py -> build\lib\model_gateway
+copying src\model_gateway\config.py -> build\lib\model_gateway
+copying src\model_gateway\db.py -> build\lib\model_gateway
+copying src\model_gateway\observability.py -> build\lib\model_gateway
+copying src\model_gateway\quota.py -> build\lib\model_gateway
+copying src\model_gateway\sse.py -> build\lib\model_gateway
+copying src\model_gateway\validation.py -> build\lib\model_gateway
+copying src\model_gateway\__init__.py -> build\lib\model_gateway
+running egg_info
+writing src\model_request_gateway.egg-info\PKG-INFO
+writing dependency_links to src\model_request_gateway.egg-info\dependency_links.txt
+writing requirements to src\model_request_gateway.egg-info\requires.txt
+writing top-level names to src\model_request_gateway.egg-info\top_level.txt
+reading manifest file 'src\model_request_gateway.egg-info\SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+writing manifest file 'src\model_request_gateway.egg-info\SOURCES.txt'
+creating build\lib\model_gateway\static
+copying src\model_gateway\static\index.html -> build\lib\model_gateway\static
+copying src\model_gateway\static\console.css -> build\lib\model_gateway\static
+copying src\model_gateway\static\console.js -> build\lib\model_gateway\static
+installing to build\bdist.win-amd64\wheel
+running install
+running install_lib
+creating build\bdist.win-amd64\wheel
+creating build\bdist.win-amd64\wheel\model_gateway
+copying build\lib\model_gateway\app.py -> build\bdist.win-amd64\wheel\.\model_gateway
+copying build\lib\model_gateway\config.py -> build\bdist.win-amd64\wheel\.\model_gateway
+copying build\lib\model_gateway\db.py -> build\bdist.win-amd64\wheel\.\model_gateway
+copying build\lib\model_gateway\observability.py -> build\bdist.win-amd64\wheel\.\model_gateway
+copying build\lib\model_gateway\quota.py -> build\bdist.win-amd64\wheel\.\model_gateway
+copying build\lib\model_gateway\sse.py -> build\bdist.win-amd64\wheel\.\model_gateway
+creating build\bdist.win-amd64\wheel\model_gateway\static
+copying build\lib\model_gateway\static\console.css -> build\bdist.win-amd64\wheel\.\model_gateway\static
+copying build\lib\model_gateway\static\console.js -> build\bdist.win-amd64\wheel\.\model_gateway\static
+copying build\lib\model_gateway\static\index.html -> build\bdist.win-amd64\wheel\.\model_gateway\static
+copying build\lib\model_gateway\validation.py -> build\bdist.win-amd64\wheel\.\model_gateway
+copying build\lib\model_gateway\__init__.py -> build\bdist.win-amd64\wheel\.\model_gateway
+running install_egg_info
+Copying src\model_request_gateway.egg-info to build\bdist.win-amd64\wheel\.\model_request_gateway-0.2.0-py3.14.egg-info
+running install_scripts
+creating build\bdist.win-amd64\wheel\model_request_gateway-0.2.0.dist-info\WHEEL
+creating '${PROJECT_ROOT}\\dist\\.tmp-w2wa8v9o\\model_request_gateway-0.2.0-py3-none-any.whl' and adding 'build\\bdist.win-amd64\\wheel' to it
+adding 'model_gateway/__init__.py'
+adding 'model_gateway/app.py'
+adding 'model_gateway/config.py'
+adding 'model_gateway/db.py'
+adding 'model_gateway/observability.py'
+adding 'model_gateway/quota.py'
+adding 'model_gateway/sse.py'
+adding 'model_gateway/validation.py'
+adding 'model_gateway/static/console.css'
+adding 'model_gateway/static/console.js'
+adding 'model_gateway/static/index.html'
+adding 'model_request_gateway-0.2.0.dist-info/METADATA'
+adding 'model_request_gateway-0.2.0.dist-info/WHEEL'
+adding 'model_request_gateway-0.2.0.dist-info/top_level.txt'
+adding 'model_request_gateway-0.2.0.dist-info/RECORD'
+removing build\bdist.win-amd64\wheel
+Successfully built model_request_gateway-0.2.0.tar.gz and model_request_gateway-0.2.0-py3-none-any.whl

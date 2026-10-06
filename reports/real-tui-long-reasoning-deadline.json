@@ -1,0 +1,19 @@
+{
+  "passed": false,
+  "path": "real ConversationRuntime -> OpenAIProvider -> gateway -> real local model",
+  "data": "synthetic dialogue",
+  "semantic_quality_score": null,
+  "turns": [
+    {
+      "prompt": "用一句话解释HTTP请求超时。",
+      "answer": "HTTP 请求超时是指客户端在预设的时间内未能收到服务器响应，导致请求处理失败的状态。",
+      "seconds": 44.807
+    },
+    {
+      "prompt": "接着用一句话说明用户取消与服务端超时的区别。",
+      "answer": "用户取消是用户主动中断请求，而服务端超时是系统因等待过久而自动终止的被动行为。",
+      "seconds": 7.91
+    }
+  ],
+  "client_read_timeout_seconds": 120
+}

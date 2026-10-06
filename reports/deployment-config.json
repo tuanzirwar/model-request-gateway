@@ -1,0 +1,9 @@
+{
+  "container_runtime_tested": false,
+  "passed": true,
+  "github_ci_tested": false,
+  "checks": [
+    "base-compose-config",
+    "full-compose-config"
+  ]
+}

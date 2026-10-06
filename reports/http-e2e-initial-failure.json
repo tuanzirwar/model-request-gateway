@@ -1,0 +1,21 @@
+{
+  "passed": false,
+  "database": "MySQL",
+  "quota": "real Redis",
+  "transport": "real TCP HTTP; two independent gateway processes",
+  "upstream": "controlled SSE fixture, no model quality claim",
+  "checks": [
+    {
+      "name": "unauthorized_401",
+      "passed": true
+    },
+    {
+      "name": "model_allowlist_403",
+      "passed": true
+    },
+    {
+      "name": "nonstream_result_and_usage",
+      "passed": false
+    }
+  ]
+}

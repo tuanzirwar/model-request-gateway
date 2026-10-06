@@ -1,0 +1,89 @@
+{
+  "passed": true,
+  "mode": "real HTTP gateway/MySQL/Redis; non-streaming fixture upstream, no model inference",
+  "workers": 1,
+  "concurrency_limit": 16,
+  "seconds_per_round": 5,
+  "repeats": 2,
+  "closed_loop": true,
+  "rounds": [
+    {
+      "concurrency": 1,
+      "repeat": 1,
+      "requests": 135,
+      "successful": 135,
+      "elapsed_seconds": 5.0038,
+      "successful_qps": 26.98,
+      "p95_ms": 41.86,
+      "status_counts": {
+        "200": 135
+      }
+    },
+    {
+      "concurrency": 1,
+      "repeat": 2,
+      "requests": 164,
+      "successful": 164,
+      "elapsed_seconds": 5.0259,
+      "successful_qps": 32.63,
+      "p95_ms": 35.73,
+      "status_counts": {
+        "200": 164
+      }
+    },
+    {
+      "concurrency": 4,
+      "repeat": 1,
+      "requests": 453,
+      "successful": 453,
+      "elapsed_seconds": 5.0221,
+      "successful_qps": 90.2,
+      "p95_ms": 55.76,
+      "status_counts": {
+        "200": 453
+      }
+    },
+    {
+      "concurrency": 4,
+      "repeat": 2,
+      "requests": 461,
+      "successful": 461,
+      "elapsed_seconds": 5.0299,
+      "successful_qps": 91.65,
+      "p95_ms": 53.55,
+      "status_counts": {
+        "200": 461
+      }
+    },
+    {
+      "concurrency": 8,
+      "repeat": 1,
+      "requests": 130,
+      "successful": 130,
+      "elapsed_seconds": 5.0368,
+      "successful_qps": 25.81,
+      "p95_ms": 549.86,
+      "status_counts": {
+        "200": 130
+      }
+    },
+    {
+      "concurrency": 8,
+      "repeat": 2,
+      "requests": 129,
+      "successful": 129,
+      "elapsed_seconds": 5.0653,
+      "successful_qps": 25.47,
+      "p95_ms": 588.58,
+      "status_counts": {
+        "200": 129
+      }
+    }
+  ],
+  "limitations": [
+    "same host and short rounds",
+    "not maximum sustained or model QPS",
+    "records accumulate between rounds",
+    "no optimization before/after comparison"
+  ]
+}

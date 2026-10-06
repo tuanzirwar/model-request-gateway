@@ -1,0 +1,16 @@
+services:
+  mysql:
+    image: mysql:8.4
+    environment:
+      MYSQL_DATABASE: model_gateway
+      MYSQL_USER: gateway
+      MYSQL_PASSWORD: local-gateway-only
+      MYSQL_ROOT_PASSWORD: local-root-only
+    ports: ["127.0.0.1:13317:3306"]
+    volumes: ["mysql-data:/var/lib/mysql"]
+  redis:
+    image: redis:7.4
+    command: ["redis-server", "--maxmemory-policy", "noeviction"]
+    ports: ["127.0.0.1:16379:6379"]
+volumes:
+  mysql-data:

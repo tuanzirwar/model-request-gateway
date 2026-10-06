@@ -1,0 +1,13 @@
+{
+  "passed": false,
+  "path": "real ConversationRuntime -> OpenAIProvider -> gateway -> real local model",
+  "data": "synthetic dialogue",
+  "semantic_quality_score": null,
+  "turns": [
+    {
+      "prompt": "用一句话解释HTTP请求超时。",
+      "answer": "HTTP请求超时是指客户端在等待服务器响应时，若超过预设的时间阈值而未获得响应，则主动终止请求。",
+      "seconds": 25.362
+    }
+  ]
+}

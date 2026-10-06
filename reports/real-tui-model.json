@@ -1,0 +1,89 @@
+{
+  "passed": true,
+  "path": "real ConversationRuntime -> OpenAIProvider -> gateway -> real local model",
+  "data": "synthetic dialogue",
+  "semantic_quality_score": null,
+  "turns": [
+    {
+      "prompt": "用一句话解释HTTP请求超时。",
+      "answer": "HTTP 请求超时是指客户端在规定的时间内未能收到服务器响应的结果，导致连接断开或请求被中止。",
+      "seconds": 2.615
+    },
+    {
+      "prompt": "接着用一句话说明用户取消与服务端超时的区别。",
+      "answer": "用户主动取消是出于意愿中断操作，而服务端超时是因等待响应耗时过长导致的自动强制终止。",
+      "seconds": 2.626
+    }
+  ],
+  "client_read_timeout_seconds": 120,
+  "cancel_then_new_turn": {
+    "cancelled_after_text": true,
+    "next_answer": "可以继续。"
+  },
+  "request_records": [
+    {
+      "id": "27e52233-7b3f-4160-bb30-6c14844a2a19",
+      "app_id": "tui-demo",
+      "model": "coding",
+      "status": "succeeded",
+      "error": "",
+      "started_at": 1791282894.1557279,
+      "deadline_at": 1791283014.1557279,
+      "finished_at": 1791282894.7879355,
+      "first_ms": 471,
+      "bytes_out": 924,
+      "usage": {
+        "total_tokens": 611,
+        "prompt_tokens": 608,
+        "completion_tokens": 3
+      }
+    },
+    {
+      "id": "e9355316-4d96-4cc0-a7a8-f401a73070d9",
+      "app_id": "tui-demo",
+      "model": "coding",
+      "status": "cancelled",
+      "error": "client_disconnected",
+      "started_at": 1791282892.9594946,
+      "deadline_at": 1791283012.9594946,
+      "finished_at": 1791282893.9675844,
+      "first_ms": 966,
+      "bytes_out": 225,
+      "usage": {}
+    },
+    {
+      "id": "61fde23e-825c-4a02-9577-f77d7f6cc28b",
+      "app_id": "tui-demo",
+      "model": "coding",
+      "status": "succeeded",
+      "error": "",
+      "started_at": 1791282890.3129368,
+      "deadline_at": 1791283010.3129368,
+      "finished_at": 1791282892.7617867,
+      "first_ms": 925,
+      "bytes_out": 5740,
+      "usage": {
+        "total_tokens": 558,
+        "prompt_tokens": 534,
+        "completion_tokens": 24
+      }
+    },
+    {
+      "id": "724bae52-64f6-424a-8c1d-4e9d67a19000",
+      "app_id": "tui-demo",
+      "model": "coding",
+      "status": "succeeded",
+      "error": "",
+      "started_at": 1791282887.8603437,
+      "deadline_at": 1791283007.8603437,
+      "finished_at": 1791282890.1356173,
+      "first_ms": 773,
+      "bytes_out": 5745,
+      "usage": {
+        "total_tokens": 513,
+        "prompt_tokens": 488,
+        "completion_tokens": 25
+      }
+    }
+  ]
+}

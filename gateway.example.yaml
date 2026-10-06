@@ -1,0 +1,25 @@
+database_url: mysql+pymysql://gateway:CHANGE_ME@127.0.0.1:3306/model_gateway?charset=utf8mb4
+redis_url: redis://127.0.0.1:6379/0
+namespace: model-gateway
+allow_local_http: true
+lease_seconds: 15
+total_seconds: 120
+first_seconds: 45
+idle_seconds: 20
+max_frame_bytes: 65536
+max_body_bytes: 1048576
+retention_days: 30
+db_workers: 4
+db_queue_size: 32
+db_queue_seconds: 1
+metrics_key_env: GATEWAY_METRICS_KEY
+models:
+  coding:
+    model: qwen3.5:4b
+    endpoint: http://127.0.0.1:11434/v1/chat/completions
+    concurrency: 4
+    key_env: MODEL_UPSTREAM_KEY
+    # 仅适用于支持此参数的模型；调用方显式参数可覆盖默认值。
+    request_defaults:
+      reasoning_effort: none
+      max_tokens: 512

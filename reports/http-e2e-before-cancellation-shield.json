@@ -1,0 +1,115 @@
+{
+  "passed": false,
+  "database": "MySQL",
+  "quota": "real Redis",
+  "transport": "real TCP HTTP; two independent gateway processes",
+  "upstream": "controlled SSE fixture, no model quality claim",
+  "checks": [
+    {
+      "name": "unauthorized_401",
+      "passed": true
+    },
+    {
+      "name": "model_allowlist_403",
+      "passed": true
+    },
+    {
+      "name": "nonstream_result_and_usage",
+      "passed": true
+    },
+    {
+      "name": "record_ownership_404",
+      "passed": true
+    },
+    {
+      "name": "two_process_shared_limit_429",
+      "passed": true
+    },
+    {
+      "name": "client_cancel_terminal",
+      "passed": true
+    },
+    {
+      "name": "client_cancel_terminal",
+      "passed": true
+    },
+    {
+      "name": "cancelled_quota_reusable",
+      "passed": true
+    },
+    {
+      "name": "truncated_terminal_failure",
+      "passed": true,
+      "error": "upstream_incomplete"
+    },
+    {
+      "name": "truncated_no_fake_done",
+      "passed": true
+    },
+    {
+      "name": "oversize_terminal_failure",
+      "passed": true,
+      "error": "frame_too_large"
+    },
+    {
+      "name": "http_error_terminal_failure",
+      "passed": true,
+      "error": "upstream_http_error"
+    },
+    {
+      "name": "before_first_terminal_failure",
+      "passed": true,
+      "error": "deadline_exceeded"
+    },
+    {
+      "name": "idle_terminal_failure",
+      "passed": true,
+      "error": "deadline_exceeded"
+    },
+    {
+      "name": "idle_no_fake_done",
+      "passed": true
+    },
+    {
+      "name": "tui_text_and_usage",
+      "passed": true
+    },
+    {
+      "name": "tui_tool_fragments",
+      "passed": true
+    },
+    {
+      "name": "process_kill_lease_expires",
+      "passed": true
+    },
+    {
+      "name": "process_kill_record_reconciled",
+      "passed": true
+    },
+    {
+      "name": "cursor_pagination_no_duplicate",
+      "passed": true
+    },
+    {
+      "name": "upstream_connections_released",
+      "passed": false
+    }
+  ],
+  "upstream_stats": {
+    "started": 13,
+    "closed": 10,
+    "active": 1,
+    "max_active": 3,
+    "active_modes": {
+      "hold:8289": 0,
+      "hold:8290": 1,
+      "normal": 0,
+      "truncated": 0,
+      "oversize": 0,
+      "before_first": 0,
+      "idle": 0,
+      "tool": 0,
+      "hold:crash": 0
+    }
+  }
+}

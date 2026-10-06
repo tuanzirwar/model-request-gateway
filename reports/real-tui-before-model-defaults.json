@@ -1,0 +1,14 @@
+{
+  "passed": false,
+  "path": "real ConversationRuntime -> OpenAIProvider -> gateway -> real local model",
+  "data": "synthetic dialogue",
+  "semantic_quality_score": null,
+  "turns": [
+    {
+      "prompt": "用一句话解释HTTP请求超时。",
+      "answer": "HTTP请求超时常指客户端在等待服务器响应时，超过预设的等待时间后服务器仍未返回数据，导致连接断开或请求失败。",
+      "seconds": 7.82
+    }
+  ],
+  "client_read_timeout_seconds": 120
+}

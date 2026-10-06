@@ -1,0 +1,17 @@
+.venv/
+.local/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+.env
+gateway.yaml
+*.db
+.install.txt
+reports/*-server-*.txt
+reports/compose-config.txt
+reports/compose-full-config.txt
+docs/resume.md
+docs/interview.md

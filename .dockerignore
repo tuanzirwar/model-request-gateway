@@ -1,0 +1,13 @@
+.venv
+.local
+.git
+reports
+dist
+build
+gateway.yaml
+.env
+.install.txt
+__pycache__
+.pytest_cache
+.ruff_cache
+*.egg-info

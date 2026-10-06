@@ -1,0 +1,17 @@
+{
+  "passed": false,
+  "transport": "Chromium -> real TCP gateway/MySQL/Redis -> SSE fixture",
+  "checks": [
+    {
+      "name": "invalid_key_rejected",
+      "passed": true
+    },
+    {
+      "name": "login_models_and_records",
+      "passed": true
+    }
+  ],
+  "model_quality_claim": false,
+  "browser_version": "154.0.4258.53",
+  "browser_channel": "msedge"
+}

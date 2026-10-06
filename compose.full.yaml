@@ -1,0 +1,44 @@
+services:
+  mysql:
+    image: mysql:8.4
+    environment:
+      MYSQL_DATABASE: model_gateway
+      MYSQL_USER: gateway
+      MYSQL_PASSWORD: ${GATEWAY_MYSQL_PASSWORD:?请设置数据库口令}
+      MYSQL_ROOT_PASSWORD: ${GATEWAY_MYSQL_ROOT_PASSWORD:?请设置root口令}
+    volumes: ["mysql-data:/var/lib/mysql"]
+    healthcheck:
+      test: ["CMD-SHELL", "MYSQL_PWD=$$MYSQL_ROOT_PASSWORD mysqladmin ping -h localhost --silent"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+  redis:
+    image: redis:7.4
+    command: ["redis-server", "--maxmemory-policy", "noeviction"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 2s
+      retries: 10
+  migrate:
+    build: .
+    environment: &gateway-env
+      GATEWAY_DATABASE_URL: mysql+pymysql://gateway:${GATEWAY_MYSQL_PASSWORD}@mysql:3306/model_gateway?charset=utf8mb4
+      GATEWAY_REDIS_URL: redis://redis:6379/0
+      GATEWAY_METRICS_KEY: ${GATEWAY_METRICS_KEY:-}
+      MODEL_UPSTREAM_KEY: ${MODEL_UPSTREAM_KEY:-}
+    command: ["python", "-m", "alembic", "upgrade", "head"]
+    healthcheck: {disable: true}
+    depends_on:
+      mysql: {condition: service_healthy}
+  gateway:
+    build: .
+    environment: *gateway-env
+    extra_hosts: ["host.docker.internal:host-gateway"]
+    ports: ["127.0.0.1:18080:8080"]
+    restart: unless-stopped
+    depends_on:
+      migrate: {condition: service_completed_successfully}
+      redis: {condition: service_healthy}
+volumes:
+  mysql-data:

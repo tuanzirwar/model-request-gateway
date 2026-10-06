@@ -1,0 +1,21 @@
+database_url: mysql+pymysql://gateway:CHANGE_ME@mysql:3306/model_gateway?charset=utf8mb4
+redis_url: redis://redis:6379/0
+namespace: model-gateway
+allow_local_http: true
+metrics_key_env: GATEWAY_METRICS_KEY
+lease_seconds: 15
+total_seconds: 120
+first_seconds: 45
+idle_seconds: 20
+db_workers: 4
+db_queue_size: 32
+db_queue_seconds: 1
+models:
+  coding:
+    model: qwen3.5:4b
+    endpoint: http://host.docker.internal:11434/v1/chat/completions
+    concurrency: 4
+    key_env: MODEL_UPSTREAM_KEY
+    request_defaults:
+      reasoning_effort: none
+      max_tokens: 512

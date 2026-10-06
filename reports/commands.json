@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "name": "ruff-check",
+      "exit_code": 0
+    },
+    {
+      "name": "ruff-format",
+      "exit_code": 0
+    },
+    {
+      "name": "unit-tests",
+      "exit_code": 0
+    },
+    {
+      "name": "migration-run",
+      "exit_code": 0
+    },
+    {
+      "name": "e2e-run",
+      "exit_code": 0
+    },
+    {
+      "name": "browser-run",
+      "exit_code": 0
+    },
+    {
+      "name": "real-tui-run",
+      "exit_code": 0
+    },
+    {
+      "name": "build",
+      "exit_code": 0
+    }
+  ]
+}
