@@ -1,0 +1,87 @@
+[
+  {
+    "role": "load-generator",
+    "cpu_cores_over_2s": 0.0,
+    "working_set_mib": 7.86
+  },
+  {
+    "role": "load-generator",
+    "cpu_cores_over_2s": 0.0,
+    "working_set_mib": 7.85
+  },
+  {
+    "role": "load-generator",
+    "cpu_cores_over_2s": 0.0,
+    "working_set_mib": 7.85
+  },
+  {
+    "role": "load-generator",
+    "cpu_cores_over_2s": 0.0,
+    "working_set_mib": 7.86
+  },
+  {
+    "role": "load-generator",
+    "cpu_cores_over_2s": 0.0,
+    "working_set_mib": 7.83
+  },
+  {
+    "role": "gateway",
+    "cpu_cores_over_2s": 0.0,
+    "working_set_mib": 4.0
+  },
+  {
+    "role": "load-generator",
+    "cpu_cores_over_2s": 0.0,
+    "working_set_mib": 4.0
+  },
+  {
+    "role": "gateway",
+    "cpu_cores_over_2s": 0.781,
+    "working_set_mib": 143.11
+  },
+  {
+    "role": "gateway",
+    "cpu_cores_over_2s": 0.836,
+    "working_set_mib": 144.28
+  },
+  {
+    "role": "gateway",
+    "cpu_cores_over_2s": 0.672,
+    "working_set_mib": 144.25
+  },
+  {
+    "role": "load-generator",
+    "cpu_cores_over_2s": 0.875,
+    "working_set_mib": 124.21
+  },
+  {
+    "role": "gateway",
+    "cpu_cores_over_2s": 0.0,
+    "working_set_mib": 4.0
+  },
+  {
+    "role": "fixture",
+    "cpu_cores_over_2s": 0.164,
+    "working_set_mib": 52.9
+  },
+  {
+    "role": "gateway",
+    "cpu_cores_over_2s": 0.844,
+    "working_set_mib": 143.95
+  },
+  {
+    "role": "gateway",
+    "cpu_cores_over_2s": 0.0,
+    "working_set_mib": 4.0
+  },
+  {
+    "role": "fixture",
+    "cpu_cores_over_2s": 0.0,
+    "working_set_mib": 4.0
+  },
+  {
+    "role": "gateway",
+    "cpu_cores_over_2s": 0.0,
+    "working_set_mib": 4.0
+  }
+]

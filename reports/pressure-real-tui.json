@@ -1,0 +1,89 @@
+{
+  "passed": true,
+  "path": "real ConversationRuntime -> OpenAIProvider -> gateway -> real local model",
+  "data": "synthetic dialogue",
+  "semantic_quality_score": null,
+  "turns": [
+    {
+      "prompt": "用一句话解释HTTP请求超时。",
+      "answer": "HTTP 请求超时是指当服务器响应时间超过预设的阈值时，请求会被系统判定为失败并中止。",
+      "seconds": 8.62
+    },
+    {
+      "prompt": "接着用一句话说明用户取消与服务端超时的区别。",
+      "answer": "用户取消是主动触发终止，而服务端超时是因等待响应时间过长后由系统自动强制中止。",
+      "seconds": 1.073
+    }
+  ],
+  "client_read_timeout_seconds": 120,
+  "cancel_then_new_turn": {
+    "cancelled_after_text": true,
+    "next_answer": "可以"
+  },
+  "request_records": [
+    {
+      "id": "633ffc1a-43aa-4959-9f5b-73b2498a8e11",
+      "app_id": "pressure-real-fffd32d7f0d94a4c",
+      "model": "coding",
+      "status": "succeeded",
+      "error": "",
+      "started_at": 1791450618.595435,
+      "deadline_at": 1791450738.595435,
+      "finished_at": 1791450618.9881449,
+      "first_ms": 366,
+      "bytes_out": 691,
+      "usage": {
+        "total_tokens": 450,
+        "prompt_tokens": 448,
+        "completion_tokens": 2
+      }
+    },
+    {
+      "id": "7020df8a-8d8c-45a2-b231-8dc3c14d2e8e",
+      "app_id": "pressure-real-fffd32d7f0d94a4c",
+      "model": "coding",
+      "status": "cancelled",
+      "error": "client_disconnected",
+      "started_at": 1791450618.042336,
+      "deadline_at": 1791450738.042336,
+      "finished_at": 1791450618.4463449,
+      "first_ms": 373,
+      "bytes_out": 224,
+      "usage": {}
+    },
+    {
+      "id": "b70f99c5-ad2c-45f9-a1ae-54e50345b2c4",
+      "app_id": "pressure-real-fffd32d7f0d94a4c",
+      "model": "coding",
+      "status": "succeeded",
+      "error": "",
+      "started_at": 1791450617.0045753,
+      "deadline_at": 1791450737.0045753,
+      "finished_at": 1791450617.8934102,
+      "first_ms": 353,
+      "bytes_out": 5507,
+      "usage": {
+        "total_tokens": 397,
+        "prompt_tokens": 374,
+        "completion_tokens": 23
+      }
+    },
+    {
+      "id": "234a01a4-147a-4d0a-a45d-92ae6b981693",
+      "app_id": "pressure-real-fffd32d7f0d94a4c",
+      "model": "coding",
+      "status": "succeeded",
+      "error": "",
+      "started_at": 1791450608.500937,
+      "deadline_at": 1791450728.500937,
+      "finished_at": 1791450616.8154304,
+      "first_ms": 7718,
+      "bytes_out": 5733,
+      "usage": {
+        "total_tokens": 353,
+        "prompt_tokens": 328,
+        "completion_tokens": 25
+      }
+    }
+  ]
+}

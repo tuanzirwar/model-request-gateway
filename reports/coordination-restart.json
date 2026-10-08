@@ -1,0 +1,49 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "name": "initial_stream",
+      "passed": true
+    },
+    {
+      "name": "first_frame_received",
+      "passed": true
+    },
+    {
+      "name": "aliases_share_capacity",
+      "passed": true
+    },
+    {
+      "name": "new_redis_process",
+      "passed": true
+    },
+    {
+      "name": "loss_blocks_new_admission",
+      "passed": true
+    },
+    {
+      "name": "not_ready_during_recovery",
+      "passed": true
+    },
+    {
+      "name": "old_stream_stops_without_done",
+      "passed": true
+    },
+    {
+      "name": "recovery_wait_enforced",
+      "passed": true,
+      "seconds": 9.284
+    },
+    {
+      "name": "request_after_recovery",
+      "passed": true
+    },
+    {
+      "name": "upstream_closed",
+      "passed": true
+    }
+  ],
+  "redis_persistence": "none for loss injection",
+  "total_seconds": 3,
+  "recovery_guard_seconds": 8
+}

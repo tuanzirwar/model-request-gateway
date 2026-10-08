@@ -1,0 +1,35 @@
+{
+  "passed": true,
+  "scope": "isolated synthetic table, ABBA, 20000 rows per round",
+  "rounds": [
+    {
+      "index_enabled": false,
+      "rows": 20000,
+      "seconds": 3.2444040999980643,
+      "rows_per_second": 6164.460216288079
+    },
+    {
+      "index_enabled": true,
+      "rows": 20000,
+      "seconds": 3.469435800012434,
+      "rows_per_second": 5764.626052434324
+    },
+    {
+      "index_enabled": true,
+      "rows": 20000,
+      "seconds": 3.4905873000097927,
+      "rows_per_second": 5729.694828129321
+    },
+    {
+      "index_enabled": false,
+      "rows": 20000,
+      "seconds": 3.5471512000076473,
+      "rows_per_second": 5638.32745555275
+    }
+  ],
+  "index_name": "ix_app_statistics",
+  "limitations": [
+    "local warm cache",
+    "not production write amplification"
+  ]
+}

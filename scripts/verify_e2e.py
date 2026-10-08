@@ -149,7 +149,7 @@ async def main():
 
     try:
         start("scripts.upstream_fixture:app", upstream)
-        p1 = start("model_gateway.app:create_app", one, True)
+        start("model_gateway.app:create_app", one, True)
         start("model_gateway.app:create_app", two, True)
         async with httpx.AsyncClient(timeout=20, trust_env=False) as client:
             for _ in range(100):
@@ -356,24 +356,56 @@ async def main():
                 )
             finally:
                 await provider.close()
-            # 杀死一个专用测试网关进程；另一进程保留用于租约恢复和记录对账。
+            # Windows终止进程树可能超过短空闲预算；专用长超时实例确保测到强杀，
+            # 而不是请求在taskkill完成前已经正常写入超时终态。
+            crash = dict(config)
+            crash.update(total_seconds=30, idle_seconds=30, namespace=namespace + "-crash")
+            crash_config = ROOT / ".local/crash-long-timeout.yaml"
+            crash_config.write_text(yaml.safe_dump(crash), "utf-8")
+            crash_port = port()
+            crash_process = start("model_gateway.app:create_app", crash_port, True, crash_config)
+            crash_base = f"http://127.0.0.1:{crash_port}"
+            for _ in range(100):
+                try:
+                    if (await client.get(crash_base + "/health")).status_code == 200:
+                        break
+                except httpx.HTTPError:
+                    pass
+                await asyncio.sleep(0.1)
             context = client.stream(
                 "POST",
-                bases[0] + "/v1/chat/completions",
+                crash_base + "/v1/chat/completions",
                 headers=headers,
                 json=payload("hold:crash"),
             )
             response = await context.__aenter__()
             lost_id = response.headers["X-Request-ID"]
-            stop_process(p1)
+            crash_redis = Redis.from_url(config["redis_url"])
+            crash_quota = Quota(crash_redis, crash["namespace"], 2)
+            check(
+                "crash_request_owns_slot",
+                not await crash_quota.acquire(app_id + "a", "fixture", "probe", 1, 1),
+            )
+            stop_process(crash_process)
             await context.__aexit__(None, None, None)
             await asyncio.sleep(2.2)
+            check(
+                "crash_actual_slot_reusable",
+                await crash_quota.acquire(app_id + "a", "fixture", "probe", 1, 1),
+            )
+            await crash_quota.release(app_id + "a", "fixture", "probe")
+            await crash_redis.aclose()
             next_response = await client.post(
                 bases[1] + "/v1/chat/completions", headers=headers, json=payload("normal")
             )
             check("process_kill_lease_expires", next_response.status_code == 200)
-            row = await terminal(client, lost_id)
-            check("process_kill_record_reconciled", row["status"] == "abandoned")
+            row = await terminal(client, lost_id, timeout=45)
+            check(
+                "process_kill_record_reconciled",
+                row["status"] == "abandoned",
+                status=row["status"],
+                error=row["error"],
+            )
             listing = (await client.get(bases[1] + "/requests?limit=2", headers=headers)).json()
             page_two = (
                 await client.get(
@@ -394,6 +426,49 @@ async def main():
                 stats = (await client.get(f"http://127.0.0.1:{upstream}/stats")).json()
             result["upstream_stats"] = stats
             check("upstream_connections_released", stats["active"] == 0)
+            limited = dict(config)
+            limited["namespace"] = namespace + "-stream-budget"
+            limited["max_stream_bytes"] = 128
+            limited["models"] = {"fixture": {**config["models"]["fixture"], "concurrency": 1}}
+            limited_config = ROOT / ".local/stream-budget.yaml"
+            limited_config.write_text(yaml.safe_dump(limited), "utf-8")
+            limited_port = port()
+            start("model_gateway.app:create_app", limited_port, True, limited_config)
+            limited_base = f"http://127.0.0.1:{limited_port}"
+            for _ in range(100):
+                try:
+                    if (await client.get(limited_base + "/health")).status_code == 200:
+                        break
+                except httpx.HTTPError:
+                    pass
+                await asyncio.sleep(0.1)
+            limited_response = await client.post(
+                limited_base + "/v1/chat/completions", headers=headers, json=payload("normal")
+            )
+            check(
+                "cumulative_stream_output_limit",
+                limited_response.status_code == 200
+                and "response_too_large" in limited_response.text
+                and "[DONE]" not in limited_response.text,
+            )
+            limited_record = await terminal(client, limited_response.headers["X-Request-ID"])
+            check(
+                "stream_limit_failed_record",
+                limited_record["status"] == "failed"
+                and limited_record["error"] == "response_too_large",
+            )
+            after_limit = await client.post(
+                limited_base + "/v1/chat/completions",
+                headers=headers,
+                json={**payload("normal"), "stream": False},
+            )
+            check("stream_limit_releases_quota", after_limit.status_code == 200)
+            for _ in range(30):
+                stats = (await client.get(f"http://127.0.0.1:{upstream}/stats")).json()
+                if stats["active"] == 0:
+                    break
+                await asyncio.sleep(0.1)
+            check("stream_limit_closes_upstream", stats["active"] == 0)
             unavailable = dict(config)
             unavailable["redis_url"] = f"redis://127.0.0.1:{port()}/0"
             bad_config = ROOT / ".local/redis-unavailable.yaml"

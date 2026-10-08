@@ -1,0 +1,28 @@
+{
+  "passed": false,
+  "checks": [
+    {
+      "name": "migration-upgrade",
+      "exit_code": 0
+    },
+    {
+      "name": "tests",
+      "exit_code": 0
+    },
+    {
+      "name": "migrations",
+      "exit_code": 0
+    },
+    {
+      "name": "http-e2e",
+      "exit_code": 0
+    },
+    {
+      "name": "browser",
+      "exit_code": 1
+    }
+  ],
+  "real_model": false,
+  "browser": false,
+  "scope": "local dedicated test database and Redis"
+}

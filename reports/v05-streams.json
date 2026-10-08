@@ -1,0 +1,163 @@
+{
+  "passed": true,
+  "concurrency": 16,
+  "frames_per_stream": 200,
+  "payload_bytes": 4096,
+  "delay_seconds": 0.025,
+  "cancel_after_frames": 40,
+  "scope": "local real TCP gateway, controlled SSE, no model inference",
+  "source_sha256": {
+    "admission.py": "ca10d44370d6e159c47e9673b6a98b6e35fc7864d92de8a9ad7cf13a8ec5cf51",
+    "app.py": "1577995647b54c0e4c7625bee37f689a54b767388bb0390a5a0d13bb5d836543",
+    "batching.py": "94793c4f41440b1e2cf64ce37adf65dffaa27169a240bcc15824ac8f48351f5a",
+    "config.py": "d51a928bf210b978623e536ea318e70d660820e309e60545b0e8996c9245bc34",
+    "db.py": "66c80d2d50847748befa344e8cec8536683e5ab4d18287729fabbde46d5db312",
+    "observability.py": "97bf424c4a91034a3920bc26c37e44fa8ed7db07430c1d16a07dc4271d4a0114",
+    "quota.py": "95c41295aced8f7d4abbdf04c60af58a43b2823034188a14aae79eabc0e910db",
+    "sse.py": "6d377f770bbe6e89405dca8803d7d29e53d610e8251375e932fa1d07dcfc62fe",
+    "validation.py": "120f03087b1560099907a523065964aa31eb49f512f888ea4b50dcaa2d87fa76",
+    "__init__.py": "ff40fc1cbc36c4b78ebe7c42fab0c8e40ff43f6cac5138578dbf04f19eb39e61"
+  },
+  "completed": 12,
+  "cancelled": 4,
+  "first_frame_p95_ms": 310.34,
+  "elapsed_seconds": 6.578,
+  "body_mbps": 12.943501844463345,
+  "samples": [
+    {
+      "request_id": "c340cd24-cf4d-4161-af09-633490eb13cf",
+      "first_ms": 307.87180000334047,
+      "done": false,
+      "frames": 40,
+      "bytes": 166280,
+      "seconds": 1.5079562999890186
+    },
+    {
+      "request_id": "e2d24a93-7434-47e1-926b-d378518d03ee",
+      "first_ms": 310.3356000210624,
+      "done": false,
+      "frames": 40,
+      "bytes": 166280,
+      "seconds": 1.5368301000271458
+    },
+    {
+      "request_id": "b0f23ab0-a4e9-4a5c-b220-11dc047f2053",
+      "first_ms": 309.26540002110414,
+      "done": false,
+      "frames": 40,
+      "bytes": 166280,
+      "seconds": 1.5367338000214659
+    },
+    {
+      "request_id": "6a0e2ffb-b894-4a13-9353-02094f0877ef",
+      "first_ms": 308.4130999923218,
+      "done": false,
+      "frames": 40,
+      "bytes": 166280,
+      "seconds": 1.5363387999823317
+    },
+    {
+      "request_id": "0ff4058a-dc11-4517-a3ed-cd0af2e1f9d0",
+      "first_ms": 307.5511000060942,
+      "done": true,
+      "frames": 200,
+      "bytes": 831414,
+      "seconds": 6.547376900009112
+    },
+    {
+      "request_id": "5f86c841-4eb0-43ac-b787-71ddc187632f",
+      "first_ms": 306.7546999955084,
+      "done": true,
+      "frames": 200,
+      "bytes": 831414,
+      "seconds": 6.560734300001059
+    },
+    {
+      "request_id": "745c78a0-080a-4d76-b66a-4bf7ac478769",
+      "first_ms": 306.2086999998428,
+      "done": true,
+      "frames": 200,
+      "bytes": 831414,
+      "seconds": 6.564452499995241
+    },
+    {
+      "request_id": "d1857432-7bfc-407d-9c3e-a30957990c09",
+      "first_ms": 305.42679998325184,
+      "done": true,
+      "frames": 200,
+      "bytes": 831414,
+      "seconds": 6.564084499987075
+    },
+    {
+      "request_id": "479af762-1ba2-4c18-a9ed-1fb29592abd5",
+      "first_ms": 304.97130000730976,
+      "done": true,
+      "frames": 200,
+      "bytes": 831414,
+      "seconds": 6.5637664000096265
+    },
+    {
+      "request_id": "fd619d2a-8c49-47e8-8040-a5b0b3ed902e",
+      "first_ms": 304.14890000247397,
+      "done": true,
+      "frames": 200,
+      "bytes": 831414,
+      "seconds": 6.563374899997143
+    },
+    {
+      "request_id": "9595d63d-50b5-4213-a0ea-f2523bbc797d",
+      "first_ms": 303.58479998540133,
+      "done": true,
+      "frames": 200,
+      "bytes": 831414,
+      "seconds": 6.563027299998794
+    },
+    {
+      "request_id": "35b3c750-c7bf-45c9-9427-dfee000a6eb6",
+      "first_ms": 303.5043999843765,
+      "done": true,
+      "frames": 200,
+      "bytes": 831414,
+      "seconds": 6.562705999996979
+    },
+    {
+      "request_id": "1b07fd09-bfab-4135-b3ca-84745733941d",
+      "first_ms": 302.6990999933332,
+      "done": true,
+      "frames": 200,
+      "bytes": 831414,
+      "seconds": 6.563576999993529
+    },
+    {
+      "request_id": "5bd0cd4e-a2ae-4aec-8a8a-c6dfafa9300d",
+      "first_ms": 301.91979999653995,
+      "done": true,
+      "frames": 200,
+      "bytes": 831414,
+      "seconds": 6.563215100002708
+    },
+    {
+      "request_id": "4f536aae-1f4f-436e-ab46-5be6e56a82a2",
+      "first_ms": 301.07079999288544,
+      "done": true,
+      "frames": 200,
+      "bytes": 831414,
+      "seconds": 6.563137299992377
+    },
+    {
+      "request_id": "cf2886fe-bf6a-4eef-a009-e0d98824bb0b",
+      "first_ms": 300.4269999801181,
+      "done": true,
+      "frames": 200,
+      "bytes": 831414,
+      "seconds": 6.562715799984289
+    }
+  ],
+  "terminal_counts": {
+    "succeeded": 12,
+    "cancelled": 4
+  },
+  "upstream_active_after": 0,
+  "upstream_max_active": 16,
+  "source_unchanged": true
+}

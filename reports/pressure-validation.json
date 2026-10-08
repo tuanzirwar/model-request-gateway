@@ -1,0 +1,44 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "name": "migration-upgrade",
+      "exit_code": 0
+    },
+    {
+      "name": "tests",
+      "exit_code": 0
+    },
+    {
+      "name": "migrations",
+      "exit_code": 0
+    },
+    {
+      "name": "http-e2e",
+      "exit_code": 0
+    },
+    {
+      "name": "browser",
+      "exit_code": 0
+    },
+    {
+      "name": "real-tui",
+      "exit_code": 0
+    },
+    {
+      "name": "ruff-check",
+      "exit_code": 0
+    },
+    {
+      "name": "ruff-format",
+      "exit_code": 0
+    },
+    {
+      "name": "build",
+      "exit_code": 0
+    }
+  ],
+  "real_model": true,
+  "browser": true,
+  "scope": "local dedicated test database and Redis"
+}

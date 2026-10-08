@@ -8,10 +8,11 @@ Built with **FastAPI, HTTPX, MySQL, and Redis**. Supports a documented subset of
 
 ## Features
 
-- **Shared admission control:** Redis Lua atomically acquires model-wide and application/model leases across gateway processes. Leases renew during execution and expire after process termination.
+- **Shared admission control:** Redis Lua atomically acquires capacity-group and application/group leases across gateway processes. Leases renew during execution and expire after process termination.
 - **Streaming lifecycle management:** bounded SSE parsing, first-frame and idle timeouts, a total deadline, and cancellation-safe HTTP connection cleanup.
 - **Request tracking:** MySQL stores request status, timing, forwarded byte counts, and reported usage. Queries use application isolation, filters, and cursor pagination. Prompts and answers are not stored by default.
 - **Bounded database work:** synchronous operations run in a dedicated executor with bounded admission and a queue timeout.
+- **Overload protection:** per-process admission before authentication, bounded connection pools, API-key length checks, and a cumulative SSE byte budget.
 - **Observability:** readiness and liveness endpoints, plus per-process Prometheus metrics protected by a separate monitoring key.
 - **Browser console:** streamed generation, cancellation, request details, filters, pagination, and statistics. Credentials stay in page memory.
 - **Administration:** CLI commands for application access, key rotation, disabling new requests, record reconciliation, and retention cleanup.
@@ -70,7 +71,7 @@ Client model names refer to configured gateway aliases. For TUICodingAgent, set 
 | Endpoint | Purpose |
 |---|---|
 | `GET /live` | Process liveness without database or Redis access |
-| `GET /health` | MySQL and Redis readiness; does not probe model availability |
+| `GET /health` | MySQL and Redis coordination readiness; does not probe model availability |
 | `GET /metrics` | Per-process Prometheus metrics; disabled without a monitoring key |
 | `GET /v1/models` | Models authorized for the application |
 | `POST /v1/chat/completions` | Streaming or non-streaming generation with an `X-Request-ID` header |
@@ -99,23 +100,34 @@ python -m ruff format --check .
 python -m build
 ```
 
-Use a dedicated test database and Redis instance. Four dependency integration tests are skipped when the test environment variables are absent.
+Use a dedicated test database and Redis instance. Dependency integration tests are skipped when their test environment variables are absent.
 
-Recorded validation includes **59 automated tests**, **34 real HTTP acceptance checks**, **12 browser checks**, and **4 fresh-database migration checks**. Additional tests exercise TUICodingAgent with a real local model, including multiple turns, cancellation, and subsequent generation.
+Current **v0.5.0** local acceptance passes **122 automated tests** with real MySQL/Redis and no skips, **40 HTTP checks**, **12 browser checks**, **7 migration checks**, an isolated Redis kill/restart test, long-stream cancellation, real TUICodingAgent/model integration, lint, and package builds. Cloud CI has not been rerun for this local revision.
 
-Load tests use real HTTP, MySQL, and Redis with a controlled upstream that does not perform inference. QPS results measure gateway request handling, not model generation throughput. Reports preserve initial failures and subsequent successful runs.
+A frozen-source 100,000-request run recorded **416.15 successful QPS**, **100% HTTP 200**, **p95 139.72 ms / p99 193.38 ms**: four gateway processes, 32 closed-loop clients, a 128 MiB MySQL buffer pool, and a 198-byte controlled JSON upstream with **no inference**. All persisted benchmark requests reached terminal success. This is not model throughput, production maximum capacity, or public-network bandwidth.
+
+Retention lookup on approximately 1.14 million synthetic rows changed from **2797.93 ms** to **0.83 ms** mean after adding `(finished_at,id)`, with matching ordered IDs and automatic index selection. Bounded deletion, concurrent locked-row skipping and separate index-write-cost measurements are recorded.
+
+## Coordination and failure boundaries
+
+Aliases sharing physical capacity can set the same `capacity_group`; group limits must match. Redis Lua checks both group and application/group occupancy atomically. MySQL persists namespace policy fingerprints; Redis epochs fence old lease renewal. Losing coordination state for an existing namespace blocks admission for the total request budget plus five seconds. Deploy policy changes by draining old instances and choosing a new namespace; do not delete live keys. Use a dedicated Redis instance with `noeviction`.
+
+The runtime uses bounded **in-process batching**, not a message broker. Matched Streams experiments showed no benefit and the experimental runtime was removed. Redis lease expiration and SQL execution/final timestamps have different meanings; no distributed transaction or remote GPU cancellation guarantee is claimed.
 
 ## Technical documentation
 
-- [Architecture and design decisions](docs/design.md)
-- [Operations, monitoring, and deployment](docs/runbook.md)
-- [Validation methods and results](docs/verification.md)
+- [Architecture and component decisions](docs/design.md)
+- [Latest verification and reproduction](docs/verification.md)
+- [Optimization journal, including no-benefit results](docs/optimization-journal.md)
+- [Operations and demo](docs/runbook.md)
 - [Acceptance checklist](checklist.md)
 
-Detailed technical documents are currently in Chinese. Console screenshots are available in [desktop](reports/console-desktop.png) and [mobile](reports/console-mobile.png) layouts.
+Reports preserve earlier failures and historical versions. Historical 0.4 Streams and temporary larger-buffer measurements are not current runtime results. Study slides and resume/interview material are kept outside this repository.
 
-## Scope
+### Statistics query optimization
 
-Concurrency leases control admission to the gateway; they do not guarantee that a remote model stops computing immediately after disconnect. Redis restart and failover consistency have not been validated. Prometheus metrics are per process.
+On the same 100,096 application records, a virtual BIGINT usage column and an application/time covering index reduced the three-round mean statistics SQL time from 10,388.40 ms to 97.40 ms with identical results. The real HTTP statistics endpoint returned 200 in 171.34 ms. Index insert costs were measured separately; see `docs/optimization-journal.md` and `reports/v05-statistics-index.json`.
 
-The gateway does not implement GPU scheduling, billing, stream replay, generation queues, automatic provider failover, or Responses/Anthropic protocols. Model defaults are caller-overridable defaults, not enforced spending limits.
+### Statistics query optimization
+
+On the same 100,096 application records, a virtual BIGINT usage column and an application/time covering index reduced the three-round mean statistics SQL time from 10,388.40 ms to 97.40 ms with identical results. The real HTTP statistics endpoint returned 200 in 171.34 ms. Index insert costs were measured separately; see `docs/optimization-journal.md` and `reports/v05-statistics-index.json`.

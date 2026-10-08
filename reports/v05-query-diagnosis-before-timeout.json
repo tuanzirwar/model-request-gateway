@@ -1,0 +1,22 @@
+{
+  "passed": false,
+  "repeats": 5,
+  "queries": {},
+  "limitations": [
+    "warm local database",
+    "client latency includes transfer",
+    "retention SELECT only; no deletion performed"
+  ],
+  "table": {
+    "TABLE_ROWS": 1304806,
+    "DATA_LENGTH": 378863616,
+    "INDEX_LENGTH": 865484800
+  },
+  "exact_rows": 1243513,
+  "runtime": {
+    "buffer_bytes": 134217728,
+    "flush_log": 1,
+    "sync_binlog": 1,
+    "slow_threshold_seconds": 10.0
+  }
+}

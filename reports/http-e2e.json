@@ -115,12 +115,22 @@
       "passed": true
     },
     {
+      "name": "crash_request_owns_slot",
+      "passed": true
+    },
+    {
+      "name": "crash_actual_slot_reusable",
+      "passed": true
+    },
+    {
       "name": "process_kill_lease_expires",
       "passed": true
     },
     {
       "name": "process_kill_record_reconciled",
-      "passed": true
+      "passed": true,
+      "status": "abandoned",
+      "error": "process_lost_or_finalize_failed"
     },
     {
       "name": "cursor_pagination_no_duplicate",
@@ -128,6 +138,22 @@
     },
     {
       "name": "upstream_connections_released",
+      "passed": true
+    },
+    {
+      "name": "cumulative_stream_output_limit",
+      "passed": true
+    },
+    {
+      "name": "stream_limit_failed_record",
+      "passed": true
+    },
+    {
+      "name": "stream_limit_releases_quota",
+      "passed": true
+    },
+    {
+      "name": "stream_limit_closes_upstream",
       "passed": true
     },
     {
@@ -153,8 +179,8 @@
     "active": 0,
     "max_active": 2,
     "active_modes": {
-      "hold:13429": 0,
-      "hold:13430": 0,
+      "hold:12208": 0,
+      "hold:12209": 0,
       "normal": 0,
       "hold:lease_lost": 0,
       "truncated": 0,

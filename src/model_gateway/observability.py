@@ -30,6 +30,11 @@ class Metrics:
             "本进程持有接入额度的请求数",
             registry=self.registry,
         )
+        self.db_retries = Counter(
+            "gateway_database_deadlock_retries",
+            "MySQL明确回滚死锁后的有界重试次数",
+            registry=self.registry,
+        )
         self.lag = Gauge(
             "gateway_event_loop_lag_seconds", "事件循环调度延迟", registry=self.registry
         )

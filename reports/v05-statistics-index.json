@@ -1,0 +1,63 @@
+{
+  "passed": true,
+  "scope": "synthetic benchmark application in local test database",
+  "diagnostic_read_timeout_seconds": 60,
+  "runtime_read_timeout_seconds": 5,
+  "queries": {
+    "old": {
+      "mean_ms": 10388.401333329966,
+      "samples_ms": [
+        10543.508800008567,
+        10378.30149999354,
+        10243.393699987791
+      ],
+      "explain": [
+        {
+          "id": 1,
+          "select_type": "SIMPLE",
+          "table": "requests",
+          "partitions": null,
+          "type": "ref",
+          "possible_keys": "ix_app_started_id,ix_app_status_started_id,ix_app_model_started_id",
+          "key": "ix_app_status_started_id",
+          "key_len": "258",
+          "ref": "const",
+          "rows": 202544,
+          "filtered": 33.33,
+          "Extra": "Using index condition; Using temporary; Using filesort"
+        }
+      ],
+      "explain_analyze": "-> Sort: requests.model, requests.`status`  (actual time=10343..10343 rows=1 loops=1)\n    -> Table scan on <temporary>  (actual time=10343..10343 rows=1 loops=1)\n        -> Aggregate using temporary table  (actual time=10343..10343 rows=1 loops=1)\n            -> Index lookup on requests using ix_app_status_started_id (app_id='benchmark-b7298083fd3644f2ad0894b16d0ca4cb'), with index condition: (requests.started_at >= 1791288882.1451218e0)  (cost=56063 rows=202544) (actual time=0.014..10175 rows=100096 loops=1)\n"
+    },
+    "new": {
+      "mean_ms": 97.39889999036677,
+      "samples_ms": [
+        106.94269998930395,
+        90.69469998939894,
+        94.55929999239743
+      ],
+      "explain": [
+        {
+          "id": 1,
+          "select_type": "SIMPLE",
+          "table": "requests",
+          "partitions": null,
+          "type": "range",
+          "possible_keys": "ix_app_started_id,ix_app_status_started_id,ix_app_model_started_id,ix_app_statistics",
+          "key": "ix_app_statistics",
+          "key_len": "266",
+          "ref": null,
+          "rows": 208844,
+          "filtered": 100.0,
+          "Extra": "Using where; Using index; Using temporary; Using filesort"
+        }
+      ],
+      "explain_analyze": "-> Sort: requests.model, requests.`status`  (actual time=96.5..96.5 rows=1 loops=1)\n    -> Table scan on <temporary>  (actual time=96.5..96.5 rows=1 loops=1)\n        -> Aggregate using temporary table  (actual time=96.5..96.5 rows=1 loops=1)\n            -> Filter: ((requests.app_id = 'benchmark-b7298083fd3644f2ad0894b16d0ca4cb') and (requests.started_at >= 1791288882.1451218e0))  (cost=64975 rows=208844) (actual time=0.0412..54.2 rows=100096 loops=1)\n                -> Covering index range scan on requests using ix_app_statistics over (app_id = 'benchmark-b7298083fd3644f2ad0894b16d0ca4cb' AND 1791288882.1451218 <= started_at)  (cost=64975 rows=208844) (actual time=0.0403..32.1 rows=100096 loops=1)\n"
+    }
+  },
+  "equal_results": true,
+  "runtime_direct_ms": 167.9285999853164,
+  "http_ms": 171.340600005351,
+  "http_status": 200,
+  "total_requests": 100096
+}

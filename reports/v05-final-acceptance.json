@@ -1,0 +1,41 @@
+{
+  "version": "0.5.0",
+  "date": "2026-10-07",
+  "passed": true,
+  "tests": 122,
+  "http_checks": 40,
+  "browser_checks": 12,
+  "migration_checks": 7,
+  "redis_restart_checks": 10,
+  "final_qps": 416.15,
+  "p95_ms": 139.72,
+  "p99_ms": 193.38,
+  "source_sha256": {
+    "src/model_gateway/admission.py": "ca10d44370d6e159c47e9673b6a98b6e35fc7864d92de8a9ad7cf13a8ec5cf51",
+    "src/model_gateway/app.py": "1577995647b54c0e4c7625bee37f689a54b767388bb0390a5a0d13bb5d836543",
+    "src/model_gateway/batching.py": "94793c4f41440b1e2cf64ce37adf65dffaa27169a240bcc15824ac8f48351f5a",
+    "src/model_gateway/config.py": "d51a928bf210b978623e536ea318e70d660820e309e60545b0e8996c9245bc34",
+    "src/model_gateway/db.py": "66c80d2d50847748befa344e8cec8536683e5ab4d18287729fabbde46d5db312",
+    "src/model_gateway/observability.py": "97bf424c4a91034a3920bc26c37e44fa8ed7db07430c1d16a07dc4271d4a0114",
+    "src/model_gateway/quota.py": "95c41295aced8f7d4abbdf04c60af58a43b2823034188a14aae79eabc0e910db",
+    "src/model_gateway/sse.py": "6d377f770bbe6e89405dca8803d7d29e53d610e8251375e932fa1d07dcfc62fe",
+    "src/model_gateway/validation.py": "120f03087b1560099907a523065964aa31eb49f512f888ea4b50dcaa2d87fa76",
+    "src/model_gateway/__init__.py": "ff40fc1cbc36c4b78ebe7c42fab0c8e40ff43f6cac5138578dbf04f19eb39e61",
+    "src/model_request_gateway.egg-info/dependency_links.txt": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "src/model_request_gateway.egg-info/PKG-INFO": "3367c4313d3d1c8fac40632e63869c8d27477bc0f7fa5d6db6ceb2349583de96",
+    "src/model_request_gateway.egg-info/requires.txt": "b91bfcfb49dc6291b1b0cfd5155c1345be9d4dd10af6a280d080e1a06475c736",
+    "src/model_request_gateway.egg-info/SOURCES.txt": "41ddfcf9bda1187b7c542bdeda50e95c93b7d3f5c6bbd4a9ac46585237abdfe9",
+    "src/model_request_gateway.egg-info/top_level.txt": "c5603bc0dd6b9e8454e7d4aa116ab8979d9d88d6ab2578295bf1be3f9bfd003b",
+    "src/model_gateway/static/console.css": "e6e928e10a0ae001dcda126135fd0d3183d8efa1ab8666447f96fa5b0c0f6e70",
+    "src/model_gateway/static/console.js": "7678029383e083fd1e977842fecbbe40418c0c006b8e2eff7743ef582494a39a",
+    "src/model_gateway/static/index.html": "7665bbdcbcbcc009b83fc7111c6583023aaebfa9e2d6d8f09492a150586a450d"
+  },
+  "not_validated": [
+    "public TLS deployment",
+    "Redis/MySQL HA",
+    "GPU hard cancellation",
+    "Docker runtime",
+    "cloud CI for this local revision",
+    "tmux visual session"
+  ]
+}

@@ -38,7 +38,7 @@ def main():
             )
         with engine.begin() as conn:
             version = conn.execute(text("SELECT version_num FROM alembic_version")).scalar_one()
-            assert version == "0002", version
+            assert version == "0006", version
             result["checks"].append("empty_database_upgrade_and_repeat")
             columns = conn.execute(text("SHOW COLUMNS FROM requests")).mappings().all()
             types = {row["Field"]: row["Type"] for row in columns}
@@ -65,10 +65,69 @@ def main():
             assert abs(delta - 6) < 0.001, delta
             result["checks"].append("six_second_deadline_precision")
             indexes = conn.execute(text("SHOW INDEX FROM requests")).mappings().all()
-            assert {"ix_app_started_id", "ix_status_deadline"}.issubset(
-                {row["Key_name"] for row in indexes}
-            )
+            assert {
+                "ix_app_started_id",
+                "ix_status_deadline",
+                "ix_app_status_started_id",
+                "ix_app_model_started_id",
+                "ix_finished_id",
+                "ix_app_statistics",
+            }.issubset({row["Key_name"] for row in indexes})
             result["checks"].append("cursor_and_reconcile_indexes")
+            for name, expected in (
+                ("ix_app_status_started_id", ["app_id", "status", "started_at", "id"]),
+                ("ix_app_model_started_id", ["app_id", "model", "started_at", "id"]),
+                ("ix_finished_id", ["finished_at", "id"]),
+                (
+                    "ix_app_statistics",
+                    [
+                        "app_id",
+                        "started_at",
+                        "model",
+                        "status",
+                        "first_ms",
+                        "finished_at",
+                        "bytes_out",
+                        "usage_total_tokens",
+                    ],
+                ),
+            ):
+                actual = [
+                    row["Column_name"]
+                    for row in sorted(
+                        (row for row in indexes if row["Key_name"] == name),
+                        key=lambda row: row["Seq_in_index"],
+                    )
+                ]
+                assert actual == expected, (name, actual)
+            result["checks"].append("filtered_index_column_order")
+            derived = (
+                conn.execute(text("SHOW COLUMNS FROM requests LIKE 'usage_total_tokens'"))
+                .mappings()
+                .one()
+            )
+            assert "VIRTUAL GENERATED" in derived["Extra"]
+            result["checks"].append("statistics_virtual_column")
+        for revision in ("0002", "head"):
+            subprocess.run(
+                [
+                    sys.executable,
+                    "-m",
+                    "alembic",
+                    "downgrade" if revision == "0002" else "upgrade",
+                    revision,
+                ],
+                cwd=ROOT,
+                env=env,
+                check=True,
+            )
+            with engine.connect() as conn:
+                names = {
+                    row["Key_name"]
+                    for row in conn.execute(text("SHOW INDEX FROM requests")).mappings()
+                }
+                assert ("ix_app_model_started_id" in names) == (revision == "head")
+        result["checks"].append("filtered_index_downgrade_and_upgrade")
         result["passed"] = True
     finally:
         engine.dispose()

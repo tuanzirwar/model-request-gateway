@@ -4,11 +4,11 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "model-request-gateway"
-version = "0.2.0"
+version = "0.5.0"
 description = "Coding Agent 模型请求并发与流式资源管理网关"
 readme = "README.md"
 requires-python = ">=3.11"
-dependencies = ["fastapi>=0.115,<1", "uvicorn>=0.34,<1", "httpx>=0.28,<1", "sqlalchemy>=2,<3", "pymysql[rsa]>=1.1,<2", "redis>=5,<9", "alembic>=1.14,<2", "PyYAML>=6,<7", "prometheus-client>=0.21,<1"]
+dependencies = ["fastapi>=0.115,<1", "uvicorn>=0.34,<1", "httpx>=0.28,<1", "sqlalchemy>=2.0.43,<3", "pymysql[rsa]>=1.1,<2", "redis>=5,<9", "alembic>=1.14,<2", "PyYAML>=6,<7", "prometheus-client>=0.21,<1"]
 
 [project.urls]
 Repository = "https://github.com/tuanzirwar/model-request-gateway"
@@ -19,6 +19,7 @@ model_gateway = ["static/*.html", "static/*.css", "static/*.js"]
 [project.optional-dependencies]
 dev = ["pytest>=8,<10", "pytest-asyncio>=0.25,<2", "ruff>=0.12,<1", "build>=1"]
 browser = ["playwright>=1.50,<2"]
+performance = ["hiredis>=3,<4", "httptools>=0.6,<1"]
 
 [tool.setuptools.packages.find]
 where = ["src"]

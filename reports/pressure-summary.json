@@ -1,0 +1,406 @@
+{
+  "generated_at": "2026-10-06T22:54:03.183365+08:00",
+  "source_version": "0.3.0",
+  "target_successful_qps": 10000,
+  "target_met": false,
+  "peak_short_full_path_qps": 786.7,
+  "sustained_100000_full_path_qps": 593.0,
+  "sustained_successes": 99999,
+  "sustained_errors": {
+    "502": 1
+  },
+  "zero_error_100000_full_path_qps": 251.02,
+  "database_rows_exact": 396377,
+  "checks": {
+    "automated_tests": 75,
+    "http_checks": 38,
+    "browser_checks": 12,
+    "migration_checks": 6,
+    "real_tui_model": true,
+    "lint_format_build": true,
+    "cloud_ci_for_new_changes": false,
+    "tmux_visual": false
+  },
+  "sql": {
+    "synthetic_rows": 100000,
+    "before_mean_ms": {
+      "status": 2.176,
+      "model": 41.303,
+      "status_cursor": 2.117,
+      "unfiltered": 0.535
+    },
+    "after_mean_ms": {
+      "status": 0.579,
+      "model": 0.62,
+      "status_cursor": 2.116,
+      "unfiltered": 0.481
+    },
+    "report": "sql-pressure.json"
+  },
+  "source_sha256": {
+    "src/model_gateway/app.py": "3b1e6b2f4f46280f66b1bfc632c358f0c395ccb13da26e38c0a3958b1b3c7dda",
+    "src/model_gateway/db.py": "7bd4f1eca23589789f6d07c2033aa4ce8051068b8ca8b81acefeb6c1e39da494",
+    "src/model_gateway/admission.py": "ca10d44370d6e159c47e9673b6a98b6e35fc7864d92de8a9ad7cf13a8ec5cf51",
+    "src/model_gateway/config.py": "d2c50622f803fbc196e30cb121798f06fb7e168a753f5dac53a5d094ae9df88f",
+    "src/model_gateway/observability.py": "97bf424c4a91034a3920bc26c37e44fa8ed7db07430c1d16a07dc4271d4a0114",
+    "migrations/versions/0003_filtered_cursor_indexes.py": "48285c53f502e74230e898607b0f3de17f15f1c954ec7d3160185cb2783ca208",
+    "scripts/benchmark.py": "523cf95c03b6092eeae8ef74df5e5b03314489d6141e994fdd2c76bfbce13a66",
+    "scripts/load_client.py": "fe3315a3c48c8ae9a9821b7b549043ceb785e92f7db6f0b792c7840e29e326a4"
+  },
+  "runs": [
+    {
+      "report": "pressure-baseline-10000.json",
+      "all_expected_http_statuses": false,
+      "recovered": null,
+      "workers": 1,
+      "db_workers_per_process": 4,
+      "client": "httpx",
+      "route": "chat",
+      "scenario": "normal",
+      "direct_upstream": false,
+      "rounds": [
+        {
+          "concurrency": 64,
+          "requests": 10000,
+          "successful": 9999,
+          "elapsed_seconds": 152.149,
+          "successful_qps": 65.72,
+          "attempted_qps": 65.73,
+          "p95_ms": 1910.84,
+          "status_counts": {
+            "200": 9999,
+            "503": 1
+          },
+          "response_body_mbps": 0.104
+        }
+      ]
+    },
+    {
+      "report": "pressure-final-100000.json",
+      "all_expected_http_statuses": true,
+      "recovered": null,
+      "workers": 4,
+      "db_workers_per_process": 8,
+      "client": "httpx",
+      "route": "chat",
+      "scenario": "normal",
+      "direct_upstream": false,
+      "rounds": [
+        {
+          "concurrency": 32,
+          "requests": 100000,
+          "successful": 100000,
+          "elapsed_seconds": 398.3789,
+          "successful_qps": 251.02,
+          "attempted_qps": 251.02,
+          "p95_ms": 200.66,
+          "status_counts": {
+            "200": 100000
+          },
+          "response_body_mbps": 0.398
+        }
+      ]
+    },
+    {
+      "report": "pressure-scale16-100000.json",
+      "all_expected_http_statuses": false,
+      "recovered": true,
+      "workers": 16,
+      "db_workers_per_process": 4,
+      "client": "raw",
+      "route": "chat",
+      "scenario": "normal",
+      "direct_upstream": false,
+      "rounds": [
+        {
+          "concurrency": 128,
+          "requests": 100000,
+          "successful": 99999,
+          "elapsed_seconds": 168.6319,
+          "successful_qps": 593.0,
+          "attempted_qps": 593.01,
+          "p95_ms": 346.22,
+          "status_counts": {
+            "200": 99999,
+            "502": 1
+          },
+          "response_body_mbps": 0.939
+        }
+      ]
+    },
+    {
+      "report": "pressure-scale16-ladder.json",
+      "all_expected_http_statuses": true,
+      "recovered": true,
+      "workers": 16,
+      "db_workers_per_process": 4,
+      "client": "raw",
+      "route": "chat",
+      "scenario": "normal",
+      "direct_upstream": false,
+      "rounds": [
+        {
+          "concurrency": 128,
+          "requests": 11884,
+          "successful": 11884,
+          "elapsed_seconds": 15.1062,
+          "successful_qps": 786.7,
+          "attempted_qps": 786.7,
+          "p95_ms": 232.3,
+          "status_counts": {
+            "200": 11884
+          },
+          "response_body_mbps": 1.246
+        },
+        {
+          "concurrency": 256,
+          "requests": 9076,
+          "successful": 9076,
+          "elapsed_seconds": 15.22,
+          "successful_qps": 596.32,
+          "attempted_qps": 596.32,
+          "p95_ms": 593.97,
+          "status_counts": {
+            "200": 9076
+          },
+          "response_body_mbps": 0.945
+        }
+      ]
+    },
+    {
+      "report": "pressure-scale16-db8.json",
+      "all_expected_http_statuses": true,
+      "recovered": true,
+      "workers": 16,
+      "db_workers_per_process": 8,
+      "client": "raw",
+      "route": "chat",
+      "scenario": "normal",
+      "direct_upstream": false,
+      "rounds": [
+        {
+          "concurrency": 128,
+          "requests": 10328,
+          "successful": 10328,
+          "elapsed_seconds": 15.0922,
+          "successful_qps": 684.33,
+          "attempted_qps": 684.33,
+          "p95_ms": 265.39,
+          "status_counts": {
+            "200": 10328
+          },
+          "response_body_mbps": 1.084
+        }
+      ]
+    },
+    {
+      "report": "pressure-overload.json",
+      "all_expected_http_statuses": false,
+      "recovered": true,
+      "workers": 4,
+      "db_workers_per_process": 4,
+      "client": "raw",
+      "route": "chat",
+      "scenario": "normal",
+      "direct_upstream": false,
+      "rounds": [
+        {
+          "concurrency": 512,
+          "requests": 106154,
+          "successful": 1645,
+          "elapsed_seconds": 10.0968,
+          "successful_qps": 162.92,
+          "attempted_qps": 10513.68,
+          "p95_ms": 530.11,
+          "status_counts": {
+            "503": 104509,
+            "200": 1645
+          },
+          "response_body_mbps": 2.991
+        }
+      ]
+    },
+    {
+      "report": "pressure-invalid-key.json",
+      "all_expected_http_statuses": true,
+      "recovered": true,
+      "workers": 4,
+      "db_workers_per_process": 4,
+      "client": "raw",
+      "route": "models",
+      "scenario": "invalid-key",
+      "direct_upstream": false,
+      "rounds": [
+        {
+          "concurrency": 32,
+          "requests": 10000,
+          "successful": 0,
+          "elapsed_seconds": 2.3349,
+          "successful_qps": 0.0,
+          "attempted_qps": 4282.79,
+          "p95_ms": null,
+          "status_counts": {
+            "401": 10000
+          },
+          "response_body_mbps": 0.959
+        }
+      ]
+    },
+    {
+      "report": "pressure-oversized-key.json",
+      "all_expected_http_statuses": true,
+      "recovered": true,
+      "workers": 4,
+      "db_workers_per_process": 4,
+      "client": "raw",
+      "route": "models",
+      "scenario": "oversized-key",
+      "direct_upstream": false,
+      "rounds": [
+        {
+          "concurrency": 32,
+          "requests": 10000,
+          "successful": 0,
+          "elapsed_seconds": 0.6907,
+          "successful_qps": 0.0,
+          "attempted_qps": 14477.31,
+          "p95_ms": null,
+          "status_counts": {
+            "401": 10000
+          },
+          "response_body_mbps": 3.243
+        }
+      ]
+    },
+    {
+      "report": "pressure-oversized-body.json",
+      "all_expected_http_statuses": true,
+      "recovered": true,
+      "workers": 1,
+      "db_workers_per_process": 4,
+      "client": "raw",
+      "route": "chat",
+      "scenario": "oversized-body",
+      "direct_upstream": false,
+      "rounds": [
+        {
+          "concurrency": 4,
+          "requests": 100,
+          "successful": 0,
+          "elapsed_seconds": 0.3871,
+          "successful_qps": 0.0,
+          "attempted_qps": 258.32,
+          "p95_ms": null,
+          "status_counts": {
+            "413": 100
+          },
+          "response_body_mbps": 0.062
+        }
+      ]
+    },
+    {
+      "report": "pressure-bandwidth-64k.json",
+      "all_expected_http_statuses": true,
+      "recovered": true,
+      "workers": 4,
+      "db_workers_per_process": 4,
+      "client": "raw",
+      "route": "chat",
+      "scenario": "normal",
+      "direct_upstream": false,
+      "rounds": [
+        {
+          "concurrency": 16,
+          "requests": 1873,
+          "successful": 1873,
+          "elapsed_seconds": 5.0785,
+          "successful_qps": 368.81,
+          "attempted_qps": 368.81,
+          "p95_ms": 58.55,
+          "status_counts": {
+            "200": 1873
+          },
+          "response_body_mbps": 193.904
+        }
+      ]
+    },
+    {
+      "report": "pressure-bandwidth-1m.json",
+      "all_expected_http_statuses": true,
+      "recovered": true,
+      "workers": 4,
+      "db_workers_per_process": 4,
+      "client": "raw",
+      "route": "chat",
+      "scenario": "normal",
+      "direct_upstream": false,
+      "rounds": [
+        {
+          "concurrency": 16,
+          "requests": 1110,
+          "successful": 1110,
+          "elapsed_seconds": 5.0415,
+          "successful_qps": 220.17,
+          "attempted_qps": 220.17,
+          "p95_ms": 98.03,
+          "status_counts": {
+            "200": 1110
+          },
+          "response_body_mbps": 1832.142
+        }
+      ]
+    },
+    {
+      "report": "pressure-upstream-control.json",
+      "all_expected_http_statuses": true,
+      "recovered": null,
+      "workers": 1,
+      "db_workers_per_process": 4,
+      "client": "raw",
+      "route": "chat",
+      "scenario": "normal",
+      "direct_upstream": true,
+      "rounds": [
+        {
+          "concurrency": 16,
+          "requests": 32596,
+          "successful": 32596,
+          "elapsed_seconds": 8.0037,
+          "successful_qps": 4072.62,
+          "attempted_qps": 4072.62,
+          "p95_ms": 5.4,
+          "status_counts": {
+            "200": 32596
+          },
+          "response_body_mbps": 6.451
+        },
+        {
+          "concurrency": 64,
+          "requests": 31973,
+          "successful": 31973,
+          "elapsed_seconds": 8.0125,
+          "successful_qps": 3990.39,
+          "attempted_qps": 3990.39,
+          "p95_ms": 18.4,
+          "status_counts": {
+            "200": 31973
+          },
+          "response_body_mbps": 6.321
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "same-host synthetic non-inference workload",
+    "short peak differs from sustained results",
+    "overload refusals and authentication failures are not successful model QPS",
+    "body bandwidth excludes HTTP/TCP/TLS overhead; no public-network test",
+    "different clients, worker counts and accumulated rows prevent isolated attribution"
+  ],
+  "information_schema_statistics_approximate": {
+    "DATA_LENGTH": 30801920,
+    "INDEX_LENGTH": 47480832,
+    "TABLE_ROWS": 117680
+  },
+  "database_count_method": "SELECT COUNT(*); information_schema.TABLE_ROWS is an estimate"
+}

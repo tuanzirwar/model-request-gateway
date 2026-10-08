@@ -1,0 +1,7 @@
+{
+  "slow_log_enabled": 0,
+  "slow_threshold_seconds": 10.0,
+  "buffer_bytes": 134217728,
+  "flush_log": 1,
+  "sync_binlog": 1
+}

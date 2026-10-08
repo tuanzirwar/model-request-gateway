@@ -1,0 +1,103 @@
+{
+  "passed": true,
+  "mode": "real HTTP gateway/MySQL/Redis; non-streaming fixture upstream, no model inference",
+  "app_id": "benchmark-71533efa52194648bec6f695d6a1c9bd",
+  "workers": 4,
+  "max_inflight_per_worker": 128,
+  "connections_per_worker": 100,
+  "total_db_connections_limit": 16,
+  "concurrency_limit": 16,
+  "requests_per_round": 10000,
+  "route": "models",
+  "direct_upstream": false,
+  "scenario": "oversized-key",
+  "client": "raw",
+  "response_bytes_requested": 0,
+  "database_rows_before": 382446,
+  "seconds_per_round": 5,
+  "repeats": 1,
+  "db_workers": 4,
+  "closed_loop": true,
+  "rounds": [
+    {
+      "concurrency": 32,
+      "repeat": 1,
+      "requests": 10000,
+      "successful": 0,
+      "elapsed_seconds": 0.6907,
+      "successful_qps": 0.0,
+      "attempted_qps": 14477.31,
+      "completed_target": true,
+      "response_body_bytes": 280000,
+      "response_body_mbps": 3.243,
+      "request_body_bytes": 0,
+      "p95_ms": null,
+      "status_counts": {
+        "401": 10000
+      },
+      "expected_status": 401,
+      "stage_profile": []
+    }
+  ],
+  "limitations": [
+    "same host and short rounds",
+    "not maximum sustained or model QPS",
+    "records accumulate between rounds",
+    "different configurations are not isolated causal comparisons",
+    "body bandwidth excludes HTTP/TCP/TLS overhead and is measured on loopback",
+    "multiple workers use client-side round-robin, not a deployed load balancer"
+  ],
+  "database_rows_after": 382446,
+  "recovery_checks": [
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    }
+  ],
+  "recovered": true,
+  "app_terminal_counts": []
+}

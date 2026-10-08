@@ -70,6 +70,7 @@ def test_usage_only_numeric_allowlist():
     assert usage_fields(
         {"prompt_tokens": 2, "completion_tokens": -1, "total_tokens": True, "secret": "payload"}
     ) == {"prompt_tokens": 2}
+    assert usage_fields({"total_tokens": 2**63}) == {}
 
 
 def test_database_ownership_pagination_and_terminal_fencing(tmp_path):
@@ -125,3 +126,15 @@ async def test_lease_loss_cancels_pending_upstream_task():
         await execution.wait(pending(), 1)
     await task
     assert cancelled.is_set()
+
+
+def test_stream_output_budget_counts_utf8_and_protocol_bytes():
+    class Runtime:
+        settings = replace(Settings("", "", "", {}), max_stream_bytes=20)
+
+    execution = Execution(Runtime(), {"id": "a"}, None)
+    assert execution.account_stream_frame("中") == "data: 中\n\n".encode()
+    assert execution.bytes_out == 11
+    with pytest.raises(StreamError, match="response_too_large"):
+        execution.account_stream_frame("中")
+    assert execution.bytes_out == 11

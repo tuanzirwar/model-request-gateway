@@ -56,3 +56,28 @@ async def test_per_application_limit_and_shared_model_limit():
     finally:
         await client.delete(*quota.keys("a", "m"), *quota.keys("b", "m"), *quota.keys("c", "m"))
         await client.aclose()
+
+
+async def test_pipeline_keeps_global_capacity_and_recovers_only_missing_script():
+    clients = [Redis.from_url(os.environ["GATEWAY_TEST_REDIS"]) for _ in range(2)]
+    namespace = "pipeline-test-" + uuid.uuid4().hex
+    quotas = [Quota(client, namespace, 2, batch_size=64) for client in clients]
+    try:
+        results = await asyncio.gather(
+            *[quotas[index % 2].acquire("a", "m", str(index), 2, 2) for index in range(32)]
+        )
+        assert sum(results) == 2
+        first = str(results.index(True))
+        # 局部SHA模拟脚本缓存丢失，不对共享Redis执行SCRIPT FLUSH。
+        quotas[0].acquire_script.sha = "0" * 40
+        released, acquired = await asyncio.gather(
+            quotas[0].release("a", "m", first),
+            quotas[0].acquire("a", "m", "next", 2, 2),
+        )
+        assert released == 2  # 整批重放会返回0，因此也检验成功项未被重放。
+        assert acquired
+        assert not await quotas[1].acquire("a", "m", "extra", 2, 2)
+    finally:
+        await asyncio.gather(*[quota.close() for quota in quotas])
+        await clients[0].delete(*quotas[0].keys("a", "m"))
+        await asyncio.gather(*[client.aclose() for client in clients])

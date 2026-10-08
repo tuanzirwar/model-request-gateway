@@ -1,0 +1,182 @@
+{
+  "passed": true,
+  "mode": "real HTTP gateway/MySQL/Redis; non-streaming fixture upstream, no model inference",
+  "app_id": "benchmark-e386ae861e114a109adc49cb6f7c8bde",
+  "workers": 4,
+  "max_inflight_per_worker": 128,
+  "connections_per_worker": 100,
+  "total_db_connections_limit": 16,
+  "concurrency_limit": 128,
+  "requests_per_round": 0,
+  "route": "chat",
+  "direct_upstream": false,
+  "scenario": "normal",
+  "client": "raw",
+  "response_bytes_requested": 65536,
+  "database_rows_before": 382446,
+  "seconds_per_round": 5.0,
+  "repeats": 1,
+  "db_workers": 4,
+  "closed_loop": true,
+  "rounds": [
+    {
+      "concurrency": 16,
+      "repeat": 1,
+      "requests": 1873,
+      "successful": 1873,
+      "elapsed_seconds": 5.0785,
+      "successful_qps": 368.81,
+      "attempted_qps": 368.81,
+      "completed_target": true,
+      "response_body_bytes": 123093560,
+      "response_body_mbps": 193.904,
+      "request_body_bytes": 176062,
+      "p95_ms": 58.55,
+      "status_counts": {
+        "200": 1873
+      },
+      "expected_status": 200,
+      "stage_profile": [
+        {
+          "operation": "db_update_record",
+          "phase": "execute",
+          "count": 3746,
+          "mean_ms": 7.311
+        },
+        {
+          "operation": "db_create_record",
+          "phase": "execute",
+          "count": 1873,
+          "mean_ms": 6.881
+        },
+        {
+          "operation": "upstream_headers",
+          "phase": "execute",
+          "count": 1873,
+          "mean_ms": 6.408
+        },
+        {
+          "operation": "upstream_body",
+          "phase": "execute",
+          "count": 1873,
+          "mean_ms": 2.934
+        },
+        {
+          "operation": "db_reconcile",
+          "phase": "execute",
+          "count": 12,
+          "mean_ms": 2.755
+        },
+        {
+          "operation": "db_authenticate",
+          "phase": "execute",
+          "count": 1873,
+          "mean_ms": 1.987
+        },
+        {
+          "operation": "redis_acquire",
+          "phase": "execute",
+          "count": 1873,
+          "mean_ms": 0.985
+        },
+        {
+          "operation": "redis_release",
+          "phase": "execute",
+          "count": 1873,
+          "mean_ms": 0.881
+        },
+        {
+          "operation": "db_reconcile",
+          "phase": "queue",
+          "count": 12,
+          "mean_ms": 0.314
+        },
+        {
+          "operation": "db_authenticate",
+          "phase": "queue",
+          "count": 1873,
+          "mean_ms": 0.201
+        },
+        {
+          "operation": "db_update_record",
+          "phase": "queue",
+          "count": 3746,
+          "mean_ms": 0.188
+        },
+        {
+          "operation": "db_create_record",
+          "phase": "queue",
+          "count": 1873,
+          "mean_ms": 0.187
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "same host and short rounds",
+    "not maximum sustained or model QPS",
+    "records accumulate between rounds",
+    "different configurations are not isolated causal comparisons",
+    "body bandwidth excludes HTTP/TCP/TLS overhead and is measured on loopback",
+    "multiple workers use client-side round-robin, not a deployed load balancer"
+  ],
+  "database_rows_after": 384367,
+  "recovery_checks": [
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    }
+  ],
+  "recovered": true,
+  "app_terminal_counts": [
+    {
+      "status": "succeeded",
+      "error": "",
+      "count": 1921
+    }
+  ]
+}

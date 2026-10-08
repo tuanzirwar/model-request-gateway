@@ -1,0 +1,564 @@
+{
+  "passed": true,
+  "verification_completed": true,
+  "source_sha256": {
+    "app.py": "215c69a45f0ef2d666d08267920752af884d9fe92077cf5754cc00911880bb10",
+    "db.py": "5d6d2eb1072a2898b265fdeb806e0d60cc41486e1966acc5b7ff7324a9710434",
+    "quota.py": "2cd0c1e32b6b1bbea6a0ddb10ede8c9ce17beec282d34a776a69923fc1b702e0",
+    "metadata_mq.py": "e5c18d17e17db84be3a8581a2abda6d2e5adee01c2c8dc01e9c2aa9c89983606",
+    "batching.py": "94793c4f41440b1e2cf64ce37adf65dffaa27169a240bcc15824ac8f48351f5a",
+    "config.py": "c722e26a2bbd7549beccfa046d3563eff4977b95a8f017da767146c993bc2e08"
+  },
+  "mode": "real HTTP gateway/MySQL/Redis; non-streaming fixture upstream, no model inference",
+  "app_id": "benchmark-5fb6c5f183ec4c7d89826db64f3886de",
+  "workers": 32,
+  "max_inflight_per_worker": 128,
+  "connections_per_worker": 64,
+  "upstream_keepalive_seconds": 2,
+  "total_db_connections_limit": 128,
+  "auth_pool_size_per_worker": 2,
+  "concurrency_limit": 1024,
+  "requests_per_round": 100000,
+  "route": "chat",
+  "direct_upstream": false,
+  "scenario": "normal",
+  "client": "raw",
+  "response_bytes_requested": 0,
+  "database_rows_before": 996465,
+  "database_runtime_before": {
+    "buffer_bytes": 1073741824,
+    "flush_log": 1,
+    "sync_binlog": 1,
+    "max_connections": 151
+  },
+  "seconds_per_round": 5,
+  "repeats": 1,
+  "db_workers": 2,
+  "runtime_packages": {
+    "uvicorn": "0.54.0",
+    "httpx": "0.28.1",
+    "sqlalchemy": "2.1.3",
+    "pymysql": "1.2.3",
+    "redis": "8.1.0",
+    "httptools": "0.8.0",
+    "hiredis": "3.4.2"
+  },
+  "http_parser": "auto",
+  "source_version": "0.4.0",
+  "metadata_transport": "redis-streams",
+  "metadata_shards": 2,
+  "db_batch_size": 64,
+  "db_batch_seconds": 0,
+  "redis_batch_size": 64,
+  "closed_loop": true,
+  "rounds": [
+    {
+      "concurrency": 128,
+      "repeat": 1,
+      "requests": 100000,
+      "successful": 100000,
+      "elapsed_seconds": 95.6233,
+      "successful_qps": 1045.77,
+      "attempted_qps": 1045.77,
+      "completed_target": true,
+      "response_body_bytes": 19800000,
+      "response_body_mbps": 1.657,
+      "request_body_bytes": 9000000,
+      "p95_ms": 194.27,
+      "status_counts": {
+        "200": 100000
+      },
+      "expected_status": 200,
+      "stage_profile": [
+        {
+          "operation": "mq_update_record",
+          "phase": "execute",
+          "count": 100000,
+          "mean_ms": 38.789
+        },
+        {
+          "operation": "mq_create_record",
+          "phase": "execute",
+          "count": 100000,
+          "mean_ms": 38.655
+        },
+        {
+          "operation": "upstream_headers",
+          "phase": "execute",
+          "count": 100000,
+          "mean_ms": 16.395
+        },
+        {
+          "operation": "db_persist_events",
+          "phase": "execute",
+          "count": 6809,
+          "mean_ms": 14.288
+        },
+        {
+          "operation": "upstream_body",
+          "phase": "execute",
+          "count": 100000,
+          "mean_ms": 6.668
+        },
+        {
+          "operation": "db_reconcile",
+          "phase": "execute",
+          "count": 1528,
+          "mean_ms": 4.568
+        },
+        {
+          "operation": "redis_acquire",
+          "phase": "execute",
+          "count": 100000,
+          "mean_ms": 2.513
+        },
+        {
+          "operation": "redis_release",
+          "phase": "execute",
+          "count": 100000,
+          "mean_ms": 2.039
+        },
+        {
+          "operation": "db_batch_authenticate",
+          "phase": "execute",
+          "count": 82391,
+          "mean_ms": 1.756
+        },
+        {
+          "operation": "db_reconcile",
+          "phase": "queue",
+          "count": 1527,
+          "mean_ms": 0.618
+        },
+        {
+          "operation": "db_batch_authenticate",
+          "phase": "queue",
+          "count": 82391,
+          "mean_ms": 0.56
+        },
+        {
+          "operation": "db_persist_events",
+          "phase": "queue",
+          "count": 6809,
+          "mean_ms": 0.293
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "same host and short rounds",
+    "not maximum sustained or model QPS",
+    "records accumulate between rounds",
+    "different configurations are not isolated causal comparisons",
+    "body bandwidth excludes HTTP/TCP/TLS overhead and is measured on loopback",
+    "multiple workers use client-side round-robin, not a deployed load balancer"
+  ],
+  "database_rows_after": 1096849,
+  "database_runtime_after": {
+    "buffer_bytes": 1073741824,
+    "flush_log": 1,
+    "sync_binlog": 1,
+    "max_connections": 151
+  },
+  "recovery_checks": [
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    }
+  ],
+  "recovered": true,
+  "app_terminal_counts": [
+    {
+      "status": "succeeded",
+      "count": 100384
+    }
+  ],
+  "app_error_counts": [],
+  "no_nonterminal_records": true,
+  "mq_remaining": {
+    "entries": 0,
+    "pending": 0,
+    "dead_letters": 0
+  },
+  "source_unchanged_during_run": true
+}

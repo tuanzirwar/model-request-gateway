@@ -8,10 +8,19 @@ first_seconds: 45
 idle_seconds: 20
 max_frame_bytes: 65536
 max_body_bytes: 1048576
+max_stream_bytes: 16777216
 retention_days: 30
 db_workers: 4
 db_queue_size: 32
 db_queue_seconds: 1
+db_batch_size: 64
+db_batch_seconds: 0
+metadata_queue_size: 256
+redis_batch_size: 64
+max_inflight_requests: 128
+upstream_connections: 100
+upstream_keepalive_seconds: 2
+redis_connections: 128
 metrics_key_env: GATEWAY_METRICS_KEY
 models:
   coding:

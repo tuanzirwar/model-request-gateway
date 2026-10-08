@@ -1,0 +1,16 @@
+{
+  "before": {
+    "buffer_bytes": 134217728,
+    "flush_log": 1,
+    "sync_binlog": 1
+  },
+  "after": {
+    "buffer_bytes": 1073741824
+  },
+  "storage_refreshed": {
+    "data_bytes": 243630080,
+    "index_bytes": 484114432,
+    "estimated_rows": 855204
+  },
+  "scope": "temporary localhost test MySQL buffer; durability unchanged; restore after benchmark"
+}

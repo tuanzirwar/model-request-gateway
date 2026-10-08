@@ -1,0 +1,305 @@
+{
+  "passed": true,
+  "mode": "real HTTP gateway/MySQL/Redis; non-streaming fixture upstream, no model inference",
+  "workers": 1,
+  "max_inflight_per_worker": 128,
+  "connections_per_worker": 256,
+  "total_db_connections_limit": 16,
+  "concurrency_limit": 512,
+  "requests_per_round": 0,
+  "route": "chat",
+  "response_bytes_requested": 0,
+  "database_rows_before": 128448,
+  "seconds_per_round": 15.0,
+  "repeats": 1,
+  "db_workers": 16,
+  "closed_loop": true,
+  "rounds": [
+    {
+      "concurrency": 16,
+      "repeat": 1,
+      "requests": 1798,
+      "successful": 1798,
+      "elapsed_seconds": 15.0723,
+      "successful_qps": 119.29,
+      "attempted_qps": 119.29,
+      "completed_target": true,
+      "response_body_bytes": 356004,
+      "response_body_mbps": 0.189,
+      "request_body_bytes": 161820,
+      "p95_ms": 189.56,
+      "status_counts": {
+        "200": 1798
+      },
+      "stage_profile": [
+        {
+          "operation": "upstream_headers",
+          "phase": "execute",
+          "count": 1798,
+          "mean_ms": 28.727
+        },
+        {
+          "operation": "db_reconcile",
+          "phase": "execute",
+          "count": 7,
+          "mean_ms": 9.683
+        },
+        {
+          "operation": "upstream_body",
+          "phase": "execute",
+          "count": 1798,
+          "mean_ms": 9.347
+        },
+        {
+          "operation": "db_update_record",
+          "phase": "execute",
+          "count": 3596,
+          "mean_ms": 8.149
+        },
+        {
+          "operation": "db_create_record",
+          "phase": "execute",
+          "count": 1798,
+          "mean_ms": 7.924
+        },
+        {
+          "operation": "redis_acquire",
+          "phase": "execute",
+          "count": 1798,
+          "mean_ms": 5.066
+        },
+        {
+          "operation": "redis_release",
+          "phase": "execute",
+          "count": 1798,
+          "mean_ms": 4.6
+        },
+        {
+          "operation": "db_authenticate",
+          "phase": "execute",
+          "count": 1798,
+          "mean_ms": 3.174
+        },
+        {
+          "operation": "db_create_record",
+          "phase": "queue",
+          "count": 1798,
+          "mean_ms": 0.327
+        },
+        {
+          "operation": "db_authenticate",
+          "phase": "queue",
+          "count": 1798,
+          "mean_ms": 0.27
+        },
+        {
+          "operation": "db_update_record",
+          "phase": "queue",
+          "count": 3596,
+          "mean_ms": 0.242
+        },
+        {
+          "operation": "db_reconcile",
+          "phase": "queue",
+          "count": 7,
+          "mean_ms": 0.24
+        }
+      ]
+    },
+    {
+      "concurrency": 64,
+      "repeat": 1,
+      "requests": 1016,
+      "successful": 1016,
+      "elapsed_seconds": 15.4502,
+      "successful_qps": 65.76,
+      "attempted_qps": 65.76,
+      "completed_target": true,
+      "response_body_bytes": 201168,
+      "response_body_mbps": 0.104,
+      "request_body_bytes": 91440,
+      "p95_ms": 2041.63,
+      "status_counts": {
+        "200": 1016
+      },
+      "stage_profile": [
+        {
+          "operation": "upstream_headers",
+          "phase": "execute",
+          "count": 1016,
+          "mean_ms": 561.535
+        },
+        {
+          "operation": "upstream_body",
+          "phase": "execute",
+          "count": 1016,
+          "mean_ms": 47.114
+        },
+        {
+          "operation": "redis_acquire",
+          "phase": "execute",
+          "count": 1016,
+          "mean_ms": 21.299
+        },
+        {
+          "operation": "redis_release",
+          "phase": "execute",
+          "count": 1016,
+          "mean_ms": 20.016
+        },
+        {
+          "operation": "db_update_record",
+          "phase": "execute",
+          "count": 2032,
+          "mean_ms": 5.354
+        },
+        {
+          "operation": "db_create_record",
+          "phase": "execute",
+          "count": 1016,
+          "mean_ms": 4.965
+        },
+        {
+          "operation": "db_reconcile",
+          "phase": "execute",
+          "count": 8,
+          "mean_ms": 3.711
+        },
+        {
+          "operation": "db_authenticate",
+          "phase": "execute",
+          "count": 1016,
+          "mean_ms": 2.485
+        },
+        {
+          "operation": "db_create_record",
+          "phase": "queue",
+          "count": 1016,
+          "mean_ms": 1.676
+        },
+        {
+          "operation": "db_update_record",
+          "phase": "queue",
+          "count": 2032,
+          "mean_ms": 0.699
+        },
+        {
+          "operation": "db_reconcile",
+          "phase": "queue",
+          "count": 8,
+          "mean_ms": 0.429
+        },
+        {
+          "operation": "db_authenticate",
+          "phase": "queue",
+          "count": 1016,
+          "mean_ms": 0.387
+        }
+      ]
+    },
+    {
+      "concurrency": 128,
+      "repeat": 1,
+      "requests": 992,
+      "successful": 992,
+      "elapsed_seconds": 16.1853,
+      "successful_qps": 61.29,
+      "attempted_qps": 61.29,
+      "completed_target": true,
+      "response_body_bytes": 196416,
+      "response_body_mbps": 0.097,
+      "request_body_bytes": 89280,
+      "p95_ms": 4674.53,
+      "status_counts": {
+        "200": 992
+      },
+      "stage_profile": [
+        {
+          "operation": "upstream_headers",
+          "phase": "execute",
+          "count": 992,
+          "mean_ms": 1402.087
+        },
+        {
+          "operation": "upstream_body",
+          "phase": "execute",
+          "count": 992,
+          "mean_ms": 75.291
+        },
+        {
+          "operation": "redis_acquire",
+          "phase": "execute",
+          "count": 992,
+          "mean_ms": 31.801
+        },
+        {
+          "operation": "redis_release",
+          "phase": "execute",
+          "count": 992,
+          "mean_ms": 30.382
+        },
+        {
+          "operation": "redis_renew",
+          "phase": "execute",
+          "count": 27,
+          "mean_ms": 29.599
+        },
+        {
+          "operation": "db_create_record",
+          "phase": "queue",
+          "count": 992,
+          "mean_ms": 8.733
+        },
+        {
+          "operation": "db_update_record",
+          "phase": "execute",
+          "count": 1984,
+          "mean_ms": 8.238
+        },
+        {
+          "operation": "db_create_record",
+          "phase": "execute",
+          "count": 992,
+          "mean_ms": 7.401
+        },
+        {
+          "operation": "db_reconcile",
+          "phase": "execute",
+          "count": 8,
+          "mean_ms": 5.844
+        },
+        {
+          "operation": "db_update_record",
+          "phase": "queue",
+          "count": 1984,
+          "mean_ms": 4.689
+        },
+        {
+          "operation": "db_authenticate",
+          "phase": "execute",
+          "count": 992,
+          "mean_ms": 3.133
+        },
+        {
+          "operation": "db_authenticate",
+          "phase": "queue",
+          "count": 992,
+          "mean_ms": 2.497
+        },
+        {
+          "operation": "db_reconcile",
+          "phase": "queue",
+          "count": 8,
+          "mean_ms": 0.443
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "same host and short rounds",
+    "not maximum sustained or model QPS",
+    "records accumulate between rounds",
+    "no optimization before/after comparison"
+  ],
+  "database_rows_after": 132878
+}

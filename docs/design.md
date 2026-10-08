@@ -1,75 +1,76 @@
-# 需求与技术判断
+# Architecture and decisions (0.5.0)
 
-## 需求来源与可证明范围
+## Scope and evidence
 
-调用方是已有TUICodingAgent。它支持并行子Agent和多会话，存在共享上游、停止生成、流式工具调用的具体调用路径。新项目集中处理这条模型接入链：请求进入、取得额度、上游响应、流消费、关闭与记录。已合并PR证明同类问题确实出现在已有框架；不证明本项目有企业客户，也不证明自建网关优于成熟产品。
+TUICodingAgent sessions and sub-agents share a model endpoint. The gateway controls application access and concurrent admission, forwards Chat Completions, closes streams safely, and records application-scoped outcomes. Actual TUI multi-turn/cancel/regenerate tests verify this integration. Controlled HTTP fixtures isolate failures. No enterprise adoption or inference-speed improvement is claimed.
 
-第一版验证以真实TUI会话运行时、MySQL、Redis和HTTP进程为证据。故障替身用于精确控制阻塞、断流和错误。实际团队使用频率、管理收益和成本节省留空。
+## Component responsibilities
 
-## 为什么这些组件有必要
-
-| 选型 | 职责与必要性 | 替代及边界 |
+| Component | Required responsibility | Alternative / boundary |
 |---|---|---|
-| FastAPI/Uvicorn | 接入异步HTTP及实时SSE；同一进程服务多个连接 | Django也能实现，选择FastAPI是范围集中于模型I/O而非复用工单业务 |
-| HTTPX | 共享异步连接池、取消和手动关闭响应 | 不为每请求新建Client；不使用阻塞requests执行长流 |
-| MySQL/SQLAlchemy/PyMySQL | 应用授权、终态与usage持久化、复合索引、迁移 | Redis不能替代审计持久化；SQLite只用于局部单元测试。同步短事务经to_thread执行，不宣称数据库驱动全异步 |
-| Redis/Lua/ZSET | 多Web进程共享模型及应用-模型的接入限额，按请求ID续期、释放、清理过期租约 | 单进程Semaphore无法跨进程；普通计数器在崩溃后可能永不归还。并发限额不等于QPS限流 |
-| Alembic | 固定版本迁移，避免启动时隐式修改表结构 | 不使用create_all代替生产迁移；0002修正Unix秒时间的MySQL单精度问题 |
+| FastAPI / Uvicorn | Async HTTP admission and streamed responses | Django could also implement this; the scope is model I/O |
+| HTTPX | Shared upstream connection pool and explicit response close | No client per request; no transparent partial-stream retry |
+| MySQL / SQLAlchemy / PyMySQL | Current authorization, request history, relational constraints and indexes | PostgreSQL is also viable; synchronous SQL runs in a dedicated bounded executor |
+| Redis / Lua / ZSET | Atomic cross-process capacity-group and application-group leases | MySQL admission is possible; no measured claim that it is slower |
+| Local batch queues | Amortize authentication, insert, update and Redis round trips | Volatile queues; each caller waits for confirmed SQL commit |
+| Alembic | Explicit schema evolution | Web startup does not implicitly create or mutate tables |
+| Prometheus client | Fixed-label, per-process stage metrics | No additional metrics database, hosted Grafana or high-cardinality identity labels |
 
-CLI管理已足以支持开发者维护少量应用，不再加后台管理前端。PyMySQL带RSA认证依赖，兼容新建MySQL 8账号首次认证，不依赖已有认证缓存。SSE只做生成协议，不需要WebSocket。实时请求不入任务队列，因此没有Celery/RabbitMQ。回答具有会话上下文、工具调用和消费状态，不缓存完整流。未实现日额度、金额扣费或token预扣，不把并发控制写成账单系统。
+Redis avoids per-heartbeat SQL transactions and represents individual expiring owners directly. This is an operational/semantic choice, not proof that a MySQL quota implementation would fail. Redis adds an availability dependency. A small single-process deployment could use a semaphore instead. Concurrency control is not requests-per-second or token-budget limiting.
 
-0.2增加的工作台是**应用内试用与查询**，不提供管理员跨应用操作。管理仍由CLI执行。Prometheus客户端提供固定标签指标，不另建自制监控存储；不为演示额外部署监控平台。
+The formal runtime has **no message broker**. Four matched local/Streams rounds did not show benefit. The synchronous model request has no durable offline execution requirement. A mature workflow platform may legitimately use a broker and stream output through Redis; this gateway does not implement that workflow architecture.
 
-## 请求生命周期
+## Actual request order
 
-1. Bearer密钥只存SHA-256摘要；随机高熵密钥不是用户密码。查询当前应用是否启用及模型授权。
-2. 有界读取请求体，最多1MiB、读取总时限10秒。模型网址与上游密钥来自服务端配置，调用方不能自定义上游URL。
-3. MySQL插入accepted元数据，Redis短Lua脚本清理过期项并原子检查两项容量，成功写入同一请求UUID。失败记rejected并返回429；Redis不确定或不可用则失败关闭，不绕过额度。
-4. 写running并开始心跳。上游HTTP不持有MySQL事务或连接。额度持续占用至流结束或连接清理，不在响应头交付时提前释放。同步DB操作提交至专用执行池；默认4线程、32个等待位置，等待容量超过1秒返回503。执行池和连接池容量匹配，PyMySQL连接/读/写超时分别3/5/5秒。
-5. 首个完整SSE数据帧在首段预算内校验后交付；后续按数据帧增量输出，工具调用分片与usage原样传递。帧上限64KiB，非流式响应上限1MiB。
-6. 只有上游明确`[DONE]`才视为流成功。中断、非法JSON、上游错误产生失败；用户断连产生取消；不能在部分流后自动重试。
-7. 独立清理任务先等待被取消的I/O协程收尾，再关闭上游响应、释放本请求租约、保存终态。响应发送等待也受总时限控制。
+1. Per-process admission and bounded authentication header; query MySQL for current enabled application.
+2. Bounded body read (1 MiB, 10 seconds), parameter validation, authorized model alias lookup.
+3. Create Execution UUID and immutable execution start/deadline. Verify namespace policy; Redis Lua atomically obtains both leases.
+4. Immediately start heartbeat. Persist `running` with original timestamps and wait for SQL commit. Full capacity produces a `rejected` audit and 429. SQL failure cleans the lease without calling the model.
+5. Use server-side URL/model/credentials in the shared HTTPX client. No SQL transaction remains open during generation.
+6. Validate the first complete SSE frame before sending response headers. Forward each frame and tool fragment; save valid provider-reported usage. Non-streaming JSON is size-bounded.
+7. Only explicit upstream `[DONE]` establishes successful stream completion. Commit the successful outcome before forwarding DONE. An error after headers produces an SSE error or EOF, not a changed HTTP status.
+8. A single independent cleanup task reaps I/O, closes the upstream (3-second budget), releases the UUID lease, then saves outcome. Repeated cancellation does not interrupt ownership cleanup. Final HTTP termination has a 0.25-second best-effort send budget.
+9. Periodic reconciliation (about 2 seconds, 256 records) marks expired unknown executions `abandoned`, not succeeded. It never replays generation.
 
-`first_ms`是首个完整SSE数据帧的等待时间，不一定是首个用户可见文本token；帧可能是role或reasoning。`bytes_out`是应用尝试发送的字节，不代表客户端实际显示字节。usage只有供应商返回时才保存，不自行估算账单。
+## Capacity groups and configuration
 
-## 取消与一致性
+`capacity_group` joins aliases sharing actual capacity; absent value defaults to alias. All aliases in a group require equal concurrency limits. Application limits apply per capacity group. This must be configured explicitly; identical URLs do not necessarily imply identical capacity.
 
-正常完成、用户取消和上游错误都进入资源清理。ASGI取消作用域可能反复取消await，第一次关闭中断后HTTPX可能已标记关闭却未释放底层连接；等待任务的回收和关闭需在独立任务中完成。本项目的真实HTTP实验曾发现这一问题，隔离重复取消后上游活动连接归零，前后报告保留。
+MySQL `coordination_states` persists namespace/policy fingerprints. Redis guards hold policy, epoch and recovery-ready time. Conflicting process configurations fail closed. New namespaces can initialize immediately. Missing Redis guards for an existing namespace trigger `total_seconds + 5` recovery quarantine; old owners cannot renew in a new epoch. Redis kill/restart with loss has been exercised on an isolated instance.
 
-Redis以自身TIME为租约时钟，避免不同Web进程时钟偏差。两个键使用同一模型hash tag，便于脚本键槽约束；实际只验证单Redis服务器。应用限额作用于“应用-模型”组合，不是应用跨全部模型的总限额。
+Policy changes are deployment changes: stop/drain old instances, choose a new namespace, deploy consistently. Do not clear live quota keys or silently mutate active capacity limits. The guard is not a Redis HA/failover or remote GPU fencing solution. Use dedicated Redis with `noeviction`; partial key deletion/eviction can invalidate occupancy knowledge.
 
-心跳失去租约后停止本地转发。关闭失败或Redis释放失败时租约靠到期回收。MySQL记录和Redis租约没有分布式事务：终态写入失败由deadline+5秒的对账标记abandoned，表示无法确认完成，不擅自记成功。对账不重放实时流，不恢复模型生成。
+## Consistency and clocks
 
-Redis租约过期可释放网关接入名额，但不能保证远端GPU已停止。Redis重启丢失租约时也无法保证全局上游实际在途数；当前依赖专用Redis、noeviction及运维约束，不宣称强一致分布式调度。多实例配置中的同一模型并发值必须一致。
+Redis lease expiration is renewable admission ownership. MySQL `deadline_at` is a fixed execution cutoff, and `finished_at` is an observed persisted outcome time. They are not duplicate fields that must be kept equal. No distributed transaction joins Redis and MySQL. Compensation, idempotent release, expiry, conditional SQL updates and reconciliation handle known failure windows; some failures remain unknown.
 
-## 数据与权限
+Known terminal outcomes cannot overwrite one another. A late explicitly observed terminal may replace provisional `abandoned`; late `running` cannot resurrect it. UTC seconds are stored as DOUBLE; monotonic time controls local duration, Redis TIME controls lease calculations. SQL reconciliation assumes synchronized host clocks.
 
-applications包含密钥摘要、启用状态、模型授权和应用-模型限额。requests保存UUID、所属应用、模型、状态、短错误码、开始/截止/结束时间、首帧耗时、尝试输出字节、usage。默认不保存messages、工具参数、答案和上游错误正文。
+## SQL and bounds
 
-记录查询始终限定应用ID；不存在或其他应用的UUID返回404。按(started_at,id)游标分页，用(app_id,started_at,id)索引；按(status,deadline_at)对账。状态更新只允许accepted/running，防止终态被迟到更新覆盖。
+Applications use unique high-entropy key digests. Request UUIDs are primary keys and rows reference applications. Query methods always restrict app_id. Requests store only metadata and provider usage, not messages, tool arguments or answers. Cursor ordering is `(started_at DESC, id DESC)`, never UUID chronological order.
 
-新请求会读取最新授权；禁用应用阻止新请求，不强制撤销已经接入的流。尚无跨请求主动取消管理接口。部署需要TLS、数据库最小权限、Redis专网/认证、随机密钥及日志策略；本机示例不构成生产部署声明。
+Indexes: `(app_id,started_at,id)`, `(app_id,status,started_at,id)`, `(app_id,model,started_at,id)`, `(status,deadline_at)`, `(finished_at,id)`. Filters combining model/status may still require residual filtering. Retention/reconciliation select bounded primary keys with READ COMMITTED and SKIP LOCKED, then delete/update short transactions.
 
-同步SQL已开始后，取消await不能终止底层线程。执行Future被shield保护，槽位通过Future实际完成回调归还，不会因客户端取消提前放行更多SQL。正在执行的SQL仍可能在取消后写入，失败或遗漏终态由对账保守处理；不声称能够强制中止SQL。
+Default resources per instance: four SQL threads / four write connections, two separate autocommit authentication connections, 32 SQL waiting slots, one-second queue timeout; local batch size 64 and queue capacity 256, zero deliberate collection delay. HTTPX max connections 100, Redis max connections 128, admission 128; request/non-streaming body 1 MiB, SSE frame 64 KiB, cumulative stream 16 MiB. SQL connect/read/write budgets are 3/5/5 seconds. Cancellation cannot stop a running SQL thread; shielded futures hold capacity until actual completion.
 
-请求筛选沿用应用+时间索引，统计只查询所属应用最近1至168小时，按模型/状态汇总。tokens是供应商已报告值，不是账单；平均耗时不等于p95。少量应用配置和元数据仍归MySQL持久化，Redis只负责短期接入租约，不把两者混为强一致事务。
+## Mature implementations consulted
 
-## 模型参数与等待预算
+- [LiteLLM limiter source](https://github.com/BerriAI/litellm/blob/2c67ae90bd1e920a71c32bb4b863363dd9c949c4/litellm/proxy/hooks/parallel_request_limiter_v3.py): atomic multiple-limit Redis admission using request owners. LiteLLM's primary SQL choice is PostgreSQL, not MySQL.
+- [Dify Celery integration](https://github.com/langgenius/dify/blob/e7d9c8897a4ddf104396e4efc8c321e0f8075bac/api/extensions/ext_celery.py): background indexing/workflow jobs; Redis output channels and SQL history have different duties.
+- [BiSheng workflow tasks](https://github.com/dataelement/bisheng/blob/cb9b77a89a914864d0f5c5e1051322d3e13bc4f0/src/backend/bisheng/worker/workflow/tasks.py): background workflow execution, not the same as this direct forwarding scope.
 
-网关只支持文档化的Chat Completions子集，不静默忽略未知顶层参数；基本校验覆盖角色/内容类型、stream、有限数值采样参数、正整数token上限及工具消息ID。详细工具和多模态内容仍由上游校验，不宣称完整实现所有供应商Schema。
+## Related merged contributions
 
-不同模型的默认推理行为和输出参数并不一致。模型配置可用`request_defaults`设置支持的生成参数；不允许在默认值中替换messages、model、地址、凭证或工具。调用方显式值优先，设置另一种token上限时清除默认的互斥上限。它是默认配置，不是不可绕过的token预算或费用上限。
+[Xinference #5626](https://github.com/xorbitsai/inference/pull/5626) informs quota ownership and streaming handoff; [Dynamiq #971](https://github.com/dynamiq-ai/dynamiq/pull/971) informs close/aclose ownership; [txtai #1311](https://github.com/neuml/txtai/pull/1311) informs incremental-output tests; [RAG-Anything #376](https://github.com/HKUDS/RAG-Anything/pull/376) informs why single-consumption streaming objects are not complete-answer caches. These projects are not gateway dependencies, and their merged PRs do not certify this gateway.
 
-真实本机模型实验表明，调用方没有显式关闭推理时可能一直输出推理至总时限，TUI适配器又只显示最终文本。因此本机别名明确配置`reasoning_effort: none`及`max_tokens: 512`，网关首段/空闲/总时限不变；换模型必须核对参数，不盲目沿用。这里使用[上游兼容接口](https://docs.ollama.com/api/openai-compatibility)公开的推理控制值；不改变现有TUI源码或用户全局模型配置。
+## Intentionally outside scope
 
-## 资源生命周期的相关实现参考
+Billing/exactly-once charge records, QPS token buckets, durable generation queues, provider failover, HA, SQL sharding, vector retrieval, full-answer caching, administrator web UI, public ingress and GPU hard cancellation. No benchmark justifies adding these features now. Container recipes remain configuration-checked references, not verified deployment. Local tests and learning readiness are not production operations evidence.
 
-- [Xinference #5626](https://github.com/xorbitsai/inference/pull/5626)：请求额度先归还再做可失败观测，流交付前后区分释放责任。网关使用Web实例共享的Redis接入租约实现接入控制。
-- [Dynamiq #971](https://github.com/dynamiq-ai/dynamiq/pull/971)：拥有流的层负责关闭底层连接；同步/异步包装器的close/aclose不能混淆。网关直接管理HTTP异步响应，不依赖Dynamiq工作流框架。
-- [txtai #1311](https://github.com/neuml/txtai/pull/1311)涉及增量输出与分段标记处理；[RAG-Anything #376](https://github.com/HKUDS/RAG-Anything/pull/376)涉及流式对象与完整答案缓存的边界。网关使用增量SSE解析，不缓存完整答案，两个框架均不是运行依赖。
 
-## 未实现及后续选择
+## Verified statistics path
 
-当前没有QPS令牌桶、计费、多租户组织模型、供应商自动切换、生产监控平台或任意模型管理API。分阶段负载记录显示旧路径8并发时DB操作平均耗时显著升高；加入专用有界池、匹配连接池和驱动超时后退化缓解。四线程/八线程对照均工作良好，不能证明四线程唯一最优或纯粹由GIL导致，不把短时结果外推为生产优化比例。
+A real application with 100,096 requests exposed a five-second timeout in `/stats`. Migration 0006 adds a virtual BIGINT `usage_total_tokens`, computed from the provider usage JSON by the database, and covering index `(app_id,started_at,model,status,first_ms,finished_at,bytes_out,usage_total_tokens)`. The JSON remains authoritative; code does not dual-write a second token value. The derived field is internal, not returned in request details. Provider counters outside signed 64-bit range are omitted.
 
-官方参考：[Prometheus直方图](https://prometheus.github.io/client_python/instrumenting/histogram/)、[SQLAlchemy连接池](https://docs.sqlalchemy.org/en/20/core/pooling.html)、[Playwright独立浏览器通道](https://playwright.dev/python/docs/browsers)。实现和结论仍以本项目运行结果为准。
+The covering scan avoids random primary-row/JSON reads; it still scans the relevant application/time window and uses a small temporary aggregate. It is not O(1), preaggregation, or a billing ledger. Group results were compared with the old expression, then the actual HTTP API was tested with the unchanged five-second driver timeout. The index's separate ABBA write-cost experiment and latest full-path benchmark include its maintenance cost.

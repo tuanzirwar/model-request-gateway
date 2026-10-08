@@ -1,0 +1,59 @@
+{
+  "passed": true,
+  "scope": "synthetic local MySQL retention workload",
+  "rows_before": 1098940,
+  "before": {
+    "mean_ms": 2112.8196300007403,
+    "p95_ms": 2150.10379999876,
+    "result_count": 256,
+    "ordered_ids_hash": "c83b5a7f3ae07ae1098cc76a0c7112c87e65ec31205eab361c2eb57defd7c72d",
+    "explain": [
+      {
+        "id": 1,
+        "select_type": "SIMPLE",
+        "table": "requests",
+        "partitions": null,
+        "type": "ALL",
+        "possible_keys": null,
+        "key": null,
+        "key_len": null,
+        "ref": null,
+        "rows": 1173051,
+        "filtered": 33.33,
+        "Extra": "Using where; Using filesort"
+      }
+    ],
+    "explain_analyze": "-> Limit: 256 row(s)  (cost=129077 rows=256) (actual time=2222..2222 rows=256 loops=1)\n    -> Sort: requests.finished_at, requests.id, limit input to 256 row(s) per chunk  (cost=129077 rows=1.17e+6) (actual time=2222..2222 rows=256 loops=1)\n        -> Filter: (requests.finished_at < 1788771148.6275072e0)  (cost=129077 rows=1.17e+6) (actual time=2.37..2220 rows=2000 loops=1)\n            -> Table scan on requests  (cost=129077 rows=1.17e+6) (actual time=0.418..2192 rows=1.1e+6 loops=1)\n"
+  },
+  "index_build_seconds": 3.9195891999988817,
+  "after": {
+    "mean_ms": 0.5305600090650842,
+    "p95_ms": 0.49860001308843493,
+    "result_count": 256,
+    "ordered_ids_hash": "c83b5a7f3ae07ae1098cc76a0c7112c87e65ec31205eab361c2eb57defd7c72d",
+    "explain": [
+      {
+        "id": 1,
+        "select_type": "SIMPLE",
+        "table": "requests",
+        "partitions": null,
+        "type": "range",
+        "possible_keys": "ix_retention_candidate",
+        "key": "ix_retention_candidate",
+        "key_len": "9",
+        "ref": null,
+        "rows": 1,
+        "filtered": 100.0,
+        "Extra": "Using where; Using index"
+      }
+    ],
+    "explain_analyze": "-> Limit: 256 row(s)  (cost=1.21 rows=1) (actual time=0.0061..0.05 rows=256 loops=1)\n    -> Filter: (requests.finished_at < 1788771148.6275072e0)  (cost=1.21 rows=1) (actual time=0.0057..0.0414 rows=256 loops=1)\n        -> Covering index range scan on requests using ix_retention_candidate over (NULL < finished_at < 1788771148.6275072)  (cost=1.21 rows=1) (actual time=0.0053..0.0312 rows=256 loops=1)\n"
+  },
+  "bounded_delete": {
+    "rows": 2000,
+    "max_batch_rows": 256,
+    "transactions": 9,
+    "max_ms": 177.272200002335,
+    "mean_ms": 39.26612222373175
+  }
+}

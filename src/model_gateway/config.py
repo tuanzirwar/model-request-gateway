@@ -18,6 +18,11 @@ class Model:
     key: str
     concurrency: int = 4
     request_defaults: dict = field(default_factory=dict)
+    capacity_group: str = ""
+
+    @property
+    def capacity_key(self):
+        return self.capacity_group or self.alias
 
 
 @dataclass(frozen=True)
@@ -37,6 +42,15 @@ class Settings:
     db_workers: int = 4
     db_queue_size: int = 32
     db_queue_seconds: float = 1
+    max_inflight_requests: int = 128
+    upstream_connections: int = 100
+    redis_connections: int = 128
+    max_stream_bytes: int = 16 * 1048576
+    db_batch_size: int = 64
+    db_batch_seconds: float = 0
+    metadata_queue_size: int = 256
+    redis_batch_size: int = 64
+    upstream_keepalive_seconds: float = 2
 
 
 def load_settings():
@@ -58,6 +72,15 @@ def load_settings():
         "db_workers",
         "db_queue_size",
         "db_queue_seconds",
+        "max_inflight_requests",
+        "upstream_connections",
+        "redis_connections",
+        "max_stream_bytes",
+        "db_batch_size",
+        "db_batch_seconds",
+        "metadata_queue_size",
+        "redis_batch_size",
+        "upstream_keepalive_seconds",
     }
     if not isinstance(raw, dict) or set(raw) - allowed:
         raise ValueError("配置必须为映射且不能包含未知字段")
@@ -74,6 +97,7 @@ def load_settings():
         "first_seconds",
         "idle_seconds",
         "db_queue_seconds",
+        "upstream_keepalive_seconds",
     ):
         if name in raw and (
             isinstance(raw[name], bool)
@@ -88,6 +112,13 @@ def load_settings():
         "retention_days",
         "db_workers",
         "db_queue_size",
+        "max_inflight_requests",
+        "upstream_connections",
+        "redis_connections",
+        "max_stream_bytes",
+        "db_batch_size",
+        "metadata_queue_size",
+        "redis_batch_size",
     ):
         if name in raw and (type(raw[name]) is not int or raw[name] <= 0):
             raise ValueError(f"{name}必须为正整数")
@@ -101,6 +132,7 @@ def load_settings():
             "key_env",
             "concurrency",
             "request_defaults",
+            "capacity_group",
         }:
             raise ValueError("模型配置存在未知字段")
         if not isinstance(spec.get("model"), str) or not spec["model"].strip():
@@ -124,6 +156,16 @@ def load_settings():
         concurrency = spec.get("concurrency", 4)
         if type(concurrency) is not int or concurrency < 1:
             raise ValueError("模型并发必须大于零")
+        capacity_group = spec.get("capacity_group", alias)
+        if not isinstance(capacity_group, str) or not re.fullmatch(
+            r"[A-Za-z0-9_.:-]{1,100}", capacity_group
+        ):
+            raise ValueError("容量组必须为长度1至100的安全标识")
+        if any(
+            model.capacity_key == capacity_group and model.concurrency != concurrency
+            for model in models.values()
+        ):
+            raise ValueError("同一容量组的并发上限必须一致")
         key_env = spec.get("key_env", "")
         if not isinstance(key_env, str):
             raise ValueError("key_env必须为环境变量名称")
@@ -151,7 +193,13 @@ def load_settings():
         except HTTPException as exc:
             raise ValueError("模型默认生成参数无效") from exc
         models[alias] = Model(
-            alias, spec["model"], endpoint, os.environ.get(key_env, ""), concurrency, defaults
+            alias,
+            spec["model"],
+            endpoint,
+            os.environ.get(key_env, ""),
+            concurrency,
+            defaults,
+            capacity_group,
         )
     metrics_env = raw.get("metrics_key_env", "GATEWAY_METRICS_KEY")
     if not isinstance(metrics_env, str):
@@ -186,6 +234,15 @@ def load_settings():
                 "db_workers",
                 "db_queue_size",
                 "db_queue_seconds",
+                "max_inflight_requests",
+                "upstream_connections",
+                "redis_connections",
+                "max_stream_bytes",
+                "db_batch_size",
+                "db_batch_seconds",
+                "metadata_queue_size",
+                "redis_batch_size",
+                "upstream_keepalive_seconds",
             )
             if name in raw
         },
@@ -202,4 +259,27 @@ def load_settings():
         raise ValueError("单帧上限不能超过请求体上限，请求体最多16MiB")
     if settings.db_workers > 64 or settings.db_queue_size > 4096:
         raise ValueError("数据库线程最多64，等待队列最多4096")
+    if (
+        max(
+            settings.max_inflight_requests,
+            settings.upstream_connections,
+            settings.redis_connections,
+        )
+        > 4096
+    ):
+        raise ValueError("在途请求和连接池容量最多4096")
+    if settings.max_stream_bytes > 64 * 1048576:
+        raise ValueError("每次流式输出最多64MiB")
+    if (
+        max(settings.db_batch_size, settings.redis_batch_size) > 256
+        or settings.metadata_queue_size > 4096
+    ):
+        raise ValueError("数据库每批最多256条，消息队列最多4096条")
+    if (
+        isinstance(settings.db_batch_seconds, bool)
+        or not isinstance(settings.db_batch_seconds, (int, float))
+        or not math.isfinite(settings.db_batch_seconds)
+        or not 0 <= settings.db_batch_seconds <= 0.05
+    ):
+        raise ValueError("批处理收集窗口必须为0至50毫秒")
     return settings

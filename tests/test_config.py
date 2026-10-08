@@ -34,6 +34,23 @@ def config_file(tmp_path, monkeypatch):
         ("namespace", "{bad}"),
         ("allow_local_http", "false"),
         ("unknown", 1),
+        ("max_inflight_requests", 0),
+        ("max_inflight_requests", 4097),
+        ("redis_connections", True),
+        ("upstream_connections", 4097),
+        ("max_stream_bytes", 0),
+        ("max_stream_bytes", 64 * 1048576 + 1),
+        ("db_batch_size", 257),
+        ("redis_batch_size", False),
+        ("metadata_queue_size", 4097),
+        ("db_batch_seconds", -0.001),
+        ("db_batch_seconds", True),
+        ("db_batch_seconds", float("nan")),
+        ("db_batch_seconds", 0.051),
+        ("metadata_transport", "rabbitmq"),
+        ("metadata_transport", []),
+        ("metadata_shards", True),
+        ("metadata_shards", 17),
     ],
 )
 def test_invalid_global_configuration(config_file, field, value):
@@ -42,6 +59,15 @@ def test_invalid_global_configuration(config_file, field, value):
     path.write_text(yaml.safe_dump(raw), "utf-8")
     with pytest.raises(ValueError):
         load_settings()
+
+
+def test_zero_batch_window_and_disable_batching_are_supported(config_file):
+    path, raw = config_file
+    raw.update(db_batch_seconds=0, db_batch_size=1, redis_batch_size=1)
+    path.write_text(yaml.safe_dump(raw), "utf-8")
+    settings = load_settings()
+    assert settings.db_batch_seconds == 0
+    assert settings.db_batch_size == settings.redis_batch_size == 1
 
 
 @pytest.mark.parametrize(

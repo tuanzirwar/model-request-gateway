@@ -23,7 +23,7 @@ $env:GATEWAY_APP_KEY = '<至少32字符的随机新密钥>'
 Remove-Item Env:GATEWAY_APP_KEY
 .\.venv\Scripts\python.exe scripts/admin.py disable --app tui
 .\.venv\Scripts\python.exe scripts/admin.py reconcile
-.\.venv\Scripts\python.exe scripts/admin.py purge
+.\.venv\Scripts\python.exe scripts/admin.py purge --batch-size 256 --batches 1
 ```
 
 管理命令只有持有数据库凭据的本机管理员执行，没有公开管理API。`list`不返回密钥或摘要。轮换只改变密钥，不重新启用已禁用应用；禁用和轮换不主动终止已接入流。`grant`会更新授权并启用应用。记录清理使用配置的保留天数，应由部署方安排维护，不声称已有调度服务。
@@ -31,7 +31,7 @@ Remove-Item Env:GATEWAY_APP_KEY
 ## 服务健康和指标
 
 - `/live`只判断HTTP服务仍能应答。
-- `/health`检查Redis与MySQL，失败返回503；不保证模型已加载、上游正常或表迁移完整。
+- `/health`检查MySQL、Redis代际、指纹与恢复窗口，失败返回503；不保证模型已加载、上游正常或表迁移完整。
 - `/metrics`为独立监控密钥保护的Prometheus文本接口；设置`GATEWAY_METRICS_KEY`（至少32字符）后重启启用。为空时404。应用密钥不能抓取监控，监控密钥也不能查询应用记录。
 - 指标包括本进程活动请求、终态计数、请求耗时分布、DB等待及执行、Redis往返、上游头/体等待、事件循环延迟。标签不含应用ID、请求ID、提示词或密钥。
 
@@ -81,3 +81,10 @@ $env:GATEWAY_BROWSER_CHANNEL = 'msedge'
 ```
 
 真实TUI验证要求已启动演示服务且上一级有TUICodingAgent及依赖。该综合入口以本任务机器的测试端口为基础；CI提供MySQL/Redis服务，执行数据库迁移、独立后端测试、静态检查和打包。运行结果见[GitHub CI](https://github.com/tuanzirwar/model-request-gateway/actions/workflows/ci.yaml)；CI不执行依赖本机模型和TUI宿主的验证。
+
+
+## 0.5 部署与保留期维护
+
+旧的 metadata_transport / metadata_shards 配置已移除，仍带字段会报未知配置；删除两项后运行最新迁移。多个实例的 namespace、容量组、路由、lease/total必须一致，policy冲突不能通过删Redis live key解决。改变策略要先排空旧进程、使用新命名空间。恢复期间health503表示等待旧执行截止。
+
+保留期CLI每次仅一批，默认256行；--batches可限定执行轮数，上限100。此维护不是后台队列或定时任务服务。对账是运行中的网关约每2秒执行；停机期间不会有人对账。最新验收入口scripts/verify_pressure.py，历史verify_all报告不替代0.5结果。

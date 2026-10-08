@@ -1,0 +1,168 @@
+{
+  "passed": true,
+  "database": "MySQL",
+  "quota": "real Redis",
+  "transport": "real TCP HTTP; two independent gateway processes",
+  "upstream": "controlled SSE fixture, no model quality claim",
+  "checks": [
+    {
+      "name": "unauthorized_401",
+      "passed": true
+    },
+    {
+      "name": "model_allowlist_403",
+      "passed": true
+    },
+    {
+      "name": "bounded_request_413",
+      "passed": true
+    },
+    {
+      "name": "nonstream_result_and_usage",
+      "passed": true
+    },
+    {
+      "name": "record_ownership_404",
+      "passed": true
+    },
+    {
+      "name": "console_without_embedded_credentials",
+      "passed": true
+    },
+    {
+      "name": "console_asset_available",
+      "passed": true
+    },
+    {
+      "name": "metrics_separate_key",
+      "passed": true
+    },
+    {
+      "name": "stats_requires_app_key",
+      "passed": true
+    },
+    {
+      "name": "mysql_statistics",
+      "passed": true
+    },
+    {
+      "name": "mysql_filtered_records",
+      "passed": true
+    },
+    {
+      "name": "two_process_shared_limit_429",
+      "passed": true
+    },
+    {
+      "name": "metrics_reports_active_and_stages",
+      "passed": true
+    },
+    {
+      "name": "client_cancel_terminal",
+      "passed": true
+    },
+    {
+      "name": "client_cancel_terminal",
+      "passed": true
+    },
+    {
+      "name": "cancelled_quota_reusable",
+      "passed": true
+    },
+    {
+      "name": "lost_lease_stops_stream",
+      "passed": true
+    },
+    {
+      "name": "truncated_terminal_failure",
+      "passed": true,
+      "error": "upstream_incomplete"
+    },
+    {
+      "name": "truncated_no_fake_done",
+      "passed": true
+    },
+    {
+      "name": "oversize_terminal_failure",
+      "passed": true,
+      "error": "frame_too_large"
+    },
+    {
+      "name": "http_error_terminal_failure",
+      "passed": true,
+      "error": "upstream_http_error"
+    },
+    {
+      "name": "before_first_terminal_failure",
+      "passed": true,
+      "error": "deadline_exceeded"
+    },
+    {
+      "name": "idle_terminal_failure",
+      "passed": true,
+      "error": "deadline_exceeded"
+    },
+    {
+      "name": "idle_no_fake_done",
+      "passed": true
+    },
+    {
+      "name": "tui_text_and_usage",
+      "passed": true
+    },
+    {
+      "name": "tui_tool_fragments",
+      "passed": true
+    },
+    {
+      "name": "process_kill_lease_expires",
+      "passed": true
+    },
+    {
+      "name": "process_kill_record_reconciled",
+      "passed": true
+    },
+    {
+      "name": "cursor_pagination_no_duplicate",
+      "passed": true
+    },
+    {
+      "name": "upstream_connections_released",
+      "passed": true
+    },
+    {
+      "name": "redis_failure_closed_503",
+      "passed": true
+    },
+    {
+      "name": "live_independent_of_database",
+      "passed": true
+    },
+    {
+      "name": "readiness_fails_when_database_down",
+      "passed": true
+    },
+    {
+      "name": "database_failure_sanitized_503",
+      "passed": true
+    }
+  ],
+  "upstream_stats": {
+    "started": 14,
+    "closed": 12,
+    "active": 0,
+    "max_active": 2,
+    "active_modes": {
+      "hold:13429": 0,
+      "hold:13430": 0,
+      "normal": 0,
+      "hold:lease_lost": 0,
+      "truncated": 0,
+      "oversize": 0,
+      "before_first": 0,
+      "idle": 0,
+      "tool": 0,
+      "hold:crash": 0
+    }
+  }
+}

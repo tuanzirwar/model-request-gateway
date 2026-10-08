@@ -25,13 +25,19 @@ async def chat(request: Request):
     if mode == "http_error":
         return JSONResponse({"error": "private-provider-secret"}, status_code=500)
     if not payload.get("stream"):
+        size = int(mode.split(":", 1)[1]) if behavior == "size" else 0
+        if not 0 <= size <= 1040000:
+            return JSONResponse({"error": "fixture_size_limit"}, status_code=400)
         return {
             "id": "fixture",
             "object": "chat.completion",
             "choices": [
                 {
                     "index": 0,
-                    "message": {"role": "assistant", "content": "fixture answer"},
+                    "message": {
+                        "role": "assistant",
+                        "content": "x" * size if size else "fixture answer",
+                    },
                     "finish_reason": "stop",
                 }
             ],
@@ -57,6 +63,19 @@ async def chat(request: Request):
                     return
             if behavior == "oversize":
                 yield b"data: " + b"x" * 70000
+                return
+            if behavior == "paced":
+                # 长流实验：固定节奏与字节量，不包含模型推理；允许客户端真实中途断开。
+                count, size, delay = mode.split(":")[1:]
+                count, size, delay = int(count), int(size), float(delay)
+                if not (1 <= count <= 500 and 1 <= size <= 32000 and 0 <= delay <= 1):
+                    return
+                for _ in range(count):
+                    data = {"choices": [{"index": 0, "delta": {"content": "x" * size}}]}
+                    yield ("data: " + json.dumps(data) + "\n\n").encode()
+                    if not await wait_connected(delay):
+                        return
+                yield b"data: [DONE]\n\n"
                 return
             if behavior == "tool":
                 chunks = [

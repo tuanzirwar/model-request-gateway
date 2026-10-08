@@ -20,6 +20,8 @@ def main():
     parser.add_argument("--app", default="tui")
     parser.add_argument("--models", nargs="+", default=["coding"])
     parser.add_argument("--concurrency", type=int, default=2)
+    parser.add_argument("--batch-size", type=int, default=256)
+    parser.add_argument("--batches", type=int, default=1)
     args = parser.parse_args()
     if not re.fullmatch(r"[A-Za-z0-9_.:-]{1,64}", args.app):
         parser.error("应用ID必须为长度1至64的安全标识")
@@ -76,7 +78,15 @@ def main():
     elif args.command == "reconcile":
         print(database.reconcile())
     else:
-        print(database.purge(settings.retention_days))
+        if not 1 <= args.batches <= 100 or not 1 <= args.batch_size <= 1024:
+            parser.error("清理批次数必须为1至100，每批1至1024条")
+        count = 0
+        for _ in range(args.batches):
+            deleted = database.purge(settings.retention_days, args.batch_size)
+            count += deleted
+            if deleted < args.batch_size:
+                break
+        print(json.dumps({"deleted": count, "bounded_batches": args.batches}))
     database.engine.dispose()
 
 

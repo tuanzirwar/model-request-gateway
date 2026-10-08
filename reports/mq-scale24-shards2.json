@@ -1,0 +1,514 @@
+{
+  "passed": false,
+  "mode": "real HTTP gateway/MySQL/Redis; non-streaming fixture upstream, no model inference",
+  "app_id": "benchmark-8f9f4a37dbe34c378abb49eb04c490f5",
+  "workers": 24,
+  "max_inflight_per_worker": 128,
+  "connections_per_worker": 64,
+  "total_db_connections_limit": 96,
+  "auth_pool_size_per_worker": 2,
+  "concurrency_limit": 1024,
+  "requests_per_round": 0,
+  "route": "chat",
+  "direct_upstream": false,
+  "scenario": "normal",
+  "client": "raw",
+  "response_bytes_requested": 0,
+  "database_rows_before": 654133,
+  "seconds_per_round": 20.0,
+  "repeats": 1,
+  "db_workers": 2,
+  "runtime_packages": {
+    "uvicorn": "0.54.0",
+    "httpx": "0.28.1",
+    "sqlalchemy": "2.1.3",
+    "pymysql": "1.2.3",
+    "redis": "8.1.0",
+    "httptools": "0.8.0",
+    "hiredis": "3.4.2"
+  },
+  "http_parser": "auto",
+  "source_version": "0.4.0",
+  "metadata_transport": "redis-streams",
+  "metadata_shards": 2,
+  "db_batch_size": 64,
+  "db_batch_seconds": 0,
+  "redis_batch_size": 64,
+  "closed_loop": true,
+  "rounds": [
+    {
+      "concurrency": 96,
+      "repeat": 1,
+      "requests": 21023,
+      "successful": 21023,
+      "elapsed_seconds": 20.0706,
+      "successful_qps": 1047.45,
+      "attempted_qps": 1047.45,
+      "completed_target": true,
+      "response_body_bytes": 4162554,
+      "response_body_mbps": 1.659,
+      "request_body_bytes": 1892070,
+      "p95_ms": 132.12,
+      "status_counts": {
+        "200": 21023
+      },
+      "expected_status": 200,
+      "stage_profile": [
+        {
+          "operation": "upstream_headers",
+          "phase": "execute",
+          "count": 21023,
+          "mean_ms": 13.103
+        },
+        {
+          "operation": "db_persist_events",
+          "phase": "execute",
+          "count": 1984,
+          "mean_ms": 9.608
+        },
+        {
+          "operation": "upstream_body",
+          "phase": "execute",
+          "count": 21023,
+          "mean_ms": 5.126
+        },
+        {
+          "operation": "db_reconcile",
+          "phase": "execute",
+          "count": 253,
+          "mean_ms": 4.558
+        },
+        {
+          "operation": "redis_acquire",
+          "phase": "execute",
+          "count": 21023,
+          "mean_ms": 2.149
+        },
+        {
+          "operation": "redis_release",
+          "phase": "execute",
+          "count": 21023,
+          "mean_ms": 1.633
+        },
+        {
+          "operation": "db_batch_authenticate",
+          "phase": "execute",
+          "count": 17067,
+          "mean_ms": 1.505
+        },
+        {
+          "operation": "db_batch_authenticate",
+          "phase": "queue",
+          "count": 17067,
+          "mean_ms": 0.338
+        },
+        {
+          "operation": "db_reconcile",
+          "phase": "queue",
+          "count": 253,
+          "mean_ms": 0.329
+        },
+        {
+          "operation": "db_persist_events",
+          "phase": "queue",
+          "count": 1984,
+          "mean_ms": 0.196
+        }
+      ]
+    },
+    {
+      "concurrency": 128,
+      "repeat": 1,
+      "requests": 19628,
+      "successful": 19627,
+      "elapsed_seconds": 20.1039,
+      "successful_qps": 976.28,
+      "attempted_qps": 976.33,
+      "completed_target": true,
+      "response_body_bytes": 3886192,
+      "response_body_mbps": 1.546,
+      "request_body_bytes": 1766520,
+      "p95_ms": 196.81,
+      "status_counts": {
+        "200": 19627,
+        "502": 1
+      },
+      "expected_status": 200,
+      "stage_profile": [
+        {
+          "operation": "upstream_headers",
+          "phase": "execute",
+          "count": 19628,
+          "mean_ms": 19.133
+        },
+        {
+          "operation": "db_persist_events",
+          "phase": "execute",
+          "count": 1477,
+          "mean_ms": 13.144
+        },
+        {
+          "operation": "upstream_body",
+          "phase": "execute",
+          "count": 19627,
+          "mean_ms": 6.263
+        },
+        {
+          "operation": "db_reconcile",
+          "phase": "execute",
+          "count": 250,
+          "mean_ms": 4.295
+        },
+        {
+          "operation": "redis_acquire",
+          "phase": "execute",
+          "count": 19628,
+          "mean_ms": 3.824
+        },
+        {
+          "operation": "redis_release",
+          "phase": "execute",
+          "count": 19628,
+          "mean_ms": 2.517
+        },
+        {
+          "operation": "db_batch_authenticate",
+          "phase": "execute",
+          "count": 14091,
+          "mean_ms": 1.715
+        },
+        {
+          "operation": "db_batch_authenticate",
+          "phase": "queue",
+          "count": 14091,
+          "mean_ms": 0.359
+        },
+        {
+          "operation": "db_reconcile",
+          "phase": "queue",
+          "count": 250,
+          "mean_ms": 0.315
+        },
+        {
+          "operation": "db_persist_events",
+          "phase": "queue",
+          "count": 1477,
+          "mean_ms": 0.218
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "same host and short rounds",
+    "not maximum sustained or model QPS",
+    "records accumulate between rounds",
+    "different configurations are not isolated causal comparisons",
+    "body bandwidth excludes HTTP/TCP/TLS overhead and is measured on loopback",
+    "multiple workers use client-side round-robin, not a deployed load balancer"
+  ],
+  "database_rows_after": 695456,
+  "recovery_checks": [
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    },
+    {
+      "path": "/live",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/v1/models",
+      "status": 200
+    }
+  ],
+  "recovered": true,
+  "app_terminal_counts": [
+    {
+      "status": "succeeded",
+      "error": "",
+      "count": 41322
+    },
+    {
+      "status": "failed",
+      "error": "upstream_connection_error",
+      "count": 1
+    }
+  ],
+  "no_nonterminal_records": true
+}

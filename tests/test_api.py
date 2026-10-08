@@ -4,6 +4,7 @@ import time
 
 import httpx
 import pytest
+from sqlalchemy.exc import OperationalError
 from sqlalchemy.orm import Session
 
 from model_gateway.app import create_app
@@ -107,6 +108,53 @@ async def test_statistics_and_filtered_cursor_are_app_scoped(client):
     assert (await client.get("/stats")).status_code == 401
 
 
+@pytest.mark.parametrize("stream", [False, True])
+async def test_commit_failure_does_not_return_success(client, monkeypatch, stream):
+    runtime = client._transport.app.state.runtime
+
+    async def leased(*args):
+        return True
+
+    def failed_commit(messages):
+        raise OperationalError("", {}, Exception("uncertain commit"))
+
+    monkeypatch.setattr(runtime.quota, "acquire", leased)
+    monkeypatch.setattr(runtime.quota, "release", leased)
+    # 此测试隔离终态 COMMIT 故障；真实协调状态另由 Redis 集成用例覆盖。
+    monkeypatch.setattr(runtime, "ensure_coordination", leased)
+
+    # 队列消费者在初始化时捕获方法，需要替换该批的消费函数。
+    async def consume(messages):
+        return await runtime.db_direct(failed_commit, messages)
+
+    runtime.db_batches["update_record"].consume = consume
+    await runtime.client.aclose()
+
+    def upstream(request):
+        if stream:
+            return httpx.Response(
+                200,
+                content='data: {"choices":[]}\n\ndata: [DONE]\n\n',
+                headers={"content-type": "text/event-stream"},
+            )
+        return httpx.Response(200, json={"choices": [], "usage": {"total_tokens": 1}})
+
+    runtime.client = httpx.AsyncClient(transport=httpx.MockTransport(upstream))
+    response = await client.post(
+        "/v1/chat/completions",
+        headers={"Authorization": "Bearer " + KEY},
+        json={"model": "coding", "messages": [{"role": "user", "content": "x"}], "stream": stream},
+    )
+    if stream:
+        assert response.status_code == 200
+        assert "metadata_unavailable" in response.text and "[DONE]" not in response.text
+    else:
+        assert response.status_code == 503
+    assert "uncertain commit" not in response.text
+    row = runtime.database.get_record("a", response.headers["X-Request-ID"])
+    assert row["status"] == "running"
+
+
 @pytest.mark.parametrize(
     "query",
     [
@@ -138,3 +186,14 @@ async def test_monitor_key_not_application_key_and_assets_are_bounded(client):
     assert (await client.get("/static/console.js")).status_code == 200
     assert (await client.get("/static/config.py")).status_code == 404
     assert (await client.get("/live")).status_code == 200
+
+
+async def test_oversized_api_key_rejected_before_database(client, monkeypatch):
+    runtime = client._transport.app.state.runtime
+
+    def forbidden(key):
+        raise AssertionError("超长密钥不应进入数据库")
+
+    monkeypatch.setattr(runtime.database, "authenticate", forbidden)
+    response = await client.get("/v1/models", headers={"Authorization": "Bearer " + "x" * 513})
+    assert response.status_code == 401

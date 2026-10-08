@@ -1,0 +1,141 @@
+{
+  "passed": true,
+  "repeats": 5,
+  "queries": {
+    "old_status_error": {
+      "sql": "SELECT status,error,COUNT(*) AS n FROM requests WHERE app_id=:app GROUP BY status,error",
+      "mean_ms": 273.205,
+      "samples_ms": [
+        275.778,
+        272.984,
+        270.993,
+        274.168,
+        272.102
+      ],
+      "explain": [
+        {
+          "id": 1,
+          "select_type": "SIMPLE",
+          "table": "requests",
+          "partitions": null,
+          "type": "ref",
+          "possible_keys": "ix_app_started_id,ix_app_status_started_id,ix_app_model_started_id",
+          "key": "ix_app_model_started_id",
+          "key_len": "258",
+          "ref": "const",
+          "rows": 140658,
+          "filtered": 100.0,
+          "Extra": "Using temporary"
+        }
+      ],
+      "explain_analyze": "-> Table scan on <temporary>  (actual time=274..274 rows=1 loops=1)\n    -> Aggregate using temporary table  (actual time=274..274 rows=1 loops=1)\n        -> Index lookup on requests using ix_app_model_started_id (app_id='benchmark-5fb6c5f183ec4c7d89826db64f3886de')  (cost=29490 rows=140658) (actual time=0.391..253 rows=100384 loops=1)\n",
+      "returned_rows": 1
+    },
+    "covering_status": {
+      "sql": "SELECT status,COUNT(*) AS n FROM requests WHERE app_id=:app GROUP BY status",
+      "mean_ms": 27.36,
+      "samples_ms": [
+        28.204,
+        28.152,
+        26.87,
+        27.009,
+        26.564
+      ],
+      "explain": [
+        {
+          "id": 1,
+          "select_type": "SIMPLE",
+          "table": "requests",
+          "partitions": null,
+          "type": "ref",
+          "possible_keys": "ix_app_started_id,ix_status_deadline,ix_app_status_started_id,ix_app_model_started_id",
+          "key": "ix_app_status_started_id",
+          "key_len": "258",
+          "ref": "const",
+          "rows": 196890,
+          "filtered": 100.0,
+          "Extra": "Using index"
+        }
+      ],
+      "explain_analyze": "-> Group aggregate: count(0)  (cost=43165 rows=9.29) (actual time=29.6..29.6 rows=1 loops=1)\n    -> Covering index lookup on requests using ix_app_status_started_id (app_id='benchmark-5fb6c5f183ec4c7d89826db64f3886de')  (cost=23476 rows=196890) (actual time=0.057..23.6 rows=100384 loops=1)\n",
+      "returned_rows": 1
+    },
+    "rare_errors": {
+      "sql": "SELECT status,error,COUNT(*) AS n FROM requests WHERE app_id=:app AND status IN ('failed','rejected','cancelled','abandoned') GROUP BY status,error",
+      "mean_ms": 0.544,
+      "samples_ms": [
+        0.666,
+        0.461,
+        0.883,
+        0.411,
+        0.298
+      ],
+      "explain": [
+        {
+          "id": 1,
+          "select_type": "SIMPLE",
+          "table": "requests",
+          "partitions": null,
+          "type": "range",
+          "possible_keys": "ix_app_started_id,ix_status_deadline,ix_app_status_started_id,ix_app_model_started_id",
+          "key": "ix_app_status_started_id",
+          "key_len": "356",
+          "ref": null,
+          "rows": 4,
+          "filtered": 100.0,
+          "Extra": "Using index condition; Using temporary"
+        }
+      ],
+      "explain_analyze": "-> Table scan on <temporary>  (actual time=0.0191..0.0191 rows=0 loops=1)\n    -> Aggregate using temporary table  (actual time=0.0185..0.0185 rows=0 loops=1)\n        -> Index range scan on requests using ix_app_status_started_id over (app_id = 'benchmark-5fb6c5f183ec4c7d89826db64f3886de' AND status = 'abandoned') OR (app_id = 'benchmark-5fb6c5f183ec4c7d89826db64f3886de' AND status = 'cancelled') OR (2 more), with index condition: ((requests.app_id = 'benchmark-5fb6c5f183ec4c7d89826db64f3886de') and (requests.`status` in ('failed','rejected','cancelled','abandoned')))  (cost=2.81 rows=4) (actual time=0.0133..0.0133 rows=0 loops=1)\n",
+      "returned_rows": 0
+    },
+    "retention_candidate": {
+      "sql": "SELECT id FROM requests WHERE finished_at<:cutoff ORDER BY finished_at,id LIMIT 256",
+      "mean_ms": 114.612,
+      "samples_ms": [
+        113.203,
+        108.803,
+        114.427,
+        120.684,
+        115.941
+      ],
+      "explain": [
+        {
+          "id": 1,
+          "select_type": "SIMPLE",
+          "table": "requests",
+          "partitions": null,
+          "type": "ALL",
+          "possible_keys": null,
+          "key": null,
+          "key_len": null,
+          "ref": null,
+          "rows": 1170960,
+          "filtered": 33.33,
+          "Extra": "Using where; Using filesort"
+        }
+      ],
+      "explain_analyze": "-> Limit: 256 row(s)  (cost=122237 rows=256) (actual time=162..162 rows=0 loops=1)\n    -> Sort: requests.finished_at, requests.id, limit input to 256 row(s) per chunk  (cost=122237 rows=1.17e+6) (actual time=162..162 rows=0 loops=1)\n        -> Filter: (requests.finished_at < 1788769237.5581288e0)  (cost=122237 rows=1.17e+6) (actual time=162..162 rows=0 loops=1)\n            -> Table scan on requests  (cost=122237 rows=1.17e+6) (actual time=0.0308..119 rows=1.1e+6 loops=1)\n",
+      "returned_rows": 0
+    }
+  },
+  "limitations": [
+    "warm local database",
+    "client latency includes transfer",
+    "retention SELECT only; no deletion performed"
+  ],
+  "table": {
+    "TABLE_ROWS": 1170960,
+    "DATA_LENGTH": 336936960,
+    "INDEX_LENGTH": 701186048
+  },
+  "exact_rows": 1096849,
+  "runtime": {
+    "buffer_bytes": 1073741824,
+    "flush_log": 1,
+    "sync_binlog": 1,
+    "slow_threshold_seconds": 0.005
+  },
+  "equal_counts": true,
+  "app_rows": 100384
+}

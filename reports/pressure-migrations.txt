@@ -1,0 +1,1 @@
+{"passed": true, "database": "model_gateway_migration_3af7b364d6c6", "checks": ["empty_database_upgrade_and_repeat", "three_timestamps_double", "six_second_deadline_precision", "cursor_and_reconcile_indexes", "filtered_index_column_order", "statistics_virtual_column", "filtered_index_downgrade_and_upgrade"]}

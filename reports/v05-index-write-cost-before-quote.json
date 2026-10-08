@@ -1,0 +1,9 @@
+{
+  "passed": false,
+  "scope": "isolated synthetic table, ABBA, 20000 rows per round",
+  "rounds": [],
+  "limitations": [
+    "local warm cache",
+    "not production write amplification"
+  ]
+}

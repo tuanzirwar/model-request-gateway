@@ -1,0 +1,57 @@
+{
+  "passed": true,
+  "transport": "Chromium -> real TCP gateway/MySQL/Redis -> SSE fixture",
+  "checks": [
+    {
+      "name": "invalid_key_rejected",
+      "passed": true
+    },
+    {
+      "name": "login_models_and_records",
+      "passed": true
+    },
+    {
+      "name": "cursor_next_page",
+      "passed": true
+    },
+    {
+      "name": "stream_and_record_detail",
+      "passed": true
+    },
+    {
+      "name": "stop_stream_and_cancelled_record",
+      "passed": true
+    },
+    {
+      "name": "generate_after_cancel",
+      "passed": true
+    },
+    {
+      "name": "truncated_stream_not_success",
+      "passed": true
+    },
+    {
+      "name": "model_output_rendered_as_text",
+      "passed": true
+    },
+    {
+      "name": "status_filter",
+      "passed": true
+    },
+    {
+      "name": "mobile_without_horizontal_overflow",
+      "passed": true
+    },
+    {
+      "name": "logout_and_no_persisted_credentials",
+      "passed": true
+    },
+    {
+      "name": "no_uncaught_browser_error",
+      "passed": true
+    }
+  ],
+  "model_quality_claim": false,
+  "browser_version": "154.0.4258.53",
+  "browser_channel": "msedge"
+}

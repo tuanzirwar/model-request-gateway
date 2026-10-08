@@ -1,5 +1,6 @@
 """真实TUI会话运行时经网关调用本地模型，不替换真实模型输出。"""
 
+import argparse
 import asyncio
 import json
 import sys
@@ -19,7 +20,14 @@ from tuicodingagent.runtime import ConversationRuntime  # noqa: E402
 
 
 async def main():
-    config_file = ROOT / ".local/tui-demo/config.yaml"
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--config", default=".local/tui-demo/config.yaml")
+    parser.add_argument("--output", default="reports/real-tui-model.json")
+    args = parser.parse_args()
+    config_file = ROOT / args.config
+    output = (ROOT / args.output).resolve()
+    if not output.is_relative_to(ROOT / "reports"):
+        parser.error("报告必须位于项目reports目录")
     config = ConfigLoader.load(config_file).providers[0]
     # 注入客户端时显式保留TUI原有120秒预算，HTTPX默认5秒会在冷加载时提前取消。
     provider = OpenAIProvider(
@@ -116,9 +124,7 @@ async def main():
             task.cancel()
             await asyncio.gather(task, return_exceptions=True)
         await runtime.close()
-        (ROOT / "reports/real-tui-model.json").write_text(
-            json.dumps(result, ensure_ascii=False, indent=2), "utf-8"
-        )
+        output.write_text(json.dumps(result, ensure_ascii=False, indent=2), "utf-8")
         print(
             json.dumps(
                 {"passed": result["passed"], "completed_turns": len(result["turns"])},

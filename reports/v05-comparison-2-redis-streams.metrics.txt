@@ -1,0 +1,1175 @@
+# HELP gateway_stage_seconds 内部步骤耗时，不等同端到端p95
+# TYPE gateway_stage_seconds histogram
+gateway_stage_seconds_bucket{le="0.001",operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.005",operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.01",operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.025",operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.05",operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.1",operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.25",operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.5",operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="1.0",operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="2.0",operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="5.0",operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="+Inf",operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_count{operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_sum{operation="db_register_coordination",phase="queue"} 0.0003819999983534217
+gateway_stage_seconds_bucket{le="0.001",operation="db_register_coordination",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.005",operation="db_register_coordination",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.01",operation="db_register_coordination",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.025",operation="db_register_coordination",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.05",operation="db_register_coordination",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.1",operation="db_register_coordination",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.25",operation="db_register_coordination",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.5",operation="db_register_coordination",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="1.0",operation="db_register_coordination",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="2.0",operation="db_register_coordination",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="5.0",operation="db_register_coordination",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="+Inf",operation="db_register_coordination",phase="execute"} 1.0
+gateway_stage_seconds_count{operation="db_register_coordination",phase="execute"} 1.0
+gateway_stage_seconds_sum{operation="db_register_coordination",phase="execute"} 0.2670702000032179
+gateway_stage_seconds_bucket{le="0.001",operation="db_reconcile",phase="queue"} 15.0
+gateway_stage_seconds_bucket{le="0.005",operation="db_reconcile",phase="queue"} 15.0
+gateway_stage_seconds_bucket{le="0.01",operation="db_reconcile",phase="queue"} 15.0
+gateway_stage_seconds_bucket{le="0.025",operation="db_reconcile",phase="queue"} 15.0
+gateway_stage_seconds_bucket{le="0.05",operation="db_reconcile",phase="queue"} 15.0
+gateway_stage_seconds_bucket{le="0.1",operation="db_reconcile",phase="queue"} 15.0
+gateway_stage_seconds_bucket{le="0.25",operation="db_reconcile",phase="queue"} 15.0
+gateway_stage_seconds_bucket{le="0.5",operation="db_reconcile",phase="queue"} 15.0
+gateway_stage_seconds_bucket{le="1.0",operation="db_reconcile",phase="queue"} 15.0
+gateway_stage_seconds_bucket{le="2.0",operation="db_reconcile",phase="queue"} 15.0
+gateway_stage_seconds_bucket{le="5.0",operation="db_reconcile",phase="queue"} 15.0
+gateway_stage_seconds_bucket{le="+Inf",operation="db_reconcile",phase="queue"} 15.0
+gateway_stage_seconds_count{operation="db_reconcile",phase="queue"} 15.0
+gateway_stage_seconds_sum{operation="db_reconcile",phase="queue"} 0.0019640999962575734
+gateway_stage_seconds_bucket{le="0.001",operation="db_reconcile",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.005",operation="db_reconcile",phase="execute"} 15.0
+gateway_stage_seconds_bucket{le="0.01",operation="db_reconcile",phase="execute"} 15.0
+gateway_stage_seconds_bucket{le="0.025",operation="db_reconcile",phase="execute"} 15.0
+gateway_stage_seconds_bucket{le="0.05",operation="db_reconcile",phase="execute"} 15.0
+gateway_stage_seconds_bucket{le="0.1",operation="db_reconcile",phase="execute"} 15.0
+gateway_stage_seconds_bucket{le="0.25",operation="db_reconcile",phase="execute"} 15.0
+gateway_stage_seconds_bucket{le="0.5",operation="db_reconcile",phase="execute"} 15.0
+gateway_stage_seconds_bucket{le="1.0",operation="db_reconcile",phase="execute"} 15.0
+gateway_stage_seconds_bucket{le="2.0",operation="db_reconcile",phase="execute"} 15.0
+gateway_stage_seconds_bucket{le="5.0",operation="db_reconcile",phase="execute"} 15.0
+gateway_stage_seconds_bucket{le="+Inf",operation="db_reconcile",phase="execute"} 15.0
+gateway_stage_seconds_count{operation="db_reconcile",phase="execute"} 15.0
+gateway_stage_seconds_sum{operation="db_reconcile",phase="execute"} 0.043421999987913296
+gateway_stage_seconds_bucket{le="0.001",operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.005",operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.01",operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.025",operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.05",operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.1",operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.25",operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.5",operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="1.0",operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="2.0",operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="5.0",operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="+Inf",operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_count{operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_sum{operation="db_db_ping",phase="queue"} 6.809999467805028e-05
+gateway_stage_seconds_bucket{le="0.001",operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="0.005",operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="0.01",operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="0.025",operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="0.05",operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="0.1",operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="0.25",operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="0.5",operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="1.0",operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="2.0",operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="5.0",operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="+Inf",operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_count{operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_sum{operation="db_db_ping",phase="execute"} 0.000890900002559647
+gateway_stage_seconds_bucket{le="0.001",operation="db_batch_authenticate",phase="queue"} 1577.0
+gateway_stage_seconds_bucket{le="0.005",operation="db_batch_authenticate",phase="queue"} 1580.0
+gateway_stage_seconds_bucket{le="0.01",operation="db_batch_authenticate",phase="queue"} 1580.0
+gateway_stage_seconds_bucket{le="0.025",operation="db_batch_authenticate",phase="queue"} 1581.0
+gateway_stage_seconds_bucket{le="0.05",operation="db_batch_authenticate",phase="queue"} 1581.0
+gateway_stage_seconds_bucket{le="0.1",operation="db_batch_authenticate",phase="queue"} 1581.0
+gateway_stage_seconds_bucket{le="0.25",operation="db_batch_authenticate",phase="queue"} 1581.0
+gateway_stage_seconds_bucket{le="0.5",operation="db_batch_authenticate",phase="queue"} 1581.0
+gateway_stage_seconds_bucket{le="1.0",operation="db_batch_authenticate",phase="queue"} 1581.0
+gateway_stage_seconds_bucket{le="2.0",operation="db_batch_authenticate",phase="queue"} 1581.0
+gateway_stage_seconds_bucket{le="5.0",operation="db_batch_authenticate",phase="queue"} 1581.0
+gateway_stage_seconds_bucket{le="+Inf",operation="db_batch_authenticate",phase="queue"} 1581.0
+gateway_stage_seconds_count{operation="db_batch_authenticate",phase="queue"} 1581.0
+gateway_stage_seconds_sum{operation="db_batch_authenticate",phase="queue"} 0.3139781992067583
+gateway_stage_seconds_bucket{le="0.001",operation="db_batch_authenticate",phase="execute"} 503.0
+gateway_stage_seconds_bucket{le="0.005",operation="db_batch_authenticate",phase="execute"} 1578.0
+gateway_stage_seconds_bucket{le="0.01",operation="db_batch_authenticate",phase="execute"} 1578.0
+gateway_stage_seconds_bucket{le="0.025",operation="db_batch_authenticate",phase="execute"} 1580.0
+gateway_stage_seconds_bucket{le="0.05",operation="db_batch_authenticate",phase="execute"} 1580.0
+gateway_stage_seconds_bucket{le="0.1",operation="db_batch_authenticate",phase="execute"} 1580.0
+gateway_stage_seconds_bucket{le="0.25",operation="db_batch_authenticate",phase="execute"} 1581.0
+gateway_stage_seconds_bucket{le="0.5",operation="db_batch_authenticate",phase="execute"} 1581.0
+gateway_stage_seconds_bucket{le="1.0",operation="db_batch_authenticate",phase="execute"} 1581.0
+gateway_stage_seconds_bucket{le="2.0",operation="db_batch_authenticate",phase="execute"} 1581.0
+gateway_stage_seconds_bucket{le="5.0",operation="db_batch_authenticate",phase="execute"} 1581.0
+gateway_stage_seconds_bucket{le="+Inf",operation="db_batch_authenticate",phase="execute"} 1581.0
+gateway_stage_seconds_count{operation="db_batch_authenticate",phase="execute"} 1581.0
+gateway_stage_seconds_sum{operation="db_batch_authenticate",phase="execute"} 1.9743696005025413
+gateway_stage_seconds_bucket{le="0.001",operation="redis_acquire",phase="execute"} 1069.0
+gateway_stage_seconds_bucket{le="0.005",operation="redis_acquire",phase="execute"} 2120.0
+gateway_stage_seconds_bucket{le="0.01",operation="redis_acquire",phase="execute"} 2466.0
+gateway_stage_seconds_bucket{le="0.025",operation="redis_acquire",phase="execute"} 2521.0
+gateway_stage_seconds_bucket{le="0.05",operation="redis_acquire",phase="execute"} 2521.0
+gateway_stage_seconds_bucket{le="0.1",operation="redis_acquire",phase="execute"} 2521.0
+gateway_stage_seconds_bucket{le="0.25",operation="redis_acquire",phase="execute"} 2521.0
+gateway_stage_seconds_bucket{le="0.5",operation="redis_acquire",phase="execute"} 2521.0
+gateway_stage_seconds_bucket{le="1.0",operation="redis_acquire",phase="execute"} 2521.0
+gateway_stage_seconds_bucket{le="2.0",operation="redis_acquire",phase="execute"} 2521.0
+gateway_stage_seconds_bucket{le="5.0",operation="redis_acquire",phase="execute"} 2521.0
+gateway_stage_seconds_bucket{le="+Inf",operation="redis_acquire",phase="execute"} 2521.0
+gateway_stage_seconds_count{operation="redis_acquire",phase="execute"} 2521.0
+gateway_stage_seconds_sum{operation="redis_acquire",phase="execute"} 6.325713698635809
+gateway_stage_seconds_bucket{le="0.001",operation="mq_create_record",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.005",operation="mq_create_record",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.01",operation="mq_create_record",phase="execute"} 6.0
+gateway_stage_seconds_bucket{le="0.025",operation="mq_create_record",phase="execute"} 1300.0
+gateway_stage_seconds_bucket{le="0.05",operation="mq_create_record",phase="execute"} 2329.0
+gateway_stage_seconds_bucket{le="0.1",operation="mq_create_record",phase="execute"} 2494.0
+gateway_stage_seconds_bucket{le="0.25",operation="mq_create_record",phase="execute"} 2521.0
+gateway_stage_seconds_bucket{le="0.5",operation="mq_create_record",phase="execute"} 2521.0
+gateway_stage_seconds_bucket{le="1.0",operation="mq_create_record",phase="execute"} 2521.0
+gateway_stage_seconds_bucket{le="2.0",operation="mq_create_record",phase="execute"} 2521.0
+gateway_stage_seconds_bucket{le="5.0",operation="mq_create_record",phase="execute"} 2521.0
+gateway_stage_seconds_bucket{le="+Inf",operation="mq_create_record",phase="execute"} 2521.0
+gateway_stage_seconds_count{operation="mq_create_record",phase="execute"} 2521.0
+gateway_stage_seconds_sum{operation="mq_create_record",phase="execute"} 72.74420580037986
+gateway_stage_seconds_bucket{le="0.001",operation="upstream_headers",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.005",operation="upstream_headers",phase="execute"} 692.0
+gateway_stage_seconds_bucket{le="0.01",operation="upstream_headers",phase="execute"} 1571.0
+gateway_stage_seconds_bucket{le="0.025",operation="upstream_headers",phase="execute"} 2403.0
+gateway_stage_seconds_bucket{le="0.05",operation="upstream_headers",phase="execute"} 2521.0
+gateway_stage_seconds_bucket{le="0.1",operation="upstream_headers",phase="execute"} 2521.0
+gateway_stage_seconds_bucket{le="0.25",operation="upstream_headers",phase="execute"} 2521.0
+gateway_stage_seconds_bucket{le="0.5",operation="upstream_headers",phase="execute"} 2521.0
+gateway_stage_seconds_bucket{le="1.0",operation="upstream_headers",phase="execute"} 2521.0
+gateway_stage_seconds_bucket{le="2.0",operation="upstream_headers",phase="execute"} 2521.0
+gateway_stage_seconds_bucket{le="5.0",operation="upstream_headers",phase="execute"} 2521.0
+gateway_stage_seconds_bucket{le="+Inf",operation="upstream_headers",phase="execute"} 2521.0
+gateway_stage_seconds_count{operation="upstream_headers",phase="execute"} 2521.0
+gateway_stage_seconds_sum{operation="upstream_headers",phase="execute"} 24.818380799610168
+gateway_stage_seconds_bucket{le="0.001",operation="upstream_body",phase="execute"} 3.0
+gateway_stage_seconds_bucket{le="0.005",operation="upstream_body",phase="execute"} 2336.0
+gateway_stage_seconds_bucket{le="0.01",operation="upstream_body",phase="execute"} 2517.0
+gateway_stage_seconds_bucket{le="0.025",operation="upstream_body",phase="execute"} 2521.0
+gateway_stage_seconds_bucket{le="0.05",operation="upstream_body",phase="execute"} 2521.0
+gateway_stage_seconds_bucket{le="0.1",operation="upstream_body",phase="execute"} 2521.0
+gateway_stage_seconds_bucket{le="0.25",operation="upstream_body",phase="execute"} 2521.0
+gateway_stage_seconds_bucket{le="0.5",operation="upstream_body",phase="execute"} 2521.0
+gateway_stage_seconds_bucket{le="1.0",operation="upstream_body",phase="execute"} 2521.0
+gateway_stage_seconds_bucket{le="2.0",operation="upstream_body",phase="execute"} 2521.0
+gateway_stage_seconds_bucket{le="5.0",operation="upstream_body",phase="execute"} 2521.0
+gateway_stage_seconds_bucket{le="+Inf",operation="upstream_body",phase="execute"} 2521.0
+gateway_stage_seconds_count{operation="upstream_body",phase="execute"} 2521.0
+gateway_stage_seconds_sum{operation="upstream_body",phase="execute"} 7.228772999660578
+gateway_stage_seconds_bucket{le="0.001",operation="redis_release",phase="execute"} 1072.0
+gateway_stage_seconds_bucket{le="0.005",operation="redis_release",phase="execute"} 2315.0
+gateway_stage_seconds_bucket{le="0.01",operation="redis_release",phase="execute"} 2494.0
+gateway_stage_seconds_bucket{le="0.025",operation="redis_release",phase="execute"} 2520.0
+gateway_stage_seconds_bucket{le="0.05",operation="redis_release",phase="execute"} 2520.0
+gateway_stage_seconds_bucket{le="0.1",operation="redis_release",phase="execute"} 2521.0
+gateway_stage_seconds_bucket{le="0.25",operation="redis_release",phase="execute"} 2521.0
+gateway_stage_seconds_bucket{le="0.5",operation="redis_release",phase="execute"} 2521.0
+gateway_stage_seconds_bucket{le="1.0",operation="redis_release",phase="execute"} 2521.0
+gateway_stage_seconds_bucket{le="2.0",operation="redis_release",phase="execute"} 2521.0
+gateway_stage_seconds_bucket{le="5.0",operation="redis_release",phase="execute"} 2521.0
+gateway_stage_seconds_bucket{le="+Inf",operation="redis_release",phase="execute"} 2521.0
+gateway_stage_seconds_count{operation="redis_release",phase="execute"} 2521.0
+gateway_stage_seconds_sum{operation="redis_release",phase="execute"} 5.006900999927893
+gateway_stage_seconds_bucket{le="0.001",operation="mq_update_record",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.005",operation="mq_update_record",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.01",operation="mq_update_record",phase="execute"} 12.0
+gateway_stage_seconds_bucket{le="0.025",operation="mq_update_record",phase="execute"} 1339.0
+gateway_stage_seconds_bucket{le="0.05",operation="mq_update_record",phase="execute"} 2369.0
+gateway_stage_seconds_bucket{le="0.1",operation="mq_update_record",phase="execute"} 2496.0
+gateway_stage_seconds_bucket{le="0.25",operation="mq_update_record",phase="execute"} 2521.0
+gateway_stage_seconds_bucket{le="0.5",operation="mq_update_record",phase="execute"} 2521.0
+gateway_stage_seconds_bucket{le="1.0",operation="mq_update_record",phase="execute"} 2521.0
+gateway_stage_seconds_bucket{le="2.0",operation="mq_update_record",phase="execute"} 2521.0
+gateway_stage_seconds_bucket{le="5.0",operation="mq_update_record",phase="execute"} 2521.0
+gateway_stage_seconds_bucket{le="+Inf",operation="mq_update_record",phase="execute"} 2521.0
+gateway_stage_seconds_count{operation="mq_update_record",phase="execute"} 2521.0
+gateway_stage_seconds_sum{operation="mq_update_record",phase="execute"} 70.73674379952718
+# HELP gateway_stage_seconds_created 内部步骤耗时，不等同端到端p95
+# TYPE gateway_stage_seconds_created gauge
+gateway_stage_seconds_created{operation="db_register_coordination",phase="queue"} 1.7913638681007645e+09
+gateway_stage_seconds_created{operation="db_register_coordination",phase="execute"} 1.791363868367774e+09
+gateway_stage_seconds_created{operation="db_reconcile",phase="queue"} 1.7913638683747506e+09
+gateway_stage_seconds_created{operation="db_reconcile",phase="execute"} 1.7913638683773055e+09
+gateway_stage_seconds_created{operation="db_db_ping",phase="queue"} 1.7913638688090086e+09
+gateway_stage_seconds_created{operation="db_db_ping",phase="execute"} 1.7913638688098538e+09
+gateway_stage_seconds_created{operation="db_batch_authenticate",phase="queue"} 1.7913638688405206e+09
+gateway_stage_seconds_created{operation="db_batch_authenticate",phase="execute"} 1.7913638689485896e+09
+gateway_stage_seconds_created{operation="redis_acquire",phase="execute"} 1.7913638689509733e+09
+gateway_stage_seconds_created{operation="mq_create_record",phase="execute"} 1.7913638689850087e+09
+gateway_stage_seconds_created{operation="upstream_headers",phase="execute"} 1.7913638690093663e+09
+gateway_stage_seconds_created{operation="upstream_body",phase="execute"} 1.7913638690124762e+09
+gateway_stage_seconds_created{operation="redis_release",phase="execute"} 1.7913638690175414e+09
+gateway_stage_seconds_created{operation="mq_update_record",phase="execute"} 1.7913638690454435e+09
+# HELP gateway_requests_total 本进程完成清理的请求
+# TYPE gateway_requests_total counter
+gateway_requests_total{model="fixture",status="succeeded"} 2521.0
+# HELP gateway_requests_created 本进程完成清理的请求
+# TYPE gateway_requests_created gauge
+gateway_requests_created{model="fixture",status="succeeded"} 1.7913638690455055e+09
+# HELP gateway_request_seconds 含上游和清理的请求耗时
+# TYPE gateway_request_seconds histogram
+gateway_request_seconds_bucket{le="0.005",model="fixture",status="succeeded"} 0.0
+gateway_request_seconds_bucket{le="0.01",model="fixture",status="succeeded"} 0.0
+gateway_request_seconds_bucket{le="0.025",model="fixture",status="succeeded"} 0.0
+gateway_request_seconds_bucket{le="0.05",model="fixture",status="succeeded"} 150.0
+gateway_request_seconds_bucket{le="0.075",model="fixture",status="succeeded"} 1298.0
+gateway_request_seconds_bucket{le="0.1",model="fixture",status="succeeded"} 2152.0
+gateway_request_seconds_bucket{le="0.25",model="fixture",status="succeeded"} 2519.0
+gateway_request_seconds_bucket{le="0.5",model="fixture",status="succeeded"} 2521.0
+gateway_request_seconds_bucket{le="0.75",model="fixture",status="succeeded"} 2521.0
+gateway_request_seconds_bucket{le="1.0",model="fixture",status="succeeded"} 2521.0
+gateway_request_seconds_bucket{le="2.5",model="fixture",status="succeeded"} 2521.0
+gateway_request_seconds_bucket{le="5.0",model="fixture",status="succeeded"} 2521.0
+gateway_request_seconds_bucket{le="7.5",model="fixture",status="succeeded"} 2521.0
+gateway_request_seconds_bucket{le="10.0",model="fixture",status="succeeded"} 2521.0
+gateway_request_seconds_bucket{le="+Inf",model="fixture",status="succeeded"} 2521.0
+gateway_request_seconds_count{model="fixture",status="succeeded"} 2521.0
+gateway_request_seconds_sum{model="fixture",status="succeeded"} 202.36548169972957
+# HELP gateway_request_seconds_created 含上游和清理的请求耗时
+# TYPE gateway_request_seconds_created gauge
+gateway_request_seconds_created{model="fixture",status="succeeded"} 1.7913638690455163e+09
+# HELP gateway_active_requests 本进程持有接入额度的请求数
+# TYPE gateway_active_requests gauge
+gateway_active_requests 0.0
+# HELP gateway_database_deadlock_retries_total MySQL明确回滚死锁后的有界重试次数
+# TYPE gateway_database_deadlock_retries_total counter
+gateway_database_deadlock_retries_total 0.0
+# HELP gateway_database_deadlock_retries_created MySQL明确回滚死锁后的有界重试次数
+# TYPE gateway_database_deadlock_retries_created gauge
+gateway_database_deadlock_retries_created 1.7913638676145458e+09
+# HELP gateway_event_loop_lag_seconds 事件循环调度延迟
+# TYPE gateway_event_loop_lag_seconds gauge
+gateway_event_loop_lag_seconds 0.006408499990357086
+# HELP gateway_metadata_batches_total 本进程消费的元数据批次
+# TYPE gateway_metadata_batches_total counter
+gateway_metadata_batches_total 0.0
+# HELP gateway_metadata_batches_created 本进程消费的元数据批次
+# TYPE gateway_metadata_batches_created gauge
+gateway_metadata_batches_created 1.7913638676145585e+09
+# HELP gateway_metadata_messages_total 本进程消费的元数据消息（含重投）
+# TYPE gateway_metadata_messages_total counter
+gateway_metadata_messages_total 0.0
+# HELP gateway_metadata_messages_created 本进程消费的元数据消息（含重投）
+# TYPE gateway_metadata_messages_created gauge
+gateway_metadata_messages_created 1.7913638676145627e+09
+# HELP gateway_metadata_commit_failures_total 未确认并保留在PEL的失败批次
+# TYPE gateway_metadata_commit_failures_total counter
+gateway_metadata_commit_failures_total 0.0
+# HELP gateway_metadata_commit_failures_created 未确认并保留在PEL的失败批次
+# TYPE gateway_metadata_commit_failures_created gauge
+gateway_metadata_commit_failures_created 1.7913638676145682e+09
+# HELP gateway_metadata_backlog 共享元数据流积压，多个实例不要相加
+# TYPE gateway_metadata_backlog gauge
+gateway_metadata_backlog 19.0
+# HELP gateway_metadata_dead_letters 共享死信消息数，多个实例不要相加
+# TYPE gateway_metadata_dead_letters gauge
+gateway_metadata_dead_letters 0.0
+
+# HELP gateway_stage_seconds 内部步骤耗时，不等同端到端p95
+# TYPE gateway_stage_seconds histogram
+gateway_stage_seconds_bucket{le="0.001",operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.005",operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.01",operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.025",operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.05",operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.1",operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.25",operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.5",operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="1.0",operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="2.0",operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="5.0",operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="+Inf",operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_count{operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_sum{operation="db_register_coordination",phase="queue"} 0.0004028000112157315
+gateway_stage_seconds_bucket{le="0.001",operation="db_register_coordination",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.005",operation="db_register_coordination",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.01",operation="db_register_coordination",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.025",operation="db_register_coordination",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.05",operation="db_register_coordination",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.1",operation="db_register_coordination",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.25",operation="db_register_coordination",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="0.5",operation="db_register_coordination",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="1.0",operation="db_register_coordination",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="2.0",operation="db_register_coordination",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="5.0",operation="db_register_coordination",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="+Inf",operation="db_register_coordination",phase="execute"} 1.0
+gateway_stage_seconds_count{operation="db_register_coordination",phase="execute"} 1.0
+gateway_stage_seconds_sum{operation="db_register_coordination",phase="execute"} 0.1341429999738466
+gateway_stage_seconds_bucket{le="0.001",operation="db_reconcile",phase="queue"} 15.0
+gateway_stage_seconds_bucket{le="0.005",operation="db_reconcile",phase="queue"} 15.0
+gateway_stage_seconds_bucket{le="0.01",operation="db_reconcile",phase="queue"} 15.0
+gateway_stage_seconds_bucket{le="0.025",operation="db_reconcile",phase="queue"} 15.0
+gateway_stage_seconds_bucket{le="0.05",operation="db_reconcile",phase="queue"} 15.0
+gateway_stage_seconds_bucket{le="0.1",operation="db_reconcile",phase="queue"} 15.0
+gateway_stage_seconds_bucket{le="0.25",operation="db_reconcile",phase="queue"} 15.0
+gateway_stage_seconds_bucket{le="0.5",operation="db_reconcile",phase="queue"} 15.0
+gateway_stage_seconds_bucket{le="1.0",operation="db_reconcile",phase="queue"} 15.0
+gateway_stage_seconds_bucket{le="2.0",operation="db_reconcile",phase="queue"} 15.0
+gateway_stage_seconds_bucket{le="5.0",operation="db_reconcile",phase="queue"} 15.0
+gateway_stage_seconds_bucket{le="+Inf",operation="db_reconcile",phase="queue"} 15.0
+gateway_stage_seconds_count{operation="db_reconcile",phase="queue"} 15.0
+gateway_stage_seconds_sum{operation="db_reconcile",phase="queue"} 0.0018808000022545457
+gateway_stage_seconds_bucket{le="0.001",operation="db_reconcile",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.005",operation="db_reconcile",phase="execute"} 15.0
+gateway_stage_seconds_bucket{le="0.01",operation="db_reconcile",phase="execute"} 15.0
+gateway_stage_seconds_bucket{le="0.025",operation="db_reconcile",phase="execute"} 15.0
+gateway_stage_seconds_bucket{le="0.05",operation="db_reconcile",phase="execute"} 15.0
+gateway_stage_seconds_bucket{le="0.1",operation="db_reconcile",phase="execute"} 15.0
+gateway_stage_seconds_bucket{le="0.25",operation="db_reconcile",phase="execute"} 15.0
+gateway_stage_seconds_bucket{le="0.5",operation="db_reconcile",phase="execute"} 15.0
+gateway_stage_seconds_bucket{le="1.0",operation="db_reconcile",phase="execute"} 15.0
+gateway_stage_seconds_bucket{le="2.0",operation="db_reconcile",phase="execute"} 15.0
+gateway_stage_seconds_bucket{le="5.0",operation="db_reconcile",phase="execute"} 15.0
+gateway_stage_seconds_bucket{le="+Inf",operation="db_reconcile",phase="execute"} 15.0
+gateway_stage_seconds_count{operation="db_reconcile",phase="execute"} 15.0
+gateway_stage_seconds_sum{operation="db_reconcile",phase="execute"} 0.04537869992782362
+gateway_stage_seconds_bucket{le="0.001",operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.005",operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.01",operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.025",operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.05",operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.1",operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.25",operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.5",operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="1.0",operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="2.0",operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="5.0",operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="+Inf",operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_count{operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_sum{operation="db_db_ping",phase="queue"} 5.299999611452222e-05
+gateway_stage_seconds_bucket{le="0.001",operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="0.005",operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="0.01",operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="0.025",operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="0.05",operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="0.1",operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="0.25",operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="0.5",operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="1.0",operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="2.0",operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="5.0",operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="+Inf",operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_count{operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_sum{operation="db_db_ping",phase="execute"} 0.0009959999879356474
+gateway_stage_seconds_bucket{le="0.001",operation="db_batch_authenticate",phase="queue"} 1528.0
+gateway_stage_seconds_bucket{le="0.005",operation="db_batch_authenticate",phase="queue"} 1529.0
+gateway_stage_seconds_bucket{le="0.01",operation="db_batch_authenticate",phase="queue"} 1529.0
+gateway_stage_seconds_bucket{le="0.025",operation="db_batch_authenticate",phase="queue"} 1529.0
+gateway_stage_seconds_bucket{le="0.05",operation="db_batch_authenticate",phase="queue"} 1529.0
+gateway_stage_seconds_bucket{le="0.1",operation="db_batch_authenticate",phase="queue"} 1529.0
+gateway_stage_seconds_bucket{le="0.25",operation="db_batch_authenticate",phase="queue"} 1529.0
+gateway_stage_seconds_bucket{le="0.5",operation="db_batch_authenticate",phase="queue"} 1529.0
+gateway_stage_seconds_bucket{le="1.0",operation="db_batch_authenticate",phase="queue"} 1529.0
+gateway_stage_seconds_bucket{le="2.0",operation="db_batch_authenticate",phase="queue"} 1529.0
+gateway_stage_seconds_bucket{le="5.0",operation="db_batch_authenticate",phase="queue"} 1529.0
+gateway_stage_seconds_bucket{le="+Inf",operation="db_batch_authenticate",phase="queue"} 1529.0
+gateway_stage_seconds_count{operation="db_batch_authenticate",phase="queue"} 1529.0
+gateway_stage_seconds_sum{operation="db_batch_authenticate",phase="queue"} 0.2721939995244611
+gateway_stage_seconds_bucket{le="0.001",operation="db_batch_authenticate",phase="execute"} 465.0
+gateway_stage_seconds_bucket{le="0.005",operation="db_batch_authenticate",phase="execute"} 1527.0
+gateway_stage_seconds_bucket{le="0.01",operation="db_batch_authenticate",phase="execute"} 1528.0
+gateway_stage_seconds_bucket{le="0.025",operation="db_batch_authenticate",phase="execute"} 1528.0
+gateway_stage_seconds_bucket{le="0.05",operation="db_batch_authenticate",phase="execute"} 1528.0
+gateway_stage_seconds_bucket{le="0.1",operation="db_batch_authenticate",phase="execute"} 1528.0
+gateway_stage_seconds_bucket{le="0.25",operation="db_batch_authenticate",phase="execute"} 1529.0
+gateway_stage_seconds_bucket{le="0.5",operation="db_batch_authenticate",phase="execute"} 1529.0
+gateway_stage_seconds_bucket{le="1.0",operation="db_batch_authenticate",phase="execute"} 1529.0
+gateway_stage_seconds_bucket{le="2.0",operation="db_batch_authenticate",phase="execute"} 1529.0
+gateway_stage_seconds_bucket{le="5.0",operation="db_batch_authenticate",phase="execute"} 1529.0
+gateway_stage_seconds_bucket{le="+Inf",operation="db_batch_authenticate",phase="execute"} 1529.0
+gateway_stage_seconds_count{operation="db_batch_authenticate",phase="execute"} 1529.0
+gateway_stage_seconds_sum{operation="db_batch_authenticate",phase="execute"} 1.9196319006732665
+gateway_stage_seconds_bucket{le="0.001",operation="redis_acquire",phase="execute"} 1019.0
+gateway_stage_seconds_bucket{le="0.005",operation="redis_acquire",phase="execute"} 2049.0
+gateway_stage_seconds_bucket{le="0.01",operation="redis_acquire",phase="execute"} 2424.0
+gateway_stage_seconds_bucket{le="0.025",operation="redis_acquire",phase="execute"} 2484.0
+gateway_stage_seconds_bucket{le="0.05",operation="redis_acquire",phase="execute"} 2484.0
+gateway_stage_seconds_bucket{le="0.1",operation="redis_acquire",phase="execute"} 2485.0
+gateway_stage_seconds_bucket{le="0.25",operation="redis_acquire",phase="execute"} 2485.0
+gateway_stage_seconds_bucket{le="0.5",operation="redis_acquire",phase="execute"} 2485.0
+gateway_stage_seconds_bucket{le="1.0",operation="redis_acquire",phase="execute"} 2485.0
+gateway_stage_seconds_bucket{le="2.0",operation="redis_acquire",phase="execute"} 2485.0
+gateway_stage_seconds_bucket{le="5.0",operation="redis_acquire",phase="execute"} 2485.0
+gateway_stage_seconds_bucket{le="+Inf",operation="redis_acquire",phase="execute"} 2485.0
+gateway_stage_seconds_count{operation="redis_acquire",phase="execute"} 2485.0
+gateway_stage_seconds_sum{operation="redis_acquire",phase="execute"} 6.685708800563589
+gateway_stage_seconds_bucket{le="0.001",operation="mq_create_record",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.005",operation="mq_create_record",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.01",operation="mq_create_record",phase="execute"} 6.0
+gateway_stage_seconds_bucket{le="0.025",operation="mq_create_record",phase="execute"} 1243.0
+gateway_stage_seconds_bucket{le="0.05",operation="mq_create_record",phase="execute"} 2296.0
+gateway_stage_seconds_bucket{le="0.1",operation="mq_create_record",phase="execute"} 2459.0
+gateway_stage_seconds_bucket{le="0.25",operation="mq_create_record",phase="execute"} 2485.0
+gateway_stage_seconds_bucket{le="0.5",operation="mq_create_record",phase="execute"} 2485.0
+gateway_stage_seconds_bucket{le="1.0",operation="mq_create_record",phase="execute"} 2485.0
+gateway_stage_seconds_bucket{le="2.0",operation="mq_create_record",phase="execute"} 2485.0
+gateway_stage_seconds_bucket{le="5.0",operation="mq_create_record",phase="execute"} 2485.0
+gateway_stage_seconds_bucket{le="+Inf",operation="mq_create_record",phase="execute"} 2485.0
+gateway_stage_seconds_count{operation="mq_create_record",phase="execute"} 2485.0
+gateway_stage_seconds_sum{operation="mq_create_record",phase="execute"} 72.76572619899525
+gateway_stage_seconds_bucket{le="0.001",operation="upstream_headers",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.005",operation="upstream_headers",phase="execute"} 648.0
+gateway_stage_seconds_bucket{le="0.01",operation="upstream_headers",phase="execute"} 1463.0
+gateway_stage_seconds_bucket{le="0.025",operation="upstream_headers",phase="execute"} 2405.0
+gateway_stage_seconds_bucket{le="0.05",operation="upstream_headers",phase="execute"} 2484.0
+gateway_stage_seconds_bucket{le="0.1",operation="upstream_headers",phase="execute"} 2485.0
+gateway_stage_seconds_bucket{le="0.25",operation="upstream_headers",phase="execute"} 2485.0
+gateway_stage_seconds_bucket{le="0.5",operation="upstream_headers",phase="execute"} 2485.0
+gateway_stage_seconds_bucket{le="1.0",operation="upstream_headers",phase="execute"} 2485.0
+gateway_stage_seconds_bucket{le="2.0",operation="upstream_headers",phase="execute"} 2485.0
+gateway_stage_seconds_bucket{le="5.0",operation="upstream_headers",phase="execute"} 2485.0
+gateway_stage_seconds_bucket{le="+Inf",operation="upstream_headers",phase="execute"} 2485.0
+gateway_stage_seconds_count{operation="upstream_headers",phase="execute"} 2485.0
+gateway_stage_seconds_sum{operation="upstream_headers",phase="execute"} 24.869996000255924
+gateway_stage_seconds_bucket{le="0.001",operation="upstream_body",phase="execute"} 4.0
+gateway_stage_seconds_bucket{le="0.005",operation="upstream_body",phase="execute"} 2295.0
+gateway_stage_seconds_bucket{le="0.01",operation="upstream_body",phase="execute"} 2471.0
+gateway_stage_seconds_bucket{le="0.025",operation="upstream_body",phase="execute"} 2485.0
+gateway_stage_seconds_bucket{le="0.05",operation="upstream_body",phase="execute"} 2485.0
+gateway_stage_seconds_bucket{le="0.1",operation="upstream_body",phase="execute"} 2485.0
+gateway_stage_seconds_bucket{le="0.25",operation="upstream_body",phase="execute"} 2485.0
+gateway_stage_seconds_bucket{le="0.5",operation="upstream_body",phase="execute"} 2485.0
+gateway_stage_seconds_bucket{le="1.0",operation="upstream_body",phase="execute"} 2485.0
+gateway_stage_seconds_bucket{le="2.0",operation="upstream_body",phase="execute"} 2485.0
+gateway_stage_seconds_bucket{le="5.0",operation="upstream_body",phase="execute"} 2485.0
+gateway_stage_seconds_bucket{le="+Inf",operation="upstream_body",phase="execute"} 2485.0
+gateway_stage_seconds_count{operation="upstream_body",phase="execute"} 2485.0
+gateway_stage_seconds_sum{operation="upstream_body",phase="execute"} 7.338629300298635
+gateway_stage_seconds_bucket{le="0.001",operation="redis_release",phase="execute"} 1078.0
+gateway_stage_seconds_bucket{le="0.005",operation="redis_release",phase="execute"} 2269.0
+gateway_stage_seconds_bucket{le="0.01",operation="redis_release",phase="execute"} 2440.0
+gateway_stage_seconds_bucket{le="0.025",operation="redis_release",phase="execute"} 2482.0
+gateway_stage_seconds_bucket{le="0.05",operation="redis_release",phase="execute"} 2482.0
+gateway_stage_seconds_bucket{le="0.1",operation="redis_release",phase="execute"} 2485.0
+gateway_stage_seconds_bucket{le="0.25",operation="redis_release",phase="execute"} 2485.0
+gateway_stage_seconds_bucket{le="0.5",operation="redis_release",phase="execute"} 2485.0
+gateway_stage_seconds_bucket{le="1.0",operation="redis_release",phase="execute"} 2485.0
+gateway_stage_seconds_bucket{le="2.0",operation="redis_release",phase="execute"} 2485.0
+gateway_stage_seconds_bucket{le="5.0",operation="redis_release",phase="execute"} 2485.0
+gateway_stage_seconds_bucket{le="+Inf",operation="redis_release",phase="execute"} 2485.0
+gateway_stage_seconds_count{operation="redis_release",phase="execute"} 2485.0
+gateway_stage_seconds_sum{operation="redis_release",phase="execute"} 5.337899701029528
+gateway_stage_seconds_bucket{le="0.001",operation="mq_update_record",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.005",operation="mq_update_record",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.01",operation="mq_update_record",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="0.025",operation="mq_update_record",phase="execute"} 1328.0
+gateway_stage_seconds_bucket{le="0.05",operation="mq_update_record",phase="execute"} 2344.0
+gateway_stage_seconds_bucket{le="0.1",operation="mq_update_record",phase="execute"} 2463.0
+gateway_stage_seconds_bucket{le="0.25",operation="mq_update_record",phase="execute"} 2485.0
+gateway_stage_seconds_bucket{le="0.5",operation="mq_update_record",phase="execute"} 2485.0
+gateway_stage_seconds_bucket{le="1.0",operation="mq_update_record",phase="execute"} 2485.0
+gateway_stage_seconds_bucket{le="2.0",operation="mq_update_record",phase="execute"} 2485.0
+gateway_stage_seconds_bucket{le="5.0",operation="mq_update_record",phase="execute"} 2485.0
+gateway_stage_seconds_bucket{le="+Inf",operation="mq_update_record",phase="execute"} 2485.0
+gateway_stage_seconds_count{operation="mq_update_record",phase="execute"} 2485.0
+gateway_stage_seconds_sum{operation="mq_update_record",phase="execute"} 69.65923220012337
+# HELP gateway_stage_seconds_created 内部步骤耗时，不等同端到端p95
+# TYPE gateway_stage_seconds_created gauge
+gateway_stage_seconds_created{operation="db_register_coordination",phase="queue"} 1.7913638682358458e+09
+gateway_stage_seconds_created{operation="db_register_coordination",phase="execute"} 1.79136386836993e+09
+gateway_stage_seconds_created{operation="db_reconcile",phase="queue"} 1.7913638683757129e+09
+gateway_stage_seconds_created{operation="db_reconcile",phase="execute"} 1.7913638683779626e+09
+gateway_stage_seconds_created{operation="db_db_ping",phase="queue"} 1.7913638688165135e+09
+gateway_stage_seconds_created{operation="db_db_ping",phase="execute"} 1.7913638688174536e+09
+gateway_stage_seconds_created{operation="db_batch_authenticate",phase="queue"} 1.7913638688400204e+09
+gateway_stage_seconds_created{operation="db_batch_authenticate",phase="execute"} 1.7913638689488523e+09
+gateway_stage_seconds_created{operation="redis_acquire",phase="execute"} 1.7913638689511962e+09
+gateway_stage_seconds_created{operation="mq_create_record",phase="execute"} 1.791363868987314e+09
+gateway_stage_seconds_created{operation="upstream_headers",phase="execute"} 1.791363869009303e+09
+gateway_stage_seconds_created{operation="upstream_body",phase="execute"} 1.7913638690160484e+09
+gateway_stage_seconds_created{operation="redis_release",phase="execute"} 1.791363869027154e+09
+gateway_stage_seconds_created{operation="mq_update_record",phase="execute"} 1.7913638690497072e+09
+# HELP gateway_requests_total 本进程完成清理的请求
+# TYPE gateway_requests_total counter
+gateway_requests_total{model="fixture",status="succeeded"} 2485.0
+# HELP gateway_requests_created 本进程完成清理的请求
+# TYPE gateway_requests_created gauge
+gateway_requests_created{model="fixture",status="succeeded"} 1.7913638690498166e+09
+# HELP gateway_request_seconds 含上游和清理的请求耗时
+# TYPE gateway_request_seconds histogram
+gateway_request_seconds_bucket{le="0.005",model="fixture",status="succeeded"} 0.0
+gateway_request_seconds_bucket{le="0.01",model="fixture",status="succeeded"} 0.0
+gateway_request_seconds_bucket{le="0.025",model="fixture",status="succeeded"} 0.0
+gateway_request_seconds_bucket{le="0.05",model="fixture",status="succeeded"} 122.0
+gateway_request_seconds_bucket{le="0.075",model="fixture",status="succeeded"} 1213.0
+gateway_request_seconds_bucket{le="0.1",model="fixture",status="succeeded"} 2097.0
+gateway_request_seconds_bucket{le="0.25",model="fixture",status="succeeded"} 2480.0
+gateway_request_seconds_bucket{le="0.5",model="fixture",status="succeeded"} 2485.0
+gateway_request_seconds_bucket{le="0.75",model="fixture",status="succeeded"} 2485.0
+gateway_request_seconds_bucket{le="1.0",model="fixture",status="succeeded"} 2485.0
+gateway_request_seconds_bucket{le="2.5",model="fixture",status="succeeded"} 2485.0
+gateway_request_seconds_bucket{le="5.0",model="fixture",status="succeeded"} 2485.0
+gateway_request_seconds_bucket{le="7.5",model="fixture",status="succeeded"} 2485.0
+gateway_request_seconds_bucket{le="10.0",model="fixture",status="succeeded"} 2485.0
+gateway_request_seconds_bucket{le="+Inf",model="fixture",status="succeeded"} 2485.0
+gateway_request_seconds_count{model="fixture",status="succeeded"} 2485.0
+gateway_request_seconds_sum{model="fixture",status="succeeded"} 202.59526960086077
+# HELP gateway_request_seconds_created 含上游和清理的请求耗时
+# TYPE gateway_request_seconds_created gauge
+gateway_request_seconds_created{model="fixture",status="succeeded"} 1.791363869049831e+09
+# HELP gateway_active_requests 本进程持有接入额度的请求数
+# TYPE gateway_active_requests gauge
+gateway_active_requests 0.0
+# HELP gateway_database_deadlock_retries_total MySQL明确回滚死锁后的有界重试次数
+# TYPE gateway_database_deadlock_retries_total counter
+gateway_database_deadlock_retries_total 0.0
+# HELP gateway_database_deadlock_retries_created MySQL明确回滚死锁后的有界重试次数
+# TYPE gateway_database_deadlock_retries_created gauge
+gateway_database_deadlock_retries_created 1.7913638677050931e+09
+# HELP gateway_event_loop_lag_seconds 事件循环调度延迟
+# TYPE gateway_event_loop_lag_seconds gauge
+gateway_event_loop_lag_seconds 0.013848999980837107
+# HELP gateway_metadata_batches_total 本进程消费的元数据批次
+# TYPE gateway_metadata_batches_total counter
+gateway_metadata_batches_total 0.0
+# HELP gateway_metadata_batches_created 本进程消费的元数据批次
+# TYPE gateway_metadata_batches_created gauge
+gateway_metadata_batches_created 1.791363867705104e+09
+# HELP gateway_metadata_messages_total 本进程消费的元数据消息（含重投）
+# TYPE gateway_metadata_messages_total counter
+gateway_metadata_messages_total 0.0
+# HELP gateway_metadata_messages_created 本进程消费的元数据消息（含重投）
+# TYPE gateway_metadata_messages_created gauge
+gateway_metadata_messages_created 1.7913638677051077e+09
+# HELP gateway_metadata_commit_failures_total 未确认并保留在PEL的失败批次
+# TYPE gateway_metadata_commit_failures_total counter
+gateway_metadata_commit_failures_total 0.0
+# HELP gateway_metadata_commit_failures_created 未确认并保留在PEL的失败批次
+# TYPE gateway_metadata_commit_failures_created gauge
+gateway_metadata_commit_failures_created 1.7913638677051125e+09
+# HELP gateway_metadata_backlog 共享元数据流积压，多个实例不要相加
+# TYPE gateway_metadata_backlog gauge
+gateway_metadata_backlog 16.0
+# HELP gateway_metadata_dead_letters 共享死信消息数，多个实例不要相加
+# TYPE gateway_metadata_dead_letters gauge
+gateway_metadata_dead_letters 0.0
+
+# HELP gateway_stage_seconds 内部步骤耗时，不等同端到端p95
+# TYPE gateway_stage_seconds histogram
+gateway_stage_seconds_bucket{le="0.001",operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.005",operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.01",operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.025",operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.05",operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.1",operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.25",operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.5",operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="1.0",operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="2.0",operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="5.0",operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="+Inf",operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_count{operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_sum{operation="db_register_coordination",phase="queue"} 0.0003551000263541937
+gateway_stage_seconds_bucket{le="0.001",operation="db_register_coordination",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.005",operation="db_register_coordination",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.01",operation="db_register_coordination",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.025",operation="db_register_coordination",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.05",operation="db_register_coordination",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.1",operation="db_register_coordination",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.25",operation="db_register_coordination",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="0.5",operation="db_register_coordination",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="1.0",operation="db_register_coordination",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="2.0",operation="db_register_coordination",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="5.0",operation="db_register_coordination",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="+Inf",operation="db_register_coordination",phase="execute"} 1.0
+gateway_stage_seconds_count{operation="db_register_coordination",phase="execute"} 1.0
+gateway_stage_seconds_sum{operation="db_register_coordination",phase="execute"} 0.16009499999927357
+gateway_stage_seconds_bucket{le="0.001",operation="db_reconcile",phase="queue"} 14.0
+gateway_stage_seconds_bucket{le="0.005",operation="db_reconcile",phase="queue"} 15.0
+gateway_stage_seconds_bucket{le="0.01",operation="db_reconcile",phase="queue"} 15.0
+gateway_stage_seconds_bucket{le="0.025",operation="db_reconcile",phase="queue"} 15.0
+gateway_stage_seconds_bucket{le="0.05",operation="db_reconcile",phase="queue"} 15.0
+gateway_stage_seconds_bucket{le="0.1",operation="db_reconcile",phase="queue"} 15.0
+gateway_stage_seconds_bucket{le="0.25",operation="db_reconcile",phase="queue"} 15.0
+gateway_stage_seconds_bucket{le="0.5",operation="db_reconcile",phase="queue"} 15.0
+gateway_stage_seconds_bucket{le="1.0",operation="db_reconcile",phase="queue"} 15.0
+gateway_stage_seconds_bucket{le="2.0",operation="db_reconcile",phase="queue"} 15.0
+gateway_stage_seconds_bucket{le="5.0",operation="db_reconcile",phase="queue"} 15.0
+gateway_stage_seconds_bucket{le="+Inf",operation="db_reconcile",phase="queue"} 15.0
+gateway_stage_seconds_count{operation="db_reconcile",phase="queue"} 15.0
+gateway_stage_seconds_sum{operation="db_reconcile",phase="queue"} 0.0023186999605968595
+gateway_stage_seconds_bucket{le="0.001",operation="db_reconcile",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.005",operation="db_reconcile",phase="execute"} 13.0
+gateway_stage_seconds_bucket{le="0.01",operation="db_reconcile",phase="execute"} 13.0
+gateway_stage_seconds_bucket{le="0.025",operation="db_reconcile",phase="execute"} 14.0
+gateway_stage_seconds_bucket{le="0.05",operation="db_reconcile",phase="execute"} 14.0
+gateway_stage_seconds_bucket{le="0.1",operation="db_reconcile",phase="execute"} 15.0
+gateway_stage_seconds_bucket{le="0.25",operation="db_reconcile",phase="execute"} 15.0
+gateway_stage_seconds_bucket{le="0.5",operation="db_reconcile",phase="execute"} 15.0
+gateway_stage_seconds_bucket{le="1.0",operation="db_reconcile",phase="execute"} 15.0
+gateway_stage_seconds_bucket{le="2.0",operation="db_reconcile",phase="execute"} 15.0
+gateway_stage_seconds_bucket{le="5.0",operation="db_reconcile",phase="execute"} 15.0
+gateway_stage_seconds_bucket{le="+Inf",operation="db_reconcile",phase="execute"} 15.0
+gateway_stage_seconds_count{operation="db_reconcile",phase="execute"} 15.0
+gateway_stage_seconds_sum{operation="db_reconcile",phase="execute"} 0.14329980002366938
+gateway_stage_seconds_bucket{le="0.001",operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.005",operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.01",operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.025",operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.05",operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.1",operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.25",operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.5",operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="1.0",operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="2.0",operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="5.0",operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="+Inf",operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_count{operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_sum{operation="db_db_ping",phase="queue"} 5.2000017603859305e-05
+gateway_stage_seconds_bucket{le="0.001",operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="0.005",operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="0.01",operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="0.025",operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="0.05",operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="0.1",operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="0.25",operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="0.5",operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="1.0",operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="2.0",operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="5.0",operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="+Inf",operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_count{operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_sum{operation="db_db_ping",phase="execute"} 0.0006286999850999564
+gateway_stage_seconds_bucket{le="0.001",operation="db_batch_authenticate",phase="queue"} 1722.0
+gateway_stage_seconds_bucket{le="0.005",operation="db_batch_authenticate",phase="queue"} 1730.0
+gateway_stage_seconds_bucket{le="0.01",operation="db_batch_authenticate",phase="queue"} 1730.0
+gateway_stage_seconds_bucket{le="0.025",operation="db_batch_authenticate",phase="queue"} 1730.0
+gateway_stage_seconds_bucket{le="0.05",operation="db_batch_authenticate",phase="queue"} 1730.0
+gateway_stage_seconds_bucket{le="0.1",operation="db_batch_authenticate",phase="queue"} 1730.0
+gateway_stage_seconds_bucket{le="0.25",operation="db_batch_authenticate",phase="queue"} 1730.0
+gateway_stage_seconds_bucket{le="0.5",operation="db_batch_authenticate",phase="queue"} 1730.0
+gateway_stage_seconds_bucket{le="1.0",operation="db_batch_authenticate",phase="queue"} 1730.0
+gateway_stage_seconds_bucket{le="2.0",operation="db_batch_authenticate",phase="queue"} 1730.0
+gateway_stage_seconds_bucket{le="5.0",operation="db_batch_authenticate",phase="queue"} 1730.0
+gateway_stage_seconds_bucket{le="+Inf",operation="db_batch_authenticate",phase="queue"} 1730.0
+gateway_stage_seconds_count{operation="db_batch_authenticate",phase="queue"} 1730.0
+gateway_stage_seconds_sum{operation="db_batch_authenticate",phase="queue"} 0.3212107002909761
+gateway_stage_seconds_bucket{le="0.001",operation="db_batch_authenticate",phase="execute"} 442.0
+gateway_stage_seconds_bucket{le="0.005",operation="db_batch_authenticate",phase="execute"} 1728.0
+gateway_stage_seconds_bucket{le="0.01",operation="db_batch_authenticate",phase="execute"} 1728.0
+gateway_stage_seconds_bucket{le="0.025",operation="db_batch_authenticate",phase="execute"} 1728.0
+gateway_stage_seconds_bucket{le="0.05",operation="db_batch_authenticate",phase="execute"} 1728.0
+gateway_stage_seconds_bucket{le="0.1",operation="db_batch_authenticate",phase="execute"} 1729.0
+gateway_stage_seconds_bucket{le="0.25",operation="db_batch_authenticate",phase="execute"} 1730.0
+gateway_stage_seconds_bucket{le="0.5",operation="db_batch_authenticate",phase="execute"} 1730.0
+gateway_stage_seconds_bucket{le="1.0",operation="db_batch_authenticate",phase="execute"} 1730.0
+gateway_stage_seconds_bucket{le="2.0",operation="db_batch_authenticate",phase="execute"} 1730.0
+gateway_stage_seconds_bucket{le="5.0",operation="db_batch_authenticate",phase="execute"} 1730.0
+gateway_stage_seconds_bucket{le="+Inf",operation="db_batch_authenticate",phase="execute"} 1730.0
+gateway_stage_seconds_count{operation="db_batch_authenticate",phase="execute"} 1730.0
+gateway_stage_seconds_sum{operation="db_batch_authenticate",phase="execute"} 2.410941500100307
+gateway_stage_seconds_bucket{le="0.001",operation="redis_acquire",phase="execute"} 1077.0
+gateway_stage_seconds_bucket{le="0.005",operation="redis_acquire",phase="execute"} 2200.0
+gateway_stage_seconds_bucket{le="0.01",operation="redis_acquire",phase="execute"} 2535.0
+gateway_stage_seconds_bucket{le="0.025",operation="redis_acquire",phase="execute"} 2580.0
+gateway_stage_seconds_bucket{le="0.05",operation="redis_acquire",phase="execute"} 2580.0
+gateway_stage_seconds_bucket{le="0.1",operation="redis_acquire",phase="execute"} 2580.0
+gateway_stage_seconds_bucket{le="0.25",operation="redis_acquire",phase="execute"} 2580.0
+gateway_stage_seconds_bucket{le="0.5",operation="redis_acquire",phase="execute"} 2580.0
+gateway_stage_seconds_bucket{le="1.0",operation="redis_acquire",phase="execute"} 2580.0
+gateway_stage_seconds_bucket{le="2.0",operation="redis_acquire",phase="execute"} 2580.0
+gateway_stage_seconds_bucket{le="5.0",operation="redis_acquire",phase="execute"} 2580.0
+gateway_stage_seconds_bucket{le="+Inf",operation="redis_acquire",phase="execute"} 2580.0
+gateway_stage_seconds_count{operation="redis_acquire",phase="execute"} 2580.0
+gateway_stage_seconds_sum{operation="redis_acquire",phase="execute"} 6.289101799338823
+gateway_stage_seconds_bucket{le="0.001",operation="db_persist_events",phase="queue"} 1415.0
+gateway_stage_seconds_bucket{le="0.005",operation="db_persist_events",phase="queue"} 1419.0
+gateway_stage_seconds_bucket{le="0.01",operation="db_persist_events",phase="queue"} 1419.0
+gateway_stage_seconds_bucket{le="0.025",operation="db_persist_events",phase="queue"} 1419.0
+gateway_stage_seconds_bucket{le="0.05",operation="db_persist_events",phase="queue"} 1419.0
+gateway_stage_seconds_bucket{le="0.1",operation="db_persist_events",phase="queue"} 1419.0
+gateway_stage_seconds_bucket{le="0.25",operation="db_persist_events",phase="queue"} 1419.0
+gateway_stage_seconds_bucket{le="0.5",operation="db_persist_events",phase="queue"} 1419.0
+gateway_stage_seconds_bucket{le="1.0",operation="db_persist_events",phase="queue"} 1419.0
+gateway_stage_seconds_bucket{le="2.0",operation="db_persist_events",phase="queue"} 1419.0
+gateway_stage_seconds_bucket{le="5.0",operation="db_persist_events",phase="queue"} 1419.0
+gateway_stage_seconds_bucket{le="+Inf",operation="db_persist_events",phase="queue"} 1419.0
+gateway_stage_seconds_count{operation="db_persist_events",phase="queue"} 1419.0
+gateway_stage_seconds_sum{operation="db_persist_events",phase="queue"} 0.21487850017729215
+gateway_stage_seconds_bucket{le="0.001",operation="db_persist_events",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.005",operation="db_persist_events",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.01",operation="db_persist_events",phase="execute"} 724.0
+gateway_stage_seconds_bucket{le="0.025",operation="db_persist_events",phase="execute"} 1352.0
+gateway_stage_seconds_bucket{le="0.05",operation="db_persist_events",phase="execute"} 1397.0
+gateway_stage_seconds_bucket{le="0.1",operation="db_persist_events",phase="execute"} 1418.0
+gateway_stage_seconds_bucket{le="0.25",operation="db_persist_events",phase="execute"} 1419.0
+gateway_stage_seconds_bucket{le="0.5",operation="db_persist_events",phase="execute"} 1419.0
+gateway_stage_seconds_bucket{le="1.0",operation="db_persist_events",phase="execute"} 1419.0
+gateway_stage_seconds_bucket{le="2.0",operation="db_persist_events",phase="execute"} 1419.0
+gateway_stage_seconds_bucket{le="5.0",operation="db_persist_events",phase="execute"} 1419.0
+gateway_stage_seconds_bucket{le="+Inf",operation="db_persist_events",phase="execute"} 1419.0
+gateway_stage_seconds_count{operation="db_persist_events",phase="execute"} 1419.0
+gateway_stage_seconds_sum{operation="db_persist_events",phase="execute"} 16.8236871996196
+gateway_stage_seconds_bucket{le="0.001",operation="mq_create_record",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.005",operation="mq_create_record",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.01",operation="mq_create_record",phase="execute"} 5.0
+gateway_stage_seconds_bucket{le="0.025",operation="mq_create_record",phase="execute"} 1424.0
+gateway_stage_seconds_bucket{le="0.05",operation="mq_create_record",phase="execute"} 2400.0
+gateway_stage_seconds_bucket{le="0.1",operation="mq_create_record",phase="execute"} 2551.0
+gateway_stage_seconds_bucket{le="0.25",operation="mq_create_record",phase="execute"} 2580.0
+gateway_stage_seconds_bucket{le="0.5",operation="mq_create_record",phase="execute"} 2580.0
+gateway_stage_seconds_bucket{le="1.0",operation="mq_create_record",phase="execute"} 2580.0
+gateway_stage_seconds_bucket{le="2.0",operation="mq_create_record",phase="execute"} 2580.0
+gateway_stage_seconds_bucket{le="5.0",operation="mq_create_record",phase="execute"} 2580.0
+gateway_stage_seconds_bucket{le="+Inf",operation="mq_create_record",phase="execute"} 2580.0
+gateway_stage_seconds_count{operation="mq_create_record",phase="execute"} 2580.0
+gateway_stage_seconds_sum{operation="mq_create_record",phase="execute"} 71.9111273001472
+gateway_stage_seconds_bucket{le="0.001",operation="upstream_headers",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.005",operation="upstream_headers",phase="execute"} 822.0
+gateway_stage_seconds_bucket{le="0.01",operation="upstream_headers",phase="execute"} 1699.0
+gateway_stage_seconds_bucket{le="0.025",operation="upstream_headers",phase="execute"} 2528.0
+gateway_stage_seconds_bucket{le="0.05",operation="upstream_headers",phase="execute"} 2579.0
+gateway_stage_seconds_bucket{le="0.1",operation="upstream_headers",phase="execute"} 2580.0
+gateway_stage_seconds_bucket{le="0.25",operation="upstream_headers",phase="execute"} 2580.0
+gateway_stage_seconds_bucket{le="0.5",operation="upstream_headers",phase="execute"} 2580.0
+gateway_stage_seconds_bucket{le="1.0",operation="upstream_headers",phase="execute"} 2580.0
+gateway_stage_seconds_bucket{le="2.0",operation="upstream_headers",phase="execute"} 2580.0
+gateway_stage_seconds_bucket{le="5.0",operation="upstream_headers",phase="execute"} 2580.0
+gateway_stage_seconds_bucket{le="+Inf",operation="upstream_headers",phase="execute"} 2580.0
+gateway_stage_seconds_count{operation="upstream_headers",phase="execute"} 2580.0
+gateway_stage_seconds_sum{operation="upstream_headers",phase="execute"} 23.083170100755524
+gateway_stage_seconds_bucket{le="0.001",operation="upstream_body",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.005",operation="upstream_body",phase="execute"} 2336.0
+gateway_stage_seconds_bucket{le="0.01",operation="upstream_body",phase="execute"} 2569.0
+gateway_stage_seconds_bucket{le="0.025",operation="upstream_body",phase="execute"} 2579.0
+gateway_stage_seconds_bucket{le="0.05",operation="upstream_body",phase="execute"} 2579.0
+gateway_stage_seconds_bucket{le="0.1",operation="upstream_body",phase="execute"} 2580.0
+gateway_stage_seconds_bucket{le="0.25",operation="upstream_body",phase="execute"} 2580.0
+gateway_stage_seconds_bucket{le="0.5",operation="upstream_body",phase="execute"} 2580.0
+gateway_stage_seconds_bucket{le="1.0",operation="upstream_body",phase="execute"} 2580.0
+gateway_stage_seconds_bucket{le="2.0",operation="upstream_body",phase="execute"} 2580.0
+gateway_stage_seconds_bucket{le="5.0",operation="upstream_body",phase="execute"} 2580.0
+gateway_stage_seconds_bucket{le="+Inf",operation="upstream_body",phase="execute"} 2580.0
+gateway_stage_seconds_count{operation="upstream_body",phase="execute"} 2580.0
+gateway_stage_seconds_sum{operation="upstream_body",phase="execute"} 8.241628398740431
+gateway_stage_seconds_bucket{le="0.001",operation="redis_release",phase="execute"} 919.0
+gateway_stage_seconds_bucket{le="0.005",operation="redis_release",phase="execute"} 2272.0
+gateway_stage_seconds_bucket{le="0.01",operation="redis_release",phase="execute"} 2538.0
+gateway_stage_seconds_bucket{le="0.025",operation="redis_release",phase="execute"} 2579.0
+gateway_stage_seconds_bucket{le="0.05",operation="redis_release",phase="execute"} 2579.0
+gateway_stage_seconds_bucket{le="0.1",operation="redis_release",phase="execute"} 2580.0
+gateway_stage_seconds_bucket{le="0.25",operation="redis_release",phase="execute"} 2580.0
+gateway_stage_seconds_bucket{le="0.5",operation="redis_release",phase="execute"} 2580.0
+gateway_stage_seconds_bucket{le="1.0",operation="redis_release",phase="execute"} 2580.0
+gateway_stage_seconds_bucket{le="2.0",operation="redis_release",phase="execute"} 2580.0
+gateway_stage_seconds_bucket{le="5.0",operation="redis_release",phase="execute"} 2580.0
+gateway_stage_seconds_bucket{le="+Inf",operation="redis_release",phase="execute"} 2580.0
+gateway_stage_seconds_count{operation="redis_release",phase="execute"} 2580.0
+gateway_stage_seconds_sum{operation="redis_release",phase="execute"} 6.13319809967652
+gateway_stage_seconds_bucket{le="0.001",operation="mq_update_record",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.005",operation="mq_update_record",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.01",operation="mq_update_record",phase="execute"} 15.0
+gateway_stage_seconds_bucket{le="0.025",operation="mq_update_record",phase="execute"} 1469.0
+gateway_stage_seconds_bucket{le="0.05",operation="mq_update_record",phase="execute"} 2417.0
+gateway_stage_seconds_bucket{le="0.1",operation="mq_update_record",phase="execute"} 2550.0
+gateway_stage_seconds_bucket{le="0.25",operation="mq_update_record",phase="execute"} 2580.0
+gateway_stage_seconds_bucket{le="0.5",operation="mq_update_record",phase="execute"} 2580.0
+gateway_stage_seconds_bucket{le="1.0",operation="mq_update_record",phase="execute"} 2580.0
+gateway_stage_seconds_bucket{le="2.0",operation="mq_update_record",phase="execute"} 2580.0
+gateway_stage_seconds_bucket{le="5.0",operation="mq_update_record",phase="execute"} 2580.0
+gateway_stage_seconds_bucket{le="+Inf",operation="mq_update_record",phase="execute"} 2580.0
+gateway_stage_seconds_count{operation="mq_update_record",phase="execute"} 2580.0
+gateway_stage_seconds_sum{operation="mq_update_record",phase="execute"} 70.84534859994892
+# HELP gateway_stage_seconds_created 内部步骤耗时，不等同端到端p95
+# TYPE gateway_stage_seconds_created gauge
+gateway_stage_seconds_created{operation="db_register_coordination",phase="queue"} 1.7913638683249602e+09
+gateway_stage_seconds_created{operation="db_register_coordination",phase="execute"} 1.791363868485e+09
+gateway_stage_seconds_created{operation="db_reconcile",phase="queue"} 1.791363868492122e+09
+gateway_stage_seconds_created{operation="db_reconcile",phase="execute"} 1.791363868494858e+09
+gateway_stage_seconds_created{operation="db_db_ping",phase="queue"} 1.7913638688230252e+09
+gateway_stage_seconds_created{operation="db_db_ping",phase="execute"} 1.7913638688236148e+09
+gateway_stage_seconds_created{operation="db_batch_authenticate",phase="queue"} 1.7913638688409295e+09
+gateway_stage_seconds_created{operation="db_batch_authenticate",phase="execute"} 1.7913638689485834e+09
+gateway_stage_seconds_created{operation="redis_acquire",phase="execute"} 1.7913638689512773e+09
+gateway_stage_seconds_created{operation="db_persist_events",phase="queue"} 1.7913638689648283e+09
+gateway_stage_seconds_created{operation="db_persist_events",phase="execute"} 1.7913638689843075e+09
+gateway_stage_seconds_created{operation="mq_create_record",phase="execute"} 1.7913638690020998e+09
+gateway_stage_seconds_created{operation="upstream_headers",phase="execute"} 1.7913638690328083e+09
+gateway_stage_seconds_created{operation="upstream_body",phase="execute"} 1.7913638690400586e+09
+gateway_stage_seconds_created{operation="redis_release",phase="execute"} 1.7913638690495524e+09
+gateway_stage_seconds_created{operation="mq_update_record",phase="execute"} 1.7913638690643117e+09
+# HELP gateway_requests_total 本进程完成清理的请求
+# TYPE gateway_requests_total counter
+gateway_requests_total{model="fixture",status="succeeded"} 2580.0
+# HELP gateway_requests_created 本进程完成清理的请求
+# TYPE gateway_requests_created gauge
+gateway_requests_created{model="fixture",status="succeeded"} 1.7913638690643685e+09
+# HELP gateway_request_seconds 含上游和清理的请求耗时
+# TYPE gateway_request_seconds histogram
+gateway_request_seconds_bucket{le="0.005",model="fixture",status="succeeded"} 0.0
+gateway_request_seconds_bucket{le="0.01",model="fixture",status="succeeded"} 0.0
+gateway_request_seconds_bucket{le="0.025",model="fixture",status="succeeded"} 0.0
+gateway_request_seconds_bucket{le="0.05",model="fixture",status="succeeded"} 115.0
+gateway_request_seconds_bucket{le="0.075",model="fixture",status="succeeded"} 1440.0
+gateway_request_seconds_bucket{le="0.1",model="fixture",status="succeeded"} 2203.0
+gateway_request_seconds_bucket{le="0.25",model="fixture",status="succeeded"} 2580.0
+gateway_request_seconds_bucket{le="0.5",model="fixture",status="succeeded"} 2580.0
+gateway_request_seconds_bucket{le="0.75",model="fixture",status="succeeded"} 2580.0
+gateway_request_seconds_bucket{le="1.0",model="fixture",status="succeeded"} 2580.0
+gateway_request_seconds_bucket{le="2.5",model="fixture",status="succeeded"} 2580.0
+gateway_request_seconds_bucket{le="5.0",model="fixture",status="succeeded"} 2580.0
+gateway_request_seconds_bucket{le="7.5",model="fixture",status="succeeded"} 2580.0
+gateway_request_seconds_bucket{le="10.0",model="fixture",status="succeeded"} 2580.0
+gateway_request_seconds_bucket{le="+Inf",model="fixture",status="succeeded"} 2580.0
+gateway_request_seconds_count{model="fixture",status="succeeded"} 2580.0
+gateway_request_seconds_sum{model="fixture",status="succeeded"} 203.08800210113986
+# HELP gateway_request_seconds_created 含上游和清理的请求耗时
+# TYPE gateway_request_seconds_created gauge
+gateway_request_seconds_created{model="fixture",status="succeeded"} 1.7913638690643792e+09
+# HELP gateway_active_requests 本进程持有接入额度的请求数
+# TYPE gateway_active_requests gauge
+gateway_active_requests 0.0
+# HELP gateway_database_deadlock_retries_total MySQL明确回滚死锁后的有界重试次数
+# TYPE gateway_database_deadlock_retries_total counter
+gateway_database_deadlock_retries_total 0.0
+# HELP gateway_database_deadlock_retries_created MySQL明确回滚死锁后的有界重试次数
+# TYPE gateway_database_deadlock_retries_created gauge
+gateway_database_deadlock_retries_created 1.7913638677714086e+09
+# HELP gateway_event_loop_lag_seconds 事件循环调度延迟
+# TYPE gateway_event_loop_lag_seconds gauge
+gateway_event_loop_lag_seconds 0.01366490000509657
+# HELP gateway_metadata_batches_total 本进程消费的元数据批次
+# TYPE gateway_metadata_batches_total counter
+gateway_metadata_batches_total 1419.0
+# HELP gateway_metadata_batches_created 本进程消费的元数据批次
+# TYPE gateway_metadata_batches_created gauge
+gateway_metadata_batches_created 1.79136386777144e+09
+# HELP gateway_metadata_messages_total 本进程消费的元数据消息（含重投）
+# TYPE gateway_metadata_messages_total counter
+gateway_metadata_messages_total 10174.0
+# HELP gateway_metadata_messages_created 本进程消费的元数据消息（含重投）
+# TYPE gateway_metadata_messages_created gauge
+gateway_metadata_messages_created 1.791363867771451e+09
+# HELP gateway_metadata_commit_failures_total 未确认并保留在PEL的失败批次
+# TYPE gateway_metadata_commit_failures_total counter
+gateway_metadata_commit_failures_total 0.0
+# HELP gateway_metadata_commit_failures_created 未确认并保留在PEL的失败批次
+# TYPE gateway_metadata_commit_failures_created gauge
+gateway_metadata_commit_failures_created 1.7913638677714636e+09
+# HELP gateway_metadata_backlog 共享元数据流积压，多个实例不要相加
+# TYPE gateway_metadata_backlog gauge
+gateway_metadata_backlog 20.0
+# HELP gateway_metadata_dead_letters 共享死信消息数，多个实例不要相加
+# TYPE gateway_metadata_dead_letters gauge
+gateway_metadata_dead_letters 0.0
+
+# HELP gateway_stage_seconds 内部步骤耗时，不等同端到端p95
+# TYPE gateway_stage_seconds histogram
+gateway_stage_seconds_bucket{le="0.001",operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.005",operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.01",operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.025",operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.05",operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.1",operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.25",operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.5",operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="1.0",operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="2.0",operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="5.0",operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="+Inf",operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_count{operation="db_register_coordination",phase="queue"} 1.0
+gateway_stage_seconds_sum{operation="db_register_coordination",phase="queue"} 0.00028169999131932855
+gateway_stage_seconds_bucket{le="0.001",operation="db_register_coordination",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.005",operation="db_register_coordination",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.01",operation="db_register_coordination",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.025",operation="db_register_coordination",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.05",operation="db_register_coordination",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.1",operation="db_register_coordination",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.25",operation="db_register_coordination",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="0.5",operation="db_register_coordination",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="1.0",operation="db_register_coordination",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="2.0",operation="db_register_coordination",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="5.0",operation="db_register_coordination",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="+Inf",operation="db_register_coordination",phase="execute"} 1.0
+gateway_stage_seconds_count{operation="db_register_coordination",phase="execute"} 1.0
+gateway_stage_seconds_sum{operation="db_register_coordination",phase="execute"} 0.15514419999090023
+gateway_stage_seconds_bucket{le="0.001",operation="db_reconcile",phase="queue"} 14.0
+gateway_stage_seconds_bucket{le="0.005",operation="db_reconcile",phase="queue"} 15.0
+gateway_stage_seconds_bucket{le="0.01",operation="db_reconcile",phase="queue"} 15.0
+gateway_stage_seconds_bucket{le="0.025",operation="db_reconcile",phase="queue"} 15.0
+gateway_stage_seconds_bucket{le="0.05",operation="db_reconcile",phase="queue"} 15.0
+gateway_stage_seconds_bucket{le="0.1",operation="db_reconcile",phase="queue"} 15.0
+gateway_stage_seconds_bucket{le="0.25",operation="db_reconcile",phase="queue"} 15.0
+gateway_stage_seconds_bucket{le="0.5",operation="db_reconcile",phase="queue"} 15.0
+gateway_stage_seconds_bucket{le="1.0",operation="db_reconcile",phase="queue"} 15.0
+gateway_stage_seconds_bucket{le="2.0",operation="db_reconcile",phase="queue"} 15.0
+gateway_stage_seconds_bucket{le="5.0",operation="db_reconcile",phase="queue"} 15.0
+gateway_stage_seconds_bucket{le="+Inf",operation="db_reconcile",phase="queue"} 15.0
+gateway_stage_seconds_count{operation="db_reconcile",phase="queue"} 15.0
+gateway_stage_seconds_sum{operation="db_reconcile",phase="queue"} 0.003712500008987263
+gateway_stage_seconds_bucket{le="0.001",operation="db_reconcile",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.005",operation="db_reconcile",phase="execute"} 13.0
+gateway_stage_seconds_bucket{le="0.01",operation="db_reconcile",phase="execute"} 14.0
+gateway_stage_seconds_bucket{le="0.025",operation="db_reconcile",phase="execute"} 14.0
+gateway_stage_seconds_bucket{le="0.05",operation="db_reconcile",phase="execute"} 14.0
+gateway_stage_seconds_bucket{le="0.1",operation="db_reconcile",phase="execute"} 15.0
+gateway_stage_seconds_bucket{le="0.25",operation="db_reconcile",phase="execute"} 15.0
+gateway_stage_seconds_bucket{le="0.5",operation="db_reconcile",phase="execute"} 15.0
+gateway_stage_seconds_bucket{le="1.0",operation="db_reconcile",phase="execute"} 15.0
+gateway_stage_seconds_bucket{le="2.0",operation="db_reconcile",phase="execute"} 15.0
+gateway_stage_seconds_bucket{le="5.0",operation="db_reconcile",phase="execute"} 15.0
+gateway_stage_seconds_bucket{le="+Inf",operation="db_reconcile",phase="execute"} 15.0
+gateway_stage_seconds_count{operation="db_reconcile",phase="execute"} 15.0
+gateway_stage_seconds_sum{operation="db_reconcile",phase="execute"} 0.139983899978688
+gateway_stage_seconds_bucket{le="0.001",operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.005",operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.01",operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.025",operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.05",operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.1",operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.25",operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="0.5",operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="1.0",operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="2.0",operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="5.0",operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_bucket{le="+Inf",operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_count{operation="db_db_ping",phase="queue"} 1.0
+gateway_stage_seconds_sum{operation="db_db_ping",phase="queue"} 5.3099996875971556e-05
+gateway_stage_seconds_bucket{le="0.001",operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="0.005",operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="0.01",operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="0.025",operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="0.05",operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="0.1",operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="0.25",operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="0.5",operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="1.0",operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="2.0",operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="5.0",operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_bucket{le="+Inf",operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_count{operation="db_db_ping",phase="execute"} 1.0
+gateway_stage_seconds_sum{operation="db_db_ping",phase="execute"} 0.0007434000144712627
+gateway_stage_seconds_bucket{le="0.001",operation="db_batch_authenticate",phase="queue"} 1638.0
+gateway_stage_seconds_bucket{le="0.005",operation="db_batch_authenticate",phase="queue"} 1644.0
+gateway_stage_seconds_bucket{le="0.01",operation="db_batch_authenticate",phase="queue"} 1644.0
+gateway_stage_seconds_bucket{le="0.025",operation="db_batch_authenticate",phase="queue"} 1644.0
+gateway_stage_seconds_bucket{le="0.05",operation="db_batch_authenticate",phase="queue"} 1644.0
+gateway_stage_seconds_bucket{le="0.1",operation="db_batch_authenticate",phase="queue"} 1644.0
+gateway_stage_seconds_bucket{le="0.25",operation="db_batch_authenticate",phase="queue"} 1644.0
+gateway_stage_seconds_bucket{le="0.5",operation="db_batch_authenticate",phase="queue"} 1644.0
+gateway_stage_seconds_bucket{le="1.0",operation="db_batch_authenticate",phase="queue"} 1644.0
+gateway_stage_seconds_bucket{le="2.0",operation="db_batch_authenticate",phase="queue"} 1644.0
+gateway_stage_seconds_bucket{le="5.0",operation="db_batch_authenticate",phase="queue"} 1644.0
+gateway_stage_seconds_bucket{le="+Inf",operation="db_batch_authenticate",phase="queue"} 1644.0
+gateway_stage_seconds_count{operation="db_batch_authenticate",phase="queue"} 1644.0
+gateway_stage_seconds_sum{operation="db_batch_authenticate",phase="queue"} 0.30878010083688423
+gateway_stage_seconds_bucket{le="0.001",operation="db_batch_authenticate",phase="execute"} 404.0
+gateway_stage_seconds_bucket{le="0.005",operation="db_batch_authenticate",phase="execute"} 1640.0
+gateway_stage_seconds_bucket{le="0.01",operation="db_batch_authenticate",phase="execute"} 1642.0
+gateway_stage_seconds_bucket{le="0.025",operation="db_batch_authenticate",phase="execute"} 1643.0
+gateway_stage_seconds_bucket{le="0.05",operation="db_batch_authenticate",phase="execute"} 1643.0
+gateway_stage_seconds_bucket{le="0.1",operation="db_batch_authenticate",phase="execute"} 1643.0
+gateway_stage_seconds_bucket{le="0.25",operation="db_batch_authenticate",phase="execute"} 1644.0
+gateway_stage_seconds_bucket{le="0.5",operation="db_batch_authenticate",phase="execute"} 1644.0
+gateway_stage_seconds_bucket{le="1.0",operation="db_batch_authenticate",phase="execute"} 1644.0
+gateway_stage_seconds_bucket{le="2.0",operation="db_batch_authenticate",phase="execute"} 1644.0
+gateway_stage_seconds_bucket{le="5.0",operation="db_batch_authenticate",phase="execute"} 1644.0
+gateway_stage_seconds_bucket{le="+Inf",operation="db_batch_authenticate",phase="execute"} 1644.0
+gateway_stage_seconds_count{operation="db_batch_authenticate",phase="execute"} 1644.0
+gateway_stage_seconds_sum{operation="db_batch_authenticate",phase="execute"} 2.255913799366681
+gateway_stage_seconds_bucket{le="0.001",operation="redis_acquire",phase="execute"} 1028.0
+gateway_stage_seconds_bucket{le="0.005",operation="redis_acquire",phase="execute"} 2086.0
+gateway_stage_seconds_bucket{le="0.01",operation="redis_acquire",phase="execute"} 2432.0
+gateway_stage_seconds_bucket{le="0.025",operation="redis_acquire",phase="execute"} 2507.0
+gateway_stage_seconds_bucket{le="0.05",operation="redis_acquire",phase="execute"} 2507.0
+gateway_stage_seconds_bucket{le="0.1",operation="redis_acquire",phase="execute"} 2510.0
+gateway_stage_seconds_bucket{le="0.25",operation="redis_acquire",phase="execute"} 2510.0
+gateway_stage_seconds_bucket{le="0.5",operation="redis_acquire",phase="execute"} 2510.0
+gateway_stage_seconds_bucket{le="1.0",operation="redis_acquire",phase="execute"} 2510.0
+gateway_stage_seconds_bucket{le="2.0",operation="redis_acquire",phase="execute"} 2510.0
+gateway_stage_seconds_bucket{le="5.0",operation="redis_acquire",phase="execute"} 2510.0
+gateway_stage_seconds_bucket{le="+Inf",operation="redis_acquire",phase="execute"} 2510.0
+gateway_stage_seconds_count{operation="redis_acquire",phase="execute"} 2510.0
+gateway_stage_seconds_sum{operation="redis_acquire",phase="execute"} 6.795483599998988
+gateway_stage_seconds_bucket{le="0.001",operation="db_persist_events",phase="queue"} 1408.0
+gateway_stage_seconds_bucket{le="0.005",operation="db_persist_events",phase="queue"} 1408.0
+gateway_stage_seconds_bucket{le="0.01",operation="db_persist_events",phase="queue"} 1408.0
+gateway_stage_seconds_bucket{le="0.025",operation="db_persist_events",phase="queue"} 1408.0
+gateway_stage_seconds_bucket{le="0.05",operation="db_persist_events",phase="queue"} 1408.0
+gateway_stage_seconds_bucket{le="0.1",operation="db_persist_events",phase="queue"} 1408.0
+gateway_stage_seconds_bucket{le="0.25",operation="db_persist_events",phase="queue"} 1408.0
+gateway_stage_seconds_bucket{le="0.5",operation="db_persist_events",phase="queue"} 1408.0
+gateway_stage_seconds_bucket{le="1.0",operation="db_persist_events",phase="queue"} 1408.0
+gateway_stage_seconds_bucket{le="2.0",operation="db_persist_events",phase="queue"} 1408.0
+gateway_stage_seconds_bucket{le="5.0",operation="db_persist_events",phase="queue"} 1408.0
+gateway_stage_seconds_bucket{le="+Inf",operation="db_persist_events",phase="queue"} 1408.0
+gateway_stage_seconds_count{operation="db_persist_events",phase="queue"} 1408.0
+gateway_stage_seconds_sum{operation="db_persist_events",phase="queue"} 0.19927890069084242
+gateway_stage_seconds_bucket{le="0.001",operation="db_persist_events",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.005",operation="db_persist_events",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.01",operation="db_persist_events",phase="execute"} 724.0
+gateway_stage_seconds_bucket{le="0.025",operation="db_persist_events",phase="execute"} 1345.0
+gateway_stage_seconds_bucket{le="0.05",operation="db_persist_events",phase="execute"} 1387.0
+gateway_stage_seconds_bucket{le="0.1",operation="db_persist_events",phase="execute"} 1404.0
+gateway_stage_seconds_bucket{le="0.25",operation="db_persist_events",phase="execute"} 1408.0
+gateway_stage_seconds_bucket{le="0.5",operation="db_persist_events",phase="execute"} 1408.0
+gateway_stage_seconds_bucket{le="1.0",operation="db_persist_events",phase="execute"} 1408.0
+gateway_stage_seconds_bucket{le="2.0",operation="db_persist_events",phase="execute"} 1408.0
+gateway_stage_seconds_bucket{le="5.0",operation="db_persist_events",phase="execute"} 1408.0
+gateway_stage_seconds_bucket{le="+Inf",operation="db_persist_events",phase="execute"} 1408.0
+gateway_stage_seconds_count{operation="db_persist_events",phase="execute"} 1408.0
+gateway_stage_seconds_sum{operation="db_persist_events",phase="execute"} 16.681841399520636
+gateway_stage_seconds_bucket{le="0.001",operation="mq_create_record",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.005",operation="mq_create_record",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.01",operation="mq_create_record",phase="execute"} 5.0
+gateway_stage_seconds_bucket{le="0.025",operation="mq_create_record",phase="execute"} 1332.0
+gateway_stage_seconds_bucket{le="0.05",operation="mq_create_record",phase="execute"} 2343.0
+gateway_stage_seconds_bucket{le="0.1",operation="mq_create_record",phase="execute"} 2477.0
+gateway_stage_seconds_bucket{le="0.25",operation="mq_create_record",phase="execute"} 2510.0
+gateway_stage_seconds_bucket{le="0.5",operation="mq_create_record",phase="execute"} 2510.0
+gateway_stage_seconds_bucket{le="1.0",operation="mq_create_record",phase="execute"} 2510.0
+gateway_stage_seconds_bucket{le="2.0",operation="mq_create_record",phase="execute"} 2510.0
+gateway_stage_seconds_bucket{le="5.0",operation="mq_create_record",phase="execute"} 2510.0
+gateway_stage_seconds_bucket{le="+Inf",operation="mq_create_record",phase="execute"} 2510.0
+gateway_stage_seconds_count{operation="mq_create_record",phase="execute"} 2510.0
+gateway_stage_seconds_sum{operation="mq_create_record",phase="execute"} 70.93278410003404
+gateway_stage_seconds_bucket{le="0.001",operation="upstream_headers",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.005",operation="upstream_headers",phase="execute"} 741.0
+gateway_stage_seconds_bucket{le="0.01",operation="upstream_headers",phase="execute"} 1546.0
+gateway_stage_seconds_bucket{le="0.025",operation="upstream_headers",phase="execute"} 2399.0
+gateway_stage_seconds_bucket{le="0.05",operation="upstream_headers",phase="execute"} 2507.0
+gateway_stage_seconds_bucket{le="0.1",operation="upstream_headers",phase="execute"} 2510.0
+gateway_stage_seconds_bucket{le="0.25",operation="upstream_headers",phase="execute"} 2510.0
+gateway_stage_seconds_bucket{le="0.5",operation="upstream_headers",phase="execute"} 2510.0
+gateway_stage_seconds_bucket{le="1.0",operation="upstream_headers",phase="execute"} 2510.0
+gateway_stage_seconds_bucket{le="2.0",operation="upstream_headers",phase="execute"} 2510.0
+gateway_stage_seconds_bucket{le="5.0",operation="upstream_headers",phase="execute"} 2510.0
+gateway_stage_seconds_bucket{le="+Inf",operation="upstream_headers",phase="execute"} 2510.0
+gateway_stage_seconds_count{operation="upstream_headers",phase="execute"} 2510.0
+gateway_stage_seconds_sum{operation="upstream_headers",phase="execute"} 25.035563999030273
+gateway_stage_seconds_bucket{le="0.001",operation="upstream_body",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.005",operation="upstream_body",phase="execute"} 2238.0
+gateway_stage_seconds_bucket{le="0.01",operation="upstream_body",phase="execute"} 2497.0
+gateway_stage_seconds_bucket{le="0.025",operation="upstream_body",phase="execute"} 2510.0
+gateway_stage_seconds_bucket{le="0.05",operation="upstream_body",phase="execute"} 2510.0
+gateway_stage_seconds_bucket{le="0.1",operation="upstream_body",phase="execute"} 2510.0
+gateway_stage_seconds_bucket{le="0.25",operation="upstream_body",phase="execute"} 2510.0
+gateway_stage_seconds_bucket{le="0.5",operation="upstream_body",phase="execute"} 2510.0
+gateway_stage_seconds_bucket{le="1.0",operation="upstream_body",phase="execute"} 2510.0
+gateway_stage_seconds_bucket{le="2.0",operation="upstream_body",phase="execute"} 2510.0
+gateway_stage_seconds_bucket{le="5.0",operation="upstream_body",phase="execute"} 2510.0
+gateway_stage_seconds_bucket{le="+Inf",operation="upstream_body",phase="execute"} 2510.0
+gateway_stage_seconds_count{operation="upstream_body",phase="execute"} 2510.0
+gateway_stage_seconds_sum{operation="upstream_body",phase="execute"} 8.232556699455017
+gateway_stage_seconds_bucket{le="0.001",operation="redis_release",phase="execute"} 877.0
+gateway_stage_seconds_bucket{le="0.005",operation="redis_release",phase="execute"} 2156.0
+gateway_stage_seconds_bucket{le="0.01",operation="redis_release",phase="execute"} 2439.0
+gateway_stage_seconds_bucket{le="0.025",operation="redis_release",phase="execute"} 2507.0
+gateway_stage_seconds_bucket{le="0.05",operation="redis_release",phase="execute"} 2507.0
+gateway_stage_seconds_bucket{le="0.1",operation="redis_release",phase="execute"} 2510.0
+gateway_stage_seconds_bucket{le="0.25",operation="redis_release",phase="execute"} 2510.0
+gateway_stage_seconds_bucket{le="0.5",operation="redis_release",phase="execute"} 2510.0
+gateway_stage_seconds_bucket{le="1.0",operation="redis_release",phase="execute"} 2510.0
+gateway_stage_seconds_bucket{le="2.0",operation="redis_release",phase="execute"} 2510.0
+gateway_stage_seconds_bucket{le="5.0",operation="redis_release",phase="execute"} 2510.0
+gateway_stage_seconds_bucket{le="+Inf",operation="redis_release",phase="execute"} 2510.0
+gateway_stage_seconds_count{operation="redis_release",phase="execute"} 2510.0
+gateway_stage_seconds_sum{operation="redis_release",phase="execute"} 6.612950100505259
+gateway_stage_seconds_bucket{le="0.001",operation="mq_update_record",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.005",operation="mq_update_record",phase="execute"} 0.0
+gateway_stage_seconds_bucket{le="0.01",operation="mq_update_record",phase="execute"} 13.0
+gateway_stage_seconds_bucket{le="0.025",operation="mq_update_record",phase="execute"} 1431.0
+gateway_stage_seconds_bucket{le="0.05",operation="mq_update_record",phase="execute"} 2369.0
+gateway_stage_seconds_bucket{le="0.1",operation="mq_update_record",phase="execute"} 2487.0
+gateway_stage_seconds_bucket{le="0.25",operation="mq_update_record",phase="execute"} 2510.0
+gateway_stage_seconds_bucket{le="0.5",operation="mq_update_record",phase="execute"} 2510.0
+gateway_stage_seconds_bucket{le="1.0",operation="mq_update_record",phase="execute"} 2510.0
+gateway_stage_seconds_bucket{le="2.0",operation="mq_update_record",phase="execute"} 2510.0
+gateway_stage_seconds_bucket{le="5.0",operation="mq_update_record",phase="execute"} 2510.0
+gateway_stage_seconds_bucket{le="+Inf",operation="mq_update_record",phase="execute"} 2510.0
+gateway_stage_seconds_count{operation="mq_update_record",phase="execute"} 2510.0
+gateway_stage_seconds_sum{operation="mq_update_record",phase="execute"} 67.81103260055534
+# HELP gateway_stage_seconds_created 内部步骤耗时，不等同端到端p95
+# TYPE gateway_stage_seconds_created gauge
+gateway_stage_seconds_created{operation="db_register_coordination",phase="queue"} 1.7913638683299692e+09
+gateway_stage_seconds_created{operation="db_register_coordination",phase="execute"} 1.7913638684850593e+09
+gateway_stage_seconds_created{operation="db_reconcile",phase="queue"} 1.7913638684916725e+09
+gateway_stage_seconds_created{operation="db_reconcile",phase="execute"} 1.791363868494466e+09
+gateway_stage_seconds_created{operation="db_db_ping",phase="queue"} 1.7913638688294773e+09
+gateway_stage_seconds_created{operation="db_db_ping",phase="execute"} 1.7913638688301806e+09
+gateway_stage_seconds_created{operation="db_batch_authenticate",phase="queue"} 1.791363868841334e+09
+gateway_stage_seconds_created{operation="db_batch_authenticate",phase="execute"} 1.7913638689485884e+09
+gateway_stage_seconds_created{operation="redis_acquire",phase="execute"} 1.7913638689517446e+09
+gateway_stage_seconds_created{operation="db_persist_events",phase="queue"} 1.791363868963247e+09
+gateway_stage_seconds_created{operation="db_persist_events",phase="execute"} 1.7913638689866426e+09
+gateway_stage_seconds_created{operation="mq_create_record",phase="execute"} 1.7913638690019531e+09
+gateway_stage_seconds_created{operation="upstream_headers",phase="execute"} 1.7913638690364456e+09
+gateway_stage_seconds_created{operation="upstream_body",phase="execute"} 1.7913638690422058e+09
+gateway_stage_seconds_created{operation="redis_release",phase="execute"} 1.7913638690502818e+09
+gateway_stage_seconds_created{operation="mq_update_record",phase="execute"} 1.7913638690642557e+09
+# HELP gateway_requests_total 本进程完成清理的请求
+# TYPE gateway_requests_total counter
+gateway_requests_total{model="fixture",status="succeeded"} 2510.0
+# HELP gateway_requests_created 本进程完成清理的请求
+# TYPE gateway_requests_created gauge
+gateway_requests_created{model="fixture",status="succeeded"} 1.7913638690644705e+09
+# HELP gateway_request_seconds 含上游和清理的请求耗时
+# TYPE gateway_request_seconds histogram
+gateway_request_seconds_bucket{le="0.005",model="fixture",status="succeeded"} 0.0
+gateway_request_seconds_bucket{le="0.01",model="fixture",status="succeeded"} 0.0
+gateway_request_seconds_bucket{le="0.025",model="fixture",status="succeeded"} 1.0
+gateway_request_seconds_bucket{le="0.05",model="fixture",status="succeeded"} 102.0
+gateway_request_seconds_bucket{le="0.075",model="fixture",status="succeeded"} 1320.0
+gateway_request_seconds_bucket{le="0.1",model="fixture",status="succeeded"} 2124.0
+gateway_request_seconds_bucket{le="0.25",model="fixture",status="succeeded"} 2505.0
+gateway_request_seconds_bucket{le="0.5",model="fixture",status="succeeded"} 2510.0
+gateway_request_seconds_bucket{le="0.75",model="fixture",status="succeeded"} 2510.0
+gateway_request_seconds_bucket{le="1.0",model="fixture",status="succeeded"} 2510.0
+gateway_request_seconds_bucket{le="2.5",model="fixture",status="succeeded"} 2510.0
+gateway_request_seconds_bucket{le="5.0",model="fixture",status="succeeded"} 2510.0
+gateway_request_seconds_bucket{le="7.5",model="fixture",status="succeeded"} 2510.0
+gateway_request_seconds_bucket{le="10.0",model="fixture",status="succeeded"} 2510.0
+gateway_request_seconds_bucket{le="+Inf",model="fixture",status="succeeded"} 2510.0
+gateway_request_seconds_count{model="fixture",status="succeeded"} 2510.0
+gateway_request_seconds_sum{model="fixture",status="succeeded"} 203.12948089948623
+# HELP gateway_request_seconds_created 含上游和清理的请求耗时
+# TYPE gateway_request_seconds_created gauge
+gateway_request_seconds_created{model="fixture",status="succeeded"} 1.7913638690644805e+09
+# HELP gateway_active_requests 本进程持有接入额度的请求数
+# TYPE gateway_active_requests gauge
+gateway_active_requests 0.0
+# HELP gateway_database_deadlock_retries_total MySQL明确回滚死锁后的有界重试次数
+# TYPE gateway_database_deadlock_retries_total counter
+gateway_database_deadlock_retries_total 0.0
+# HELP gateway_database_deadlock_retries_created MySQL明确回滚死锁后的有界重试次数
+# TYPE gateway_database_deadlock_retries_created gauge
+gateway_database_deadlock_retries_created 1.7913638677781098e+09
+# HELP gateway_event_loop_lag_seconds 事件循环调度延迟
+# TYPE gateway_event_loop_lag_seconds gauge
+gateway_event_loop_lag_seconds 0.002123900019796565
+# HELP gateway_metadata_batches_total 本进程消费的元数据批次
+# TYPE gateway_metadata_batches_total counter
+gateway_metadata_batches_total 1408.0
+# HELP gateway_metadata_batches_created 本进程消费的元数据批次
+# TYPE gateway_metadata_batches_created gauge
+gateway_metadata_batches_created 1.791363867778122e+09
+# HELP gateway_metadata_messages_total 本进程消费的元数据消息（含重投）
+# TYPE gateway_metadata_messages_total counter
+gateway_metadata_messages_total 10018.0
+# HELP gateway_metadata_messages_created 本进程消费的元数据消息（含重投）
+# TYPE gateway_metadata_messages_created gauge
+gateway_metadata_messages_created 1.7913638677781255e+09
+# HELP gateway_metadata_commit_failures_total 未确认并保留在PEL的失败批次
+# TYPE gateway_metadata_commit_failures_total counter
+gateway_metadata_commit_failures_total 0.0
+# HELP gateway_metadata_commit_failures_created 未确认并保留在PEL的失败批次
+# TYPE gateway_metadata_commit_failures_created gauge
+gateway_metadata_commit_failures_created 1.7913638677781308e+09
+# HELP gateway_metadata_backlog 共享元数据流积压，多个实例不要相加
+# TYPE gateway_metadata_backlog gauge
+gateway_metadata_backlog 20.0
+# HELP gateway_metadata_dead_letters 共享死信消息数，多个实例不要相加
+# TYPE gateway_metadata_dead_letters gauge
+gateway_metadata_dead_letters 0.0

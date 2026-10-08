@@ -5,6 +5,7 @@ import json
 import os
 import subprocess
 import sys
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -55,6 +56,12 @@ def main():
             for spelling in (str(path).replace("\\", "\\\\"), str(path), path.as_posix()):
                 content = content.replace(spelling, placeholder)
         log_path.write_text(content, "utf-8")
+        if name == "unit-tests":
+            junit = ROOT / "reports/junit.xml"
+            tree = ET.parse(junit)
+            for node in tree.iter():
+                node.attrib.pop("hostname", None)
+            tree.write(junit, encoding="utf-8", xml_declaration=True)
         result["checks"].append({"name": name, "exit_code": completed.returncode})
         (ROOT / "reports/commands.json").write_text(json.dumps(result, indent=2), "utf-8")
         print(f"{name}: {'通过' if completed.returncode == 0 else '失败'}", flush=True)
